@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 title:  Single Neuron Perceptron
-date:   2022-01-25 13:32:20 -0600
+date:   2022-06-25 13:32:20 -0600
 description: Single neuron perceptron that classifies elements learning quite quickly.
 img: /posts/20210125/Perceptron.jpg 
 tags: [machine learning, neural networks]

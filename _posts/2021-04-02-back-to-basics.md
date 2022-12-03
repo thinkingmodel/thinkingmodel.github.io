@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 title: "So, what is a neural network?"
-date: 2022-04-02
+date: 2022-09-02
 img: posts/20210402/post7-header.webp
 tags: [neural networks, machine learning, artificial intelligence]
 category: theory
