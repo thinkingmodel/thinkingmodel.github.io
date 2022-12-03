@@ -84,7 +84,7 @@
     <url>
       <loc>http://localhost:4000/404.html</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -99,7 +99,7 @@
     <url>
       <loc>http://localhost:4000/about.html</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -114,7 +114,7 @@
     <url>
       <loc>http://localhost:4000/all-posts.json</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -129,7 +129,7 @@
     <url>
       <loc>http://localhost:4000/archive.html</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -144,7 +144,7 @@
     <url>
       <loc>http://localhost:4000/</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -159,7 +159,7 @@
     <url>
       <loc>http://localhost:4000/ipfs-404.html</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -174,7 +174,7 @@
     <url>
       <loc>http://localhost:4000/posts-by-tag.json</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -189,7 +189,7 @@
     <url>
       <loc>http://localhost:4000/search.json</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -206,7 +206,7 @@
     <url>
       <loc>http://localhost:4000/tag.html</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -221,7 +221,7 @@
     <url>
       <loc>http://localhost:4000/tags.html</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -236,7 +236,7 @@
     <url>
       <loc>http://localhost:4000/feed.xml</loc>
       
-        <lastmod>2022-12-03T17:06:37+05:30</lastmod>
+        <lastmod>2022-12-03T17:14:48+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
