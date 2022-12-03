@@ -12,7 +12,10 @@ description: "As neural networks are used more and more in the creative process,
 ---
 Recently I was [reading an article](https://www.rollingstone.com/music/music-features/nirvana-kurt-cobain-ai-song-1146444/) about a cool project that intends to have a neural network create songs of the late club of the 27 (artists that have tragically died at age 27 or near, and in the height of their respective careers), artists such as Amy Winehouse, Jimmy Hendrix, Curt Cobain and Jim Morrison.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tjzOzuKQhSM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ <div class="video" position="relative" padding-bottom="25.25%"  padding-top="30px"  height="0" overflow="hidden">
+    <iframe src="https://www.youtube.com/embed/tjzOzuKQhSM" position="absolute"  top="0"  left="0"  width="100%" height="100%">
+    </iframe>
+ </div>
 
 The project was created by [Over the Bridge](https://overthebridge.org), an organization dedicated to increase awareness on mental health and substance abuse in the music industry, trying to denormalize and remove the glamour around such illnesses within the music community.
 
