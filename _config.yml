@@ -31,7 +31,7 @@ about-author: Data Scientist, Machine learning engineer, research enthusiast and
 # Contact links
 email: AbhinavThorat@gmail.com # Add your Email address
 phone: # Add your Phone number
-website: https://thinking.github.io # Add your website
+website: https://thinkingmodel.github.io # Add your website
 linkedin: abhinav-t-98572112b # Add your Linkedin handle
 github: Abhinavthorat # Add your Github handle
 twitter: '@AbhinavThor' # Add your Twitter handle
@@ -52,7 +52,7 @@ paginate_path: 'page:num'
 words_per_minute: 200
 
 # Comments
-comments: utteranc  #[disqus, utteranc]
+comments: disqus  #[disqus, utteranc]
 comments_opts:
   comments_curtain:  # leave empty to show the disqus embed directly
   repo: # The GitHub repo URL.  https://utteranc.es/
@@ -60,7 +60,7 @@ comments_opts:
   label: # The GitHub comments label
   theme: # The GitHub comment's there. e.g. github-dark
   # Disqus
-  discus_identifier: # Add your discus identifier
+  discus_identifier: thinkingmodel-github-io
 
 # Build settings
 markdown: kramdown
