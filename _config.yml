@@ -26,7 +26,7 @@ highlight_theme: syntax-base16.monokai.dark # select a dark theme for the code h
 # Author settings
 author: Abhinav Thorat # add your name
 author-pic: Myself_Neon_grey.jpg
-about-author: Data Scientist, Machine learning engineer, research enthusiast and astrophile. Avid learner with diverse interests in coding, machine learning, artificial intelligence and reinforcement learning. 3+ years of experience working in multinational corporations.
+about-author: Data Scientist, Machine learning engineer, research enthusiast and astrophile. Avid learner with diverse interests in coding, machine learning, artificial intelligence and reinforcement learning. 3.5+ years of experience working in multinational corporations.
 
 # Contact links
 email: AbhinavThorat@gmail.com # Add your Email address
@@ -43,7 +43,7 @@ stackoverflow:  # Add your stackoverflow account
 mailchimp: "https://github.us17.list-manage.com/subscribe?u=c46bb8ed6c348caf9e090ae4b&id=2fc7b963c8"
 
 # Tracker
-analytics: G-R8SZS2YBZK
+analytics: #google analytics
 fbadmin: #fbtracking id
 
 # Paginate
@@ -54,13 +54,13 @@ words_per_minute: 200
 # Comments
 comments: disqus  #[disqus, utteranc]
 comments_opts:
-  comments_curtain:  # leave empty to show the disqus embed directly
+  comments_curtain: yes # leave empty to show the disqus embed directly
   repo: # The GitHub repo URL.  https://utteranc.es/
   issue_term: # The GitHub issue label
   label: # The GitHub comments label
   theme: # The GitHub comment's there. e.g. github-dark
   # Disqus
-  discus_identifier: thinkingmodel-github-io
+  discus_identifier: https://thinkingmodel-github-io
 
 # Build settings
 markdown: kramdown
