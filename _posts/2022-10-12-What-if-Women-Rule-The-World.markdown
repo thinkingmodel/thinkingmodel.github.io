@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 title:  What if women ruled the World?
-date:   2022-12-10 13:32:20 +05300
+date:   2022-12-09 13:32:20 -0600
 description: Analatical perspective along with analogy from closest genetical match of Chimpanzee and Bonobos.
 img: /posts/20221012/strong-female-leads.jpg 
 tags: [Politics,Sociology]
