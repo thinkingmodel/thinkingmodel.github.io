@@ -43,8 +43,8 @@ stackoverflow:  # Add your stackoverflow account
 mailchimp: "https://github.us17.list-manage.com/subscribe?u=c46bb8ed6c348caf9e090ae4b&id=2fc7b963c8"
 
 # Tracker
-analytics: #google analytics
-fbadmin: #fbtracking id
+analytics: #google analytics not used 
+fbadmin: #fbtracking id not used
 
 # Paginate
 paginate: 6
