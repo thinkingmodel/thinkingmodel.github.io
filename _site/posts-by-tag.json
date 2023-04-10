@@ -35,6 +35,26 @@
     
       
   {
+  "tag" : "astronomy",
+  "posts" : [
+      
+      "./discovery-of-a-myth.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "astrophysics",
+  "posts" : [
+      
+      "./discovery-of-a-myth.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "coding",
   "posts" : [
       
@@ -57,6 +77,16 @@
     
       
   {
+  "tag" : "cosmology",
+  "posts" : [
+      
+      "./discovery-of-a-myth.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "creativity",
   "posts" : [
       
@@ -71,6 +101,16 @@
   "posts" : [
       
       "./neural-network-optimization-methods.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "history",
+  "posts" : [
+      
+      "./discovery-of-a-myth.html"
       
     ]
   } ,

@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 title: Beyond the Event Horizon - The Making of the Black Hole Image
-date:   2023-04-10 21:32:20 +0530
+date:   2023-04-09 21:32:20 +0530
 description: Single neuron perceptron that classifies elements learning quite quickly.
 img: /posts/20230410/main.jpg 
 tags: [astronomy,astrophysics,cosmology,history]
