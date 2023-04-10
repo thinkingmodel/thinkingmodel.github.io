@@ -40,9 +40,7 @@
       
       "./neural-network-optimization-methods.html",
       
-      "./ML-Library-from-scratch.html",
-      
-      "./conways-game-of-life.html"
+      "./ML-Library-from-scratch.html"
       
     ]
   } ,
@@ -126,9 +124,7 @@
   "tag" : "python",
   "posts" : [
       
-      "./ML-Library-from-scratch.html",
-      
-      "./conways-game-of-life.html"
+      "./ML-Library-from-scratch.html"
       
     ]
   } 
