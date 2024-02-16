@@ -23,6 +23,16 @@
     
       
   {
+  "tag" : "art",
+  "posts" : [
+      
+      "./navigating-dissonance-unraveling-complex-relationships-in-norwegian-wood.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "artificial intelligence",
   "posts" : [
       
@@ -38,7 +48,7 @@
   "tag" : "astronomy",
   "posts" : [
       
-      "./discovery-of-a-myth.html"
+      "./discovery-of-a-myth-copy.html"
       
     ]
   } ,
@@ -48,7 +58,17 @@
   "tag" : "astrophysics",
   "posts" : [
       
-      "./discovery-of-a-myth.html"
+      "./discovery-of-a-myth-copy.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "book",
+  "posts" : [
+      
+      "./navigating-dissonance-unraveling-complex-relationships-in-norwegian-wood.html"
       
     ]
   } ,
@@ -80,7 +100,7 @@
   "tag" : "cosmology",
   "posts" : [
       
-      "./discovery-of-a-myth.html"
+      "./discovery-of-a-myth-copy.html"
       
     ]
   } ,
@@ -110,7 +130,17 @@
   "tag" : "history",
   "posts" : [
       
-      "./discovery-of-a-myth.html"
+      "./discovery-of-a-myth-copy.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "kafkaesque",
+  "posts" : [
+      
+      "./navigating-dissonance-unraveling-complex-relationships-in-norwegian-wood.html"
       
     ]
   } ,
@@ -155,6 +185,16 @@
   "posts" : [
       
       "./neural-network-optimization-methods.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "philosophy",
+  "posts" : [
+      
+      "./navigating-dissonance-unraveling-complex-relationships-in-norwegian-wood.html"
       
     ]
   } ,

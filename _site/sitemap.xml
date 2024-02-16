@@ -3,7 +3,20 @@
   
     
     <url>
-      <loc>http://localhost:4000/discovery-of-a-myth.html</loc>
+      <loc>http://localhost:4000/navigating-dissonance-unraveling-complex-relationships-in-norwegian-wood.html</loc>
+      
+        <lastmod>2024-02-16T07:32:20+05:30</lastmod>
+      
+      
+        <changefreq>daily</changefreq>
+      
+      
+        <priority>0.5</priority></url>
+    
+  
+    
+    <url>
+      <loc>http://localhost:4000/discovery-of-a-myth-copy.html</loc>
       
         <lastmod>2023-04-10T07:32:20+05:30</lastmod>
       
@@ -97,7 +110,7 @@
     <url>
       <loc>http://localhost:4000/404.html</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -112,7 +125,7 @@
     <url>
       <loc>http://localhost:4000/about.html</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -127,7 +140,7 @@
     <url>
       <loc>http://localhost:4000/all-posts.json</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -142,7 +155,7 @@
     <url>
       <loc>http://localhost:4000/archive.html</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -157,7 +170,7 @@
     <url>
       <loc>http://localhost:4000/</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -172,7 +185,7 @@
     <url>
       <loc>http://localhost:4000/ipfs-404.html</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -187,7 +200,7 @@
     <url>
       <loc>http://localhost:4000/posts-by-tag.json</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -202,7 +215,7 @@
     <url>
       <loc>http://localhost:4000/search.json</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -219,7 +232,7 @@
     <url>
       <loc>http://localhost:4000/tag.html</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -234,7 +247,7 @@
     <url>
       <loc>http://localhost:4000/tags.html</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -249,7 +262,7 @@
     <url>
       <loc>http://localhost:4000/feed.xml</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
@@ -264,7 +277,7 @@
     <url>
       <loc>http://localhost:4000/page2/</loc>
       
-        <lastmod>2024-02-08T16:58:15+05:30</lastmod>
+        <lastmod>2024-02-16T16:00:27+05:30</lastmod>
       
       
         <changefreq>daily</changefreq>
