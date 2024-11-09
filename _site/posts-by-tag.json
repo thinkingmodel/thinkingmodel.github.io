@@ -65,6 +65,16 @@
     
       
   {
+  "tag" : "behaviour",
+  "posts" : [
+      
+      "./region-beta-paradox.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "book",
   "posts" : [
       
@@ -191,10 +201,30 @@
     
       
   {
+  "tag" : "paradox",
+  "posts" : [
+      
+      "./region-beta-paradox.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "philosophy",
   "posts" : [
       
       "./navigating-dissonance-unraveling-complex-relationships-in-norwegian-wood.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "psychology",
+  "posts" : [
+      
+      "./region-beta-paradox.html"
       
     ]
   } ,
