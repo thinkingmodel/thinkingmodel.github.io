@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: Hi Mahesh
+title: Why "Good Enough" Stops You from Achieving "The Great" - The Region Beta Paradox
 date:   2024-11-09 12:00:00 +0530
 description: Catch your train on time.
 img: /posts/20241013/main.jpg 
