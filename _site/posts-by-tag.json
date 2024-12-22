@@ -36,9 +36,7 @@
   "tag" : "artificial intelligence",
   "posts" : [
       
-      "./AI-and-intellectual-property.html",
-      
-      "./back-to-basics.html"
+      "./AI-and-intellectual-property.html"
       
     ]
   } ,
@@ -88,9 +86,7 @@
   "tag" : "coding",
   "posts" : [
       
-      "./neural-network-optimization-methods.html",
-      
-      "./ML-Library-from-scratch.html"
+      "./neural-network-optimization-methods.html"
       
     ]
   } ,
@@ -162,11 +158,7 @@
       
       "./AI-and-intellectual-property.html",
       
-      "./back-to-basics.html",
-      
       "./neural-network-optimization-methods.html",
-      
-      "./ML-Library-from-scratch.html",
       
       "./single-neuron-perceptron.html"
       
@@ -179,10 +171,6 @@
   "posts" : [
       
       "./AI-and-intellectual-property.html",
-      
-      "./back-to-basics.html",
-      
-      "./ML-Library-from-scratch.html",
       
       "./single-neuron-perceptron.html"
       
@@ -225,16 +213,6 @@
   "posts" : [
       
       "./region-beta-paradox.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "python",
-  "posts" : [
-      
-      "./ML-Library-from-scratch.html"
       
     ]
   } 
