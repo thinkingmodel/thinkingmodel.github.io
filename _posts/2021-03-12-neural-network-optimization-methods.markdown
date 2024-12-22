@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 title:  Neural Network Optimization Methods and Algorithms
-date:   2022-08-12 13:32:20 -0600
+date:   2020-08-12 13:32:20 -0600
 description: Some neural network optimization algorithms mostly to implement momentum when doing back propagation.
 img: posts/20210312/nnet_optimization.jpg
 tags: [coding, machine learning, optimization, deep Neural networks]
@@ -11,9 +11,7 @@ author: Abhinav Thorat
 mathjax: yes # leave empty or erase to prevent the mathjax javascript from loading
 toc: yes # leave empty or erase for no TOC
 ---
-For the seemingly small project I undertook of [creating a machine learning neural network that could learn by itself to play tic-tac-toe](./deep-q-learning-tic-tac-toe.html), I bumped into the necesity of implementing at least one momentum algorithm for the optimization of the network during backpropagation.
-
-And since my original post for the TicTacToe project is quite large already, I decided to post separately these optimization methods and how did I implement them in my code.
+Neural network optimization is the key process that enables artificial intelligence to solve complex tasks, from image recognition to language translation. By adjusting and fine-tuning the weights and biases of the network during training, optimization allows the model to minimize errors and improve performance over time. A helpful way to understand this process is by imagining a hiker on a hill, where the goal is to find the lowest point in the valley representing the minimum error. Using gradient descent, the hiker (representing the model) takes steps downhill in the steepest direction, gradually getting closer to the optimal solution. This iterative process of adjusting based on the gradient helps the network learn to find the most accurate patterns in data, refining its decision-making abilities. It is this combination of optimization techniques and trial-and-error learning that enables neural networks to tackle intricate challenges, gradually evolving to handle increasingly complex tasks with remarkable efficiency.
 
 ### Adam
 [source](https://ruder.io/optimizing-gradient-descent/index.html#adam)
