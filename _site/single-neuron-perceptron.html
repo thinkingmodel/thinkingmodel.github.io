@@ -22,7 +22,7 @@
   "headline": "Single Neuron Perceptron",
   "abstract": "Single neuron perceptron that classifies elements while learning efficiently.",
     "keywords": "machine learning, neural networks",
-    "wordcount": "730",
+    "wordcount": "578",
     "image": ["http://localhost:4000/assets/img/posts/20210125/Perceptron.jpg"],
   "datePublished": "2019-06-26 01:02:20 +0530",
   "dateModified": "2019-06-26 01:02:20 +0530",
@@ -62,7 +62,7 @@
 <meta name="twitter:description" content="Single neuron perceptron that classifies elements while learning efficiently.">
 <meta name="twitter:creator" content="">
 <meta data-rh="true" name="twitter:label1" content="Word count"/>
-<meta data-rh="true" name="twitter:data1" content="730"/>
+<meta data-rh="true" name="twitter:data1" content="578"/>
 <meta name="twitter:image:src" content="http://localhost:4000/assets/img//posts/20210125/Perceptron.jpg">
 	<!-- Windows Phone -->
 	<meta name="msapplication-navbutton-color" content="#311e3e">
@@ -163,7 +163,7 @@
     
     <span class="page_meta-readtime">
       
-        3 minute read
+        2 minute read
       
     </span>
   
@@ -171,7 +171,7 @@
   </span>
 
         <div class="post-excerpt">
-            <p>Human brains are remarkable in their ability to process information and make decisions. This capability stems from the billions of interconnected neurons in our brain, which receive, process, and transmit signals to perform complex tasks. Inspired by these biological neurons, artificial neurons like the perceptron have been designed to mimic this behavior on a much simpler scale, paving the way for advancements in Artificial Intelligence.</p><p>As an introduction to Python and Machine Learning, I decided to code the “Hello World!” of the field—a single neuron perceptron.</p><h2 id="what-is-a-perceptron">What is a Perceptron?</h2><p>A perceptron is the fundamental building block of a neural network, analogous...<a class="read-more" href="./single-neuron-perceptron.html"> read more</a>
+            <p>The human brain is an intricate web of billions of interconnected neurons that allow us to process information, make decisions, and perform complex tasks. This remarkable ability has inspired the creation of artificial neurons, like the perceptron, which mimic biological neurons in a simpler form. These artificial neurons are the building blocks of Artificial Intelligence (AI), enabling machines to learn and evolve.</p><h2 id="what-is-a-perceptron">What is a Perceptron?</h2><p>Imagine a single neuron,a tiny but essential unit in the vast neural network of your brain. It activates when it receives signals, processes them, and decides what to do next. Similarly, a perceptron is the...<a class="read-more" href="./single-neuron-perceptron.html"> read more</a>
         </div>
   </div>
 </section>
@@ -303,7 +303,7 @@
     
     <span class="page_meta-readtime">
       
-        3 minute read
+        2 minute read
       
     </span>
   
@@ -347,127 +347,58 @@
 
         
         
-        <p>Human brains are remarkable in their ability to process information and make decisions. This capability stems from the billions of interconnected neurons in our brain, which receive, process, and transmit signals to perform complex tasks. Inspired by these biological neurons, artificial neurons like the perceptron have been designed to mimic this behavior on a much simpler scale, paving the way for advancements in Artificial Intelligence.</p>
-
-<p>As an introduction to Python and Machine Learning, I decided to code the “Hello World!” of the field—a single neuron perceptron.</p>
+        <p>The human brain is an intricate web of billions of interconnected neurons that allow us to process information, make decisions, and perform complex tasks. This remarkable ability has inspired the creation of artificial neurons, like the perceptron, which mimic biological neurons in a simpler form. These artificial neurons are the building blocks of Artificial Intelligence (AI), enabling machines to learn and evolve.</p>
 
 <h2 id="what-is-a-perceptron">What is a Perceptron?</h2>
 
-<p>A perceptron is the fundamental building block of a neural network, analogous to a biological neuron. Its invention laid the foundation for the vast field of Artificial Intelligence we see today.</p>
+<p>Imagine a single neuron,a tiny but essential unit in the vast neural network of your brain. It activates when it receives signals, processes them, and decides what to do next. Similarly, a perceptron is the most basic computational unit of a neural network. Its invention by <a href="https://en.wikipedia.org/wiki/Frank_Rosenblatt">Frank Rosenblatt</a> in the late 1950s laid the foundation for modern AI.</p>
 
-<p>In the late 1950s, <a href="https://en.wikipedia.org/wiki/Frank_Rosenblatt">Frank Rosenblatt</a> introduced a simple yet powerful algorithm to construct machines capable of learning various tasks.</p>
+<p>Think of it as a decision-making machine. It takes inputs, applies some rules, and generates an output. Despite its simplicity, the perceptron unlocks the doorway to understanding more complex systems.</p>
 
-<p>At its core, a perceptron is a mechanism for processing inputs and applying rules to generate outputs. Despite its simplicity, it serves as a gateway to understanding more complex systems.</p>
+<p><img src="./assets/img/posts/20210125/Perceptron.png" alt="Perceptron Illustration" /></p>
 
-<center><img src="./assets/img/posts/20210125/Perceptron.png" /></center>
+<h3 id="breaking-down-the-perceptron">Breaking Down the Perceptron</h3>
 
-<p>Picture a “neuron” that activates when it receives input signals through synapses. The neuron aggregates these signals, applies rules, and generates one or more outputs. Mathematically, a perceptron uses weights to process input signals, combining them into a single value.</p>
+<p>To understand a perceptron, let’s peek inside its mind. It starts with a set of inputs, let’s call them \( x_1, x_2, x_3 \)and their corresponding weights \( w_1, w_2, w_3 \). These weights reflect the importance of each input. The perceptron combines these inputs by multiplying each with its weight and summing them up.</p>
 
-<p>For example, consider a perceptron with three inputs: $x_1 = 1$, $x_2 = 2$, and $x_3 = 3$, and corresponding weights $w_1 = 0.5$, $w_2 = 1$, and $w_3 = -1$. The perceptron calculates the output by multiplying each input by its weight and summing the results:</p>
+<p>
+For example, consider:<br /><br />
 
-<p style="text-align:center">\(<br />
-\begin{align}
-\begin{split}
+- Inputs: \( x_1 = 1, x_2 = 2, x_3 = 3 \)<br />
+- Weights: \( w_1 = 0.5, w_2 = 1, w_3 = -1 \)<br /><br />
+
+The perceptron computes the weighted sum: <br />
+
+\[
 (x_1 \times w_1) + (x_2 \times w_2) + (x_3 \times w_3)
-\end{split}
-\end{align}
-\)</p>
+\]
+Plugging in the values: <br />
 
-<p style="text-align:center">\(<br />
-\begin{align}<br />
-\begin{split}<br />
-(0.5 \times 1) + (1 \times 2) + (-1 \times 3) = 0.5 + 2 - 3 = -0.5
-\end{split}<br />
-\end{align}<br />
-\)</p>
+\[
+(1 \times 0.5) + (2 \times 1) + (3 \times -1) = 0.5 + 2 - 3 = -0.5
+\]
+</p>
+<p>Next, the perceptron applies an <strong>activation function</strong>, which determines the output. If we use a linear activation function (i.e., the value remains as it is), the output here is (-0.5). This output can help classify data, for example, negative values could indicate Type A, and positive values Type B.</p>
 
-<p>After computing this value, an activation function is applied. If we use a linear activation function (i.e., keep the value as is), the output here is -0.5.</p>
+<h3 id="the-magic-of-learning">The Magic of Learning</h3>
 
-<p>In practice, this output helps classify data. For instance, negative values might correspond to Type A and positive values to Type B. The real power of a perceptron comes from its ability to learn through backpropagation, where it adjusts its weights to improve predictions.</p>
+<p>Here’s where the magic happens. A perceptron isn’t just about calculating outputs, it’s about learning. It adjusts its weights based on errors in its predictions, using a process called <strong>backpropagation</strong>.</p>
 
-<tweet>The magic starts with backpropagation, where the perceptron "learns" by iteratively adjusting its weights to minimize errors.</tweet>
+<p>When we train a perceptron, we provide it with a dataset of known inputs and outputs (a training set). The perceptron compares its predictions to the actual outcomes, calculates the error, and tweaks its weights. This iterative process, guided by <strong>gradient descent</strong>, helps the perceptron improve over time, enabling it to make accurate predictions even for unseen data.</p>
 
-<p>To train a perceptron, we use a dataset with known inputs and outputs (a training set). By comparing the perceptron’s predictions with actual outcomes, we calculate errors and adjust the weights accordingly. Over time, this iterative process enables the perceptron to make accurate predictions even on unseen data.</p>
+<blockquote>
+  <p>The magic starts with backpropagation, where the perceptron “learns” by iteratively adjusting its weights to minimize errors.</p>
+</blockquote>
 
-<p>This learning process is driven by gradient descent, a mathematical technique that uses differential calculus to fine-tune the weights. <a href="https://www.youtube.com/watch?v=aircAruvnKk&amp;list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">This video series by 3Blue1Brown explains it wonderfully.</a></p>
+<p>If you’re curious about gradient descent, I highly recommend <a href="https://www.youtube.com/watch?v=aircAruvnKk&amp;list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">this video series by 3Blue1Brown</a>, which explains it beautifully.</p>
 
-<h3 id="my-perceptron-implementation">My Perceptron Implementation</h3>
+<h2 id="final-thoughts">Final Thoughts</h2>
 
-<p>I implemented a single-neuron perceptron to classify whether a point lies above or below a randomly generated line. The perceptron has three inputs and corresponding weights:</p>
+<p>As the perceptron learns, it converges to a solution, a line that separates the data into distinct categories. While perceptrons are excellent for solving linear problems, they have their limitations. For instance, they can’t handle non-linear problems.</p>
 
-<ol>
-  <li>Input 1: The x-coordinate of the point</li>
-  <li>Input 2: The y-coordinate of the point</li>
-  <li>Input 3: The bias, always set to 1 (to handle lines that don’t pass through the origin)</li>
-</ol>
+<p>Modern neural networks, however, build upon the perceptron. By combining multiple perceptrons across layers and introducing advanced neuron types, they tackle a vast array of complex problems. From identifying faces to predicting stock prices, these networks are transforming the world as we know it.</p>
 
-<p>Initially, all weights are set to zero. The perceptron learns using 1,000 random points per iteration.</p>
-
-<p>The perceptron calculates its output using the following activation function:</p>
-
-<ul>
-  <li>If $x \times w_x + y \times w_y + w_{bias}$ is positive, the output is 1.</li>
-  <li>Otherwise, the output is 0.</li>
-</ul>
-
-<p>The error for each point is computed as:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">Expected</th>
-      <th style="text-align: center">Predicted</th>
-      <th style="text-align: center">Error</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">-1</td>
-      <td style="text-align: center">1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-1</td>
-      <td style="text-align: center">-1</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-1</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">-1</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>When an error occurs, weights are updated as follows:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New_weight = Old_weight + error \times input \times learning_rate
-</code></pre></div></div>
-
-<p>For example:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New_weight_x = Old_weight_x + error \times x \times learning_rate
-</code></pre></div></div>
-
-<p>The learning rate, a critical parameter, determines the adjustment size. To ensure stability as weights approach optimal values, I programmed the learning rate to decrease over iterations:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>learning_rate = 0.01 / (iteration + 1)
-</code></pre></div></div>
-
-<p>This gradual reduction ensures more precise adjustments over time.</p>
-
-<center><img src="./assets/img/posts/20210125/Learning_1000_points_per_iteration.jpg" /></center>
-
-<h3 id="final-thoughts">Final Thoughts</h3>
-
-<p>Ultimately, the perceptron converges to a solution, accurately identifying the line separating the data. While perceptrons are powerful for solving linear problems, they have limitations. For instance, they can’t solve non-linear problems.</p>
-
-<p>Modern neural networks overcome these limitations by combining multiple perceptrons across layers, introducing other types of neurons (e.g., convolutional or recurrent), and enabling solutions for a vast array of complex problems.</p>
+<p>Starting with a perceptron is like learning the alphabet before writing a novel, it’s simple yet foundational. And for me, it was the perfect entry point into the incredible world of Machine Learning.</p>
 
         <aside class="sidebar inline" id="post-end">
     
@@ -525,7 +456,7 @@
   </div>
   <div class="author-desc">
     <h3>Abhinav Thorat</h3>
-    <p>Data Scientist, Machine learning engineer, research enthusiast and astrophile. Avid learner with diverse interest in coding, machine learning along with topics like psychology, anthropology, philosophy & astrophysics. 5+ years of experience working in multinational corporations.</p>
+    <p>Research Scientist, AI Researcher and astrophile. Avid learner with diverse interest in coding, machine learning along with topics like psychology, anthropology, philosophy & astrophysics. 6+ years of experience working in multinational corporations.</p>
   </div>
 </section>
 
@@ -536,6 +467,37 @@
 <div class="recent-box">
   <h2 class="page-subtitle">Recent posts</h2>
   <div class="recent-list">
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./Attention-is-all-you-need-with-a-twist.html" class="recent-item-img" style="background: url('./assets/img//posts/20250105/transformer.jpg') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>Attention is all you need with a twist</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        8 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
     
       
         <div class="recent-item">
@@ -630,37 +592,6 @@
         </div>
       
     
-      
-        <div class="recent-item">
-          
-          
-
-          <a href="./What-if-Women-Rule-The-World.html" class="recent-item-img" style="background: url('./assets/img//posts/20221012/strong-female-leads.jpg') center no-repeat; background-size: cover;">
-            <div class="recent-item-title">
-              <span>What if women ruled the World?</span>
-              
-
-  <span class = "recent-item-meta">
-  
-  
-  
-  
-    
-    
-    <p class="page_meta-readtime">
-      
-        4 minute read
-      
-    </p>
-  
-  
-  </span>
-
-            </div>
-          </a>
-        </div>
-      
-    
   </div>
 </div> <!-- End Recent-Box -->
 
@@ -734,7 +665,7 @@
             </a>
         </div>
         <div class="copyright">
-          <p>2024 &copy; Abhinav Thorat</p>
+          <p>2025 &copy; Abhinav Thorat</p>
         </div>
         <div class="footer-nav">
             <div>

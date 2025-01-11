@@ -36,6 +36,8 @@
   "tag" : "artificial intelligence",
   "posts" : [
       
+      "./Attention-is-all-you-need-with-a-twist.html",
+      
       "./AI-and-intellectual-property.html"
       
     ]
@@ -83,16 +85,6 @@
     
       
   {
-  "tag" : "coding",
-  "posts" : [
-      
-      "./neural-network-optimization-methods.html"
-      
-    ]
-  } ,
-    
-      
-  {
   "tag" : "copyright",
   "posts" : [
       
@@ -123,10 +115,10 @@
     
       
   {
-  "tag" : "deep Neural networks",
+  "tag" : "generative models",
   "posts" : [
       
-      "./neural-network-optimization-methods.html"
+      "./Attention-is-all-you-need-with-a-twist.html"
       
     ]
   } ,
@@ -153,12 +145,20 @@
     
       
   {
+  "tag" : "large language model",
+  "posts" : [
+      
+      "./Attention-is-all-you-need-with-a-twist.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "machine learning",
   "posts" : [
       
       "./AI-and-intellectual-property.html",
-      
-      "./neural-network-optimization-methods.html",
       
       "./single-neuron-perceptron.html"
       
@@ -173,16 +173,6 @@
       "./AI-and-intellectual-property.html",
       
       "./single-neuron-perceptron.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "optimization",
-  "posts" : [
-      
-      "./neural-network-optimization-methods.html"
       
     ]
   } ,

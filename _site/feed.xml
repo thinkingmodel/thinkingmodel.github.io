@@ -1,4 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-22T12:26:49+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">The Thinking Model</title><subtitle>Everything that is Interesting.</subtitle><author><name>Abhinav Thorat</name></author><entry><title type="html">Why “Good Enough” Stops You from Achieving “The Great” - The Region Beta Paradox</title><link href="http://localhost:4000/region-beta-paradox.html" rel="alternate" type="text/html" title="Why “Good Enough” Stops You from Achieving “The Great” - The Region Beta Paradox" /><published>2024-11-09T12:00:00+05:30</published><updated>2024-11-09T12:00:00+05:30</updated><id>http://localhost:4000/region-beta-paradox</id><content type="html" xml:base="http://localhost:4000/region-beta-paradox.html"><![CDATA[<p>Imagine two people trying to catch a train. One lives a few minutes away from the station, and the other lives much farther. If both happen to miss the train, the person who lives nearby might think, “No big deal, I’ll just wait for the next one,” and sit at the station for 20 minutes. Meanwhile, the person who lives farther away might realize they can’t afford to wait and instead take immediate action—calling a cab, taking another route, or finding an alternative.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-11T19:02:35+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">The Thinking Model</title><subtitle>Everything that is Interesting.</subtitle><author><name>Abhinav Thorat</name></author><entry><title type="html">Attention is all you need with a twist</title><link href="http://localhost:4000/Attention-is-all-you-need-with-a-twist.html" rel="alternate" type="text/html" title="Attention is all you need with a twist" /><published>2025-01-11T17:00:00+05:30</published><updated>2025-01-11T17:00:00+05:30</updated><id>http://localhost:4000/Attention-is-all-you-need-with-a-twist</id><content type="html" xml:base="http://localhost:4000/Attention-is-all-you-need-with-a-twist.html"><![CDATA[<p>Imagine stepping into a movie theater, expecting a relaxing evening of cinematic magic. But as soon as you walk in, you realize this is no ordinary theater, this is the <strong>LSTM Theater</strong>. Instead of plush seats arranged in neat rows facing a giant screen, you’re led to a weird, single file line chair arrangement. Each person stares through a tiny peephole, trying to catch a glimpse of the movie.</p>
+
+<p>The experience only gets stranger. To follow the story, you rely entirely on the person in front of you whispering what they just saw. The catch is to understand the movie You’re expected to jot down notes as fast as you can and pass them along to the person behind you. The result? Chaos.</p>
+<center><img src="./assets/img/posts/20250105/lstm.jpg" /></center>
+
+<h2 id="here-are-the-shortcomings-of-this-relic-system">Here are the shortcomings of this relic system:</h2>
+
+<ul>
+  <li>
+    <p><strong>One scene at a time</strong> : You can only process the movie frame by frame [<strong>Sequential Processing</strong>].</p>
+  </li>
+  <li>
+    <p><strong>Gossip gone wrong</strong> : By the time someone in the back hears about the climactic car chase, the action’s over and done [<strong>Vanishing Gradient</strong>].</p>
+  </li>
+  <li>
+    <p><strong>Memory meltdown</strong> : Keeping track of plot details becomes impossible if the movie is long enough [<strong>Limited Memory Retention</strong>].</p>
+  </li>
+  <li>
+    <p><strong>Character confusion</strong> : When the mysterious stranger from the first scene reappears in the finale, you’ve already forgotten who they are [<strong>Long-range Dependency</strong>].</p>
+  </li>
+  <li>
+    <p><strong>Slow motion nightmare</strong> : The theater operates like a single-threaded processor, grinding along one scene at a time [<strong>Limited Parallel Processing</strong>].</p>
+  </li>
+</ul>
+
+<p>This theater is a maddening relic, functional but incredibly inefficient. Much like its namesake, the <strong>LSTM architecture</strong>, it’s good in some cases but suffers specifically with an information overload, struggling to tell a story with every twist, turn, and moment of suspense.</p>
+
+<h2 id="welcome-to-the-transformer-theatre-a-blockbuster-redefinition-of-cinema-and-ai">Welcome to The Transformer Theatre: A Blockbuster Redefinition of Cinema (and AI)</h2>
+
+<p>Welcome to The Transformer Theatre, a revolutionary cinema that’s changing how we experience movies! As you step through its grand entrance, 
+you’ll immediately notice this isn’t your grandfather’s movie house. Gone are the restrictive peepholes and cramped single-file seating. Instead, you’re greeted by a magnificent amphitheater where every viewer
+has a perfect view of the entire screen and can freely interact with anyone else in the audience.</p>
+<center><img src="./assets/img/posts/20250105/3.jpg" /></center>
+<center><small>Generated by Gemini Model with Prompt : Generate an image of Las Vegas Sphere.</small></center>
+
+<h3 id="the-incredible-positioning-system-position-encoding">The Incredible Positioning System [<strong>Position Encoding</strong>]</h3>
+
+<p>As you enter, you receive a special theater pass that’s crucial to your experience. This is the theater’s ingenious <strong>Position Aware</strong> system:</p>
+
+<ol>
+  <li><strong>Numbered Seats</strong>: Each seat has a unique number encoded in a special way:
+    <ul>
+      <li>Your seat number is converted into two different patterns: sine and cosine waves</li>
+      <li>These patterns are like musical notes that get higher or lower depending on where you sit</li>
+      <li>Even if you’re in seat 100 or seat 1000, you’ll still have a unique position pattern relative to your position in the sequence, ensuring the model understands the order and relationships between all viewers</li>
+    </ul>
+  </li>
+  <li><strong>Position-Aware Glasses</strong>: You receive special glasses that combine your position information with what you’re watching:
+    <ul>
+      <li>Every observation you make about the movie is automatically tagged with your position</li>
+      <li>When discussing the movie, everyone knows exactly which part you’re referring to</li>
+      <li>The position information becomes part of every interaction and discussion</li>
+    </ul>
+  </li>
+</ol>
+
+<p>This positioning system solves a crucial problem: it helps everyone know where they are in relation to each other and the movie’s timeline, making every interaction position-aware.</p>
+
+<h3 id="the-viewing-experience">The Viewing Experience</h3>
+
+<p>Your group of friends represents what we’ll refer as <strong>Tokens</strong>, each person being a unit of information, like a word in a sentence. The special glasses you wear aren’t just for position awareness; they let you watch both the movie and your fellow viewers simultaneously. This is exactly how the <strong>Attention Mechanism</strong> works, the ability to focus on multiple things at different levels of importance.</p>
+
+<p>During the movie, something fascinating happens. When a dramatic scene unfolds, each person in your group starts doing three things:</p>
+<ul>
+  <li>You think about what you want to understand about the scene (<strong>Query</strong>)</li>
+  <li>You consider what insights you can offer others (<strong>Key</strong>)</li>
+  <li>You note down what you actually observed (<strong>Value</strong>)</li>
+</ul>
+
+<p>This three-way process is <strong>Self-Attention</strong>. It’s like everyone in the theater being able to tap into each other’s thoughts about the movie, deciding which perspectives are most relevant to their understanding.</p>
+
+<h3 id="the-interactive-experience">The Interactive Experience</h3>
+
+<p>During intermission, your friends naturally split into different discussion circles. One group analyzes the plot twists, another discusses character development, while a third group debates the cinematography. This parallel processing is called <strong>Multi-Head Attention</strong>, different aspects being analyzed simultaneously.</p>
+
+<p>Each viewer keeps a personal notebook [<strong>Feed-Forward Network</strong>] where they process everything they’ve learned from these various discussions. But here’s the clever part, nobody completely overwrites their initial impressions. Instead, they add new insights to their original thoughts, creating what’s known as <strong>Residual Connections</strong>.</p>
+
+<p>There’s a friendly usher walking around [<strong>Layer Normalization</strong>] making sure no discussion gets too heated or too quiet. They keep conversations balanced, just like how AI systems need to keep their internal values in check.</p>
+<h3 id="avenger-assemble--multi-head-attention-at-work">Avenger Assemble : Multi-Head Attention at work</h3>
+<p>Imagine if, instead of just one person in the theater trying to analyze every aspect of the movie, you had a team of specialists. Each specialist focuses on a different element like plot, visuals, sound, or acting and then they combine their insights for a holistic understanding.</p>
+
+<p>The Transformer splits attention into multiple “heads,” each analyzing different parts of the input sequence. Each head looks at different relationships between words, such as how a word in one part of
+a sentence might relate to another word far away. After analyzing the input independently, the results from all heads are combined, giving the model a nuanced understanding of context and relationships.
+This scaling enables the Transformer to extract and represent diverse patterns within the data, making it especially powerful for handling complex language structures.</p>
+<h3 id="the-two-part-experience">The Two-Part Experience</h3>
+<p>The evening at the Transformer Theatre is split into two main parts:</p>
+
+<ul>
+  <li>
+    <p>The First Half [<strong>Encoder</strong>] : This is where you watch the movie and engage in dynamic discussions with others. Everyone in the theater processes the same movie, analyzing details and forming insights. Think of this as the Encoder’s job: it takes the input (the movie) and breaks it down into meaningful components through collective observations.</p>
+  </li>
+  <li>
+    <p>The Second Half [<strong>Decoder</strong>] : Now comes the creative part. You write your review of the film. As you write, you refer back to your notes from the first half [using Attention to the Encoder] while also keeping track of the review you’ve already written [<strong>Decoder Self-Attention</strong>].</p>
+  </li>
+</ul>
+
+<h3 id="the-brilliance-of-the-causal-language-model-comes-into-play">The brilliance of the Causal Language Model comes into play:</h3>
+
+<p>As you write, you don’t want spoilers from the future! The review you’re crafting must flow logically from one sentence to the next. This mirrors the concept of <strong>Masked Attention</strong> in the decoder. It ensures that when generating the current word, the model only considers words that came before it. For instance, if you’re halfway through a sentence about the plot twist, the model doesn’t “peek” at how the sentence ends, maintaining <strong>causality</strong> in the sequence.
+How It All Works Together
+The Encoder takes all the rich information from the movie [tokens] and processes it, creating a compressed but meaningful representation of the film’s key elements. The Decoder then uses this representation alongside Masked Attention to craft the review step by step:</p>
+
+<p>While writing each sentence, the Decoder Self-Attention ensures the current word connects logically with the words that precede it.
+Simultaneously, the decoder references the encoded movie notes [via Encoder-Decoder Attention] to ensure accuracy and coherence.
+This two-part system ensures a smooth, organized review-writing process, just like how the Transformer model excels at tasks like language generation. It combines structured understanding from the encoder with logical, step-by-step storytelling from the decoder.</p>
+<center><img src="./assets/img/posts/20250105/absolute.jpg" /></center>
+
+<h3 id="the-magic-of-multiple-viewings">The Magic of Multiple Viewings</h3>
+
+<p>The whole experience repeats itself through multiple showings [<strong>Layers</strong>], with each viewing allowing for deeper understanding and more nuanced interpretations. Each time through, the connections between different aspects of the movie become clearer and more refined.</p>
+
+<p>What makes The Transformer Theatre special is how everyone can instantly share thoughts with anyone else in the room. There’s no need to pass messages down a row of people, every viewer has a direct line to every other viewer, just like how <strong>Transformer</strong> models can directly connect any piece of information with any other piece.</p>
+
+<h2 id="the-revolutionary-impact">The Revolutionary Impact</h2>
+
+<p>As you leave The Transformer Theatre, you realize this wasn’t just any movie night, it was a perfect demonstration of how modern AI processes information. The collaborative viewing experience, the structured discussions, the careful note-taking, and the thoughtful review-writing process all mirror the sophisticated way <strong>Transformer</strong> architecture processes and understands information. But this is just the beginning; the journey is only starting, and it stretches far beyond what we can imagine.</p>
+
+<h3 id="gpt-revolutionizing-the-art-of-language-modelling">GPT: Revolutionizing the Art of Language Modelling</h3>
+
+<p>The Generative Pre-trained Models [<strong>GPT</strong>], much like seasoned movie critics, undergo rigorous preparation before they even begin writing their reviews.</p>
+
+<ul>
+  <li>The Pre-training Phase:
+    <ul>
+      <li>
+        <p>In this phase, GPT models watch thousands of “movies” (or datasets) from various genres, absorbing intricate patterns, structures, and relationships.</p>
+      </li>
+      <li>
+        <p>They learn how characters interact, how stories unfold, and how subplots tie into larger narratives. This phase is unsupervised, meaning the model observes and learns without explicit instructions, developing a rich understanding of language and context.</p>
+      </li>
+    </ul>
+  </li>
+  <li>The Fine-tuning Phase:
+    <ul>
+      <li>
+        <p>Once pre-trained, these models are fine-tuned with specific goals in mind. For instance, they might specialize in writing film reviews, crafting poetry, or even generating business reports.</p>
+      </li>
+      <li>
+        <p>This phase hones their ability to focus on the task at hand, aligning their output with the desired tone and purpose. Nowadays, these are referred to as Agents, though I’m not sure if they’re here to write, compute, or order a martini shaken, not stirred.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="the-role-of-attention-in-gpt-models">The Role of Attention in GPT Models</h3>
+<p>Generative Pre-trained Transformers owe their success to the Attention Mechanism, which allows them to analyze and synthesize information with unparalleled efficiency. Here’s how it works in the context of GPT:</p>
+
+<ul>
+  <li><strong>Context Awareness</strong>: The model remembers and weighs all the relevant parts of a narrative, ensuring coherence and depth.</li>
+  <li><strong>Causal Language Modeling</strong>: GPT models generate text one token at a time, leveraging Masked Attention to maintain logical flow.
+Dynamic Understanding: By attending to both immediate and long-range dependencies, they can weave a detailed yet contextually rich responses.</li>
+</ul>
+
+<p>The foundation of all this innovation traces back to the groundbreaking paper <a href="https://ar5iv.org/pdf/1706.03762">“Attention Is All You Need”</a> by Vaswani et al. This seminal work introduced the Transformer architecture, revolutionizing how machines process and generate language. In the near future, this breakthrough is sure to stand the test of time.</p>]]></content><author><name>Abhinav Thorat</name></author><category term="artificial intelligence" /><category term="large language model" /><category term="generative models" /><summary type="html"><![CDATA[Welcome to Transformer Theatre.]]></summary></entry><entry><title type="html">Why “Good Enough” Stops You from Achieving “The Great” - The Region Beta Paradox</title><link href="http://localhost:4000/region-beta-paradox.html" rel="alternate" type="text/html" title="Why “Good Enough” Stops You from Achieving “The Great” - The Region Beta Paradox" /><published>2024-11-09T12:00:00+05:30</published><updated>2024-11-09T12:00:00+05:30</updated><id>http://localhost:4000/region-beta-paradox</id><content type="html" xml:base="http://localhost:4000/region-beta-paradox.html"><![CDATA[<p>Imagine two people trying to catch a train. One lives a few minutes away from the station, and the other lives much farther. If both happen to miss the train, the person who lives nearby might think, “No big deal, I’ll just wait for the next one,” and sit at the station for 20 minutes. Meanwhile, the person who lives farther away might realize they can’t afford to wait and instead take immediate action—calling a cab, taking another route, or finding an alternative.</p>
 
 <p>Strangely enough, the person who had the greater inconvenience—the one living farther from the station—ends up reaching their destination faster because the situation pushed them to act. This is a perfect illustration of the Region Beta Paradox, where larger challenges often spur more decisive action and greater growth, while smaller issues lead to complacency.</p>
 
@@ -176,438 +329,55 @@ Bonobo monkeys use sex to relieve tension in social group as a form of greeting 
 <tweet>Perhaps a new model for remunerating creative work can be established, one that does not require commercial success to be necessary for artists to make a living.</tweet>
 
 <p><img src="./assets/img/posts/20210420/post8-rembrandt2.jpg" alt="The next Rembrandt" />
-<small><a href="https://www.jwt.com/en/work/thenextrembrandt">The Next Rembrandt</a> is a computer-generated 3-D–printed painting developed by a facial-recognition algorithm that scanned data from 346 known paintings by the Dutch painter in a process lasting 18 months. The portrait is based on 168,263 fragments from Rembrandt’s works.</small></p>]]></content><author><name>Abhinav Thorat</name></author><category term="opinion" /><category term="copyright" /><category term="creativity" /><category term="neural networks" /><category term="machine learning" /><category term="artificial intelligence" /><summary type="html"><![CDATA[As neural networks are used more and more in the creative process, text, images and even music are now created by AI, but who owns the copyright for those works?]]></summary></entry><entry><title type="html">Neural Network Optimization Methods and Algorithms</title><link href="http://localhost:4000/neural-network-optimization-methods.html" rel="alternate" type="text/html" title="Neural Network Optimization Methods and Algorithms" /><published>2020-08-13T01:02:20+05:30</published><updated>2020-08-13T01:02:20+05:30</updated><id>http://localhost:4000/neural-network-optimization-methods</id><content type="html" xml:base="http://localhost:4000/neural-network-optimization-methods.html"><![CDATA[<p>Neural network optimization is the key process that enables artificial intelligence to solve complex tasks, from image recognition to language translation. By adjusting and fine-tuning the weights and biases of the network during training, optimization allows the model to minimize errors and improve performance over time. A helpful way to understand this process is by imagining a hiker on a hill, where the goal is to find the lowest point in the valley representing the minimum error. Using gradient descent, the hiker (representing the model) takes steps downhill in the steepest direction, gradually getting closer to the optimal solution. This iterative process of adjusting based on the gradient helps the network learn to find the most accurate patterns in data, refining its decision-making abilities. It is this combination of optimization techniques and trial-and-error learning that enables neural networks to tackle intricate challenges, gradually evolving to handle increasingly complex tasks with remarkable efficiency.</p>
-
-<h3 id="adam">Adam</h3>
-<p><a href="https://ruder.io/optimizing-gradient-descent/index.html#adam">source</a></p>
-
-<p>Adaptive Moment Estimation (Adam) is an optimization method that computes adaptive learning rates for each weight and bias. In addition to storing an exponentially decaying average of past squared gradients \(v_t\) and an exponentially decaying average of past gradients \(m_t\), similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface. We compute the decaying averages of past and past squared gradients \(m_t\) and \(v_t\) respectively as follows:</p>
-<p style="text-align:center">\(<br />
-\begin{align}<br />
-\begin{split}<br />
-m_t &amp;= \beta_1 m_{t-1} + (1 - \beta_1) g_t \\<br />
-v_t &amp;= \beta_2 v_{t-1} + (1 - \beta_2) g_t^2<br />
-\end{split}<br />
-\end{align}<br />
-\)</p>
-<p>\(m_t\) and \(v_t\) are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively, hence the name of the method. As \(m_t\) and \(v_t\) are initialized as vectors of 0's, the authors of Adam observe that they are biased towards zero, especially during the initial time steps, and especially when the decay rates are small (i.e. \(\beta_1\) and \(\beta_2\) are close to 1).</p>
-<p>They counteract these biases by computing bias-corrected first and second moment estimates:</p>
-<p style="text-align:center">\(<br />
-\begin{align}<br />
-\begin{split}<br />
-\hat{m}_t &amp;= \dfrac{m_t}{1 - \beta^t_1} \\<br />
-\hat{v}_t &amp;= \dfrac{v_t}{1 - \beta^t_2} \end{split}<br />
-\end{align}<br />
-\)</p>
-<p>We then use these to update the weights and biases which yields the Adam update rule:</p>
-<p style="text-align:center">\(\theta_{t+1} = \theta_{t} - \dfrac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t\).</p>
-<p>The authors propose defaults of 0.9 for \(\beta_1\), 0.999 for \(\beta_2\), and \(10^{-8}\) for \(\epsilon\).</p>
-<p><a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L243">view on github</a></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># decaying averages of past gradients
-</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                        <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                        <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
-                        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                        <span class="p">))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                        <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                        <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
-                        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                        <span class="p">))</span>
-
-<span class="c1"># decaying averages of past squared gradients
-</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span>
-                        <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                        <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA2</span><span class="p">)</span>
-                        <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
-                         <span class="p">))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span>
-                        <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                        <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA2</span><span class="p">)</span>
-                        <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span>
-                                         <span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
-                         <span class="p">))</span>
-
-<span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">ADAM_BIAS_Correction</span><span class="p">:</span>
-    <span class="c1"># bias-corrected first and second moment estimates
-</span>    <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                          <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                          <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                          <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                          <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
-
-<span class="c1"># apply to weights and biases
-</span><span class="n">weight_col</span> <span class="o">-=</span> <span class="p">((</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                      <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                      <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">))))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">((</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                        <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                        <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">))))</span>
-</code></pre></div></div>
-
-<h3 id="sgd-momentum">SGD Momentum</h3>
-<p><a href="https://ruder.io/optimizing-gradient-descent/index.html#momentum">source</a></p>
-
-<p>Vanilla SGD has trouble navigating ravines, i.e. areas where the surface curves much more steeply in one dimension than in another, which are common around local optima. In these scenarios, SGD oscillates across the slopes of the ravine while only making hesitant progress along the bottom towards the local optimum.</p>
-<p>Momentum is a method that helps accelerate SGD in the relevant direction and dampens oscillations. It does this by adding a fraction \(\gamma\) of the update vector of the past time step to the current update vector:</p>
-<p style="text-align:center">\(<br />
-\begin{align}<br />
-\begin{split}<br />
-v_t &amp;= \beta_1 v_{t-1} + \eta \nabla_\theta J( \theta) \\<br />
-\theta &amp;= \theta - v_t<br />
-\end{split}<br />
-\end{align}<br />
-\)</p>
-<p>The momentum term \(\beta_1\) is usually set to 0.9 or a similar value.</p>
-<p>Essentially, when using momentum, we push a ball down a hill. The ball accumulates momentum as it rolls downhill, becoming faster and faster on the way (until it reaches its terminal velocity if there is air resistance, i.e. \(\beta_1 &lt; 1\)). The same thing happens to our weight and biases updates: The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. As a result, we gain faster convergence and reduced oscillation.</p>
-<p><a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L210">view on github</a></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                       <span class="o">+</span><span class="p">(</span><span class="n">eta</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                       <span class="p">))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                       <span class="o">+</span><span class="p">(</span><span class="n">eta</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                       <span class="p">))</span>
-
-<span class="n">weight_col</span> <span class="o">-=</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-</code></pre></div></div>
-
-<h3 id="nesterov-accelerated-gradient-nag">Nesterov accelerated gradient (NAG)</h3>
-<p><a href="https://ruder.io/optimizing-gradient-descent/index.html#nesterovacceleratedgradient">source</a></p>
-
-<p>However, a ball that rolls down a hill, blindly following the slope, is highly unsatisfactory. We'd like to have a smarter ball, a ball that has a notion of where it is going so that it knows to slow down before the hill slopes up again.</p>
-<p>Nesterov accelerated gradient (NAG) is a way to give our momentum term this kind of prescience. We know that we will use our momentum term \(\beta_1 v_{t-1}\) to move the weights and biases \(\theta\). Computing \( \theta - \beta_1 v_{t-1} \) thus gives us an approximation of the next position of the weights and biases (the gradient is missing for the full update), a rough idea where our weights and biases are going to be. We can now effectively look ahead by calculating the gradient not w.r.t. to our current weights and biases \(\theta\) but w.r.t. the approximate future position of our weights and biases:</p>
-<p style="text-align:center">\(<br />
-\begin{align}<br />
-\begin{split}<br />
-v_t &amp;= \beta_1 v_{t-1} + \eta \nabla_\theta J( \theta - \beta_1 v_{t-1} ) \\<br />
-\theta &amp;= \theta - v_t<br />
-\end{split}<br />
-\end{align}<br />
-\)</p>
-<p>Again, we set the momentum term \(\beta_1\) to a value of around 0.9. While Momentum first computes the current gradient and then takes a big jump in the direction of the updated accumulated gradient, NAG first makes a big jump in the direction of the previous accumulated gradient, measures the gradient and then makes a correction, which results in the complete NAG update. This anticipatory update prevents us from going too fast and results in increased responsiveness, which has significantly increased the performance of Neural Networks on a number of tasks.</p>
-<p>Now that we are able to adapt our updates to the slope of our error function and speed up SGD in turn, we would also like to adapt our updates to each individual weight and bias to perform larger or smaller updates depending on their importance.</p>
-<p><a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L219">view on github</a></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v_prev</span> <span class="o">=</span> <span class="p">{</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)],</span>
-          <span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]}</span>
-
-<span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-            <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">NAG_COEFF</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-           <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-            <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">NAG_COEFF</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-           <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-
-<span class="n">weight_col</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">*</span> <span class="n">v_prev</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-               <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">*</span> <span class="n">v_prev</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-               <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-</code></pre></div></div>
-
-<h3 id="rmsprop">RMSprop</h3>
-<p><a href="https://ruder.io/optimizing-gradient-descent/index.html#rmsprop">source</a></p>
-
-<p>RMSprop is an unpublished, adaptive learning rate method proposed by Geoff Hinton in <a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">Lecture 6e of his Coursera Class</a>.</p>
-<p>RMSprop was developed stemming from the need to resolve other method's radically diminishing learning rates.</p>
-<p style="text-align:center">\(<br />
-\begin{align}<br />
-\begin{split}<br />
-E[\theta^2]_t &amp;= \beta_1 E[\theta^2]_{t-1} + (1-\beta_1) \theta^2_t \\<br />
-\theta_{t+1} &amp;= \theta_{t} - \dfrac{\eta}{\sqrt{E[\theta^2]_t + \epsilon}} \theta_{t}<br />
-\end{split}<br />
-\end{align}<br />
-\)</p>
-<p>RMSprop divides the learning rate by an exponentially decaying average of squared gradients. Hinton suggests \(\beta_1\) to be set to 0.9, while a good default value for the learning rate \(\eta\) is 0.001.</p>
-<p><a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L232">view on github</a></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                      <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                      <span class="o">+</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
-                      <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
-                        <span class="p">))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                      <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                      <span class="o">+</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
-                      <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
-                        <span class="p">))</span>
-
-<span class="n">weight_col</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-              <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">)))</span>
-              <span class="p">)</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-               <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">)))</span>
-                <span class="p">)</span>
-</code></pre></div></div>
-
-<h3 id="complete-code">Complete code</h3>
-<p>All in all the code ended up like this:
-<a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L1">view on github</a></p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="nb">staticmethod</span>
-<span class="k">def</span> <span class="nf">cyclic_learning_rate</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
-    <span class="n">max_lr</span> <span class="o">=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">MAX_LR_FACTOR</span>
-    <span class="n">cycle</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span>
-                    <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">LR_STEP_SIZE</span><span class="p">))</span>
-                    <span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">abs</span><span class="p">((</span><span class="n">epoch</span> <span class="o">/</span> <span class="n">c</span><span class="p">.</span><span class="n">LR_STEP_SIZE</span><span class="p">)</span>
-        <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">cycle</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">learning_rate</span>
-        <span class="o">+</span> <span class="p">(</span><span class="n">max_lr</span> <span class="o">-</span> <span class="n">learning_rate</span><span class="p">)</span>
-        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span>
-
-<span class="k">def</span> <span class="nf">apply_gradients</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
-    <span class="n">true_epoch</span> <span class="o">=</span> <span class="n">epoch</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BATCH_SIZE</span>
-    <span class="n">eta</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">learning_rate</span>
-            <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">DECAY_RATE</span> <span class="o">*</span> <span class="n">true_epoch</span><span class="p">))</span>
-
-    <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">CLR_ON</span><span class="p">:</span>
-        <span class="n">eta</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">cyclic_learning_rate</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">true_epoch</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">weight_col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">weights</span><span class="p">):</span>
-
-        <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="s">'vanilla'</span><span class="p">:</span>
-            <span class="n">weight_col</span> <span class="o">-=</span> <span class="n">eta</span>
-                        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                        <span class="o">/</span> <span class="n">c</span><span class="p">.</span><span class="n">BATCH_SIZE</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eta</span>
-                        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                        <span class="o">/</span> <span class="n">c</span><span class="p">.</span><span class="n">BATCH_SIZE</span>
-
-        <span class="k">elif</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="s">'SGD_momentum'</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                                   <span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                                   <span class="o">+</span><span class="p">(</span><span class="n">eta</span>
-                                   <span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                                   <span class="p">))</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                                   <span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                                   <span class="o">+</span><span class="p">(</span><span class="n">eta</span>
-                                   <span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                                   <span class="p">))</span>
-
-            <span class="n">weight_col</span> <span class="o">-=</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-
-        <span class="k">elif</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="s">'NAG'</span><span class="p">:</span>
-            <span class="n">v_prev</span> <span class="o">=</span> <span class="p">{</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)],</span>
-                      <span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]}</span>
-
-            <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-                        <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">NAG_COEFF</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                       <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-                        <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">NAG_COEFF</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                       <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
-
-            <span class="n">weight_col</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">*</span> <span class="n">v_prev</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                           <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">*</span> <span class="n">v_prev</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                           <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-
-        <span class="k">elif</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="s">'RMSProp'</span><span class="p">:</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-                            <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                            <span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                            <span class="o">+</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
-                            <span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
-                            <span class="p">))</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-                            <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                            <span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                            <span class="o">+</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
-                            <span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
-                            <span class="p">))</span>
-
-            <span class="n">weight_col</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span>
-                          <span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                          <span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">)))</span>
-                          <span class="p">)</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span>
-                          <span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                          <span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">)))</span>
-                            <span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="s">"ADAM"</span><span class="p">:</span>
-            <span class="c1"># decaying averages of past gradients
-</span>            <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span>
-                                <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                              <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                              <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
-                              <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                                    <span class="p">))</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span>
-                                <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
-                              <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                              <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
-                              <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-                                    <span class="p">))</span>
-
-            <span class="c1"># decaying averages of past squared gradients
-</span>            <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span>
-                                    <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                                    <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA2</span><span class="p">)</span>
-                                    <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span>
-                                            <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span>
-                                                <span class="bp">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
-                                     <span class="p">))</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span>
-                                    <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                                    <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA2</span><span class="p">)</span>
-                                    <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">square</span><span class="p">(</span>
-                                            <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span>
-                                                <span class="bp">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
-                                     <span class="p">))</span>
-
-            <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">ADAM_BIAS_Correction</span><span class="p">:</span>
-                <span class="c1"># bias-corrected first and second moment estimates
-</span>                <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-                                <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                              <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
-                <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-                                <span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                              <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
-                <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-                                <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                              <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
-                <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
-                                <span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                              <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
-
-            <span class="c1"># apply to weights and biases
-</span>            <span class="n">weight_col</span> <span class="o">-=</span> <span class="p">((</span><span class="n">eta</span>
-                            <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                            <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"dW"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                            <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">))))</span>
-            <span class="bp">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">((</span><span class="n">eta</span>
-                            <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
-                            <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="s">"db"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
-                            <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">))))</span>
-
-    <span class="bp">self</span><span class="p">.</span><span class="n">gradient_zeros</span><span class="p">()</span>
-</code></pre></div></div>]]></content><author><name>Abhinav Thorat</name></author><category term="coding" /><category term="machine learning" /><category term="optimization" /><category term="deep Neural networks" /><summary type="html"><![CDATA[Some neural network optimization algorithms mostly to implement momentum when doing back propagation.]]></summary></entry><entry><title type="html">Single Neuron Perceptron</title><link href="http://localhost:4000/single-neuron-perceptron.html" rel="alternate" type="text/html" title="Single Neuron Perceptron" /><published>2019-06-26T01:02:20+05:30</published><updated>2019-06-26T01:02:20+05:30</updated><id>http://localhost:4000/single-neuron-perceptron</id><content type="html" xml:base="http://localhost:4000/single-neuron-perceptron.html"><![CDATA[<p>Human brains are remarkable in their ability to process information and make decisions. This capability stems from the billions of interconnected neurons in our brain, which receive, process, and transmit signals to perform complex tasks. Inspired by these biological neurons, artificial neurons like the perceptron have been designed to mimic this behavior on a much simpler scale, paving the way for advancements in Artificial Intelligence.</p>
-
-<p>As an introduction to Python and Machine Learning, I decided to code the “Hello World!” of the field—a single neuron perceptron.</p>
+<small><a href="https://www.jwt.com/en/work/thenextrembrandt">The Next Rembrandt</a> is a computer-generated 3-D–printed painting developed by a facial-recognition algorithm that scanned data from 346 known paintings by the Dutch painter in a process lasting 18 months. The portrait is based on 168,263 fragments from Rembrandt’s works.</small></p>]]></content><author><name>Abhinav Thorat</name></author><category term="opinion" /><category term="copyright" /><category term="creativity" /><category term="neural networks" /><category term="machine learning" /><category term="artificial intelligence" /><summary type="html"><![CDATA[As neural networks are used more and more in the creative process, text, images and even music are now created by AI, but who owns the copyright for those works?]]></summary></entry><entry><title type="html">Single Neuron Perceptron</title><link href="http://localhost:4000/single-neuron-perceptron.html" rel="alternate" type="text/html" title="Single Neuron Perceptron" /><published>2019-06-26T01:02:20+05:30</published><updated>2019-06-26T01:02:20+05:30</updated><id>http://localhost:4000/single-neuron-perceptron</id><content type="html" xml:base="http://localhost:4000/single-neuron-perceptron.html"><![CDATA[<p>The human brain is an intricate web of billions of interconnected neurons that allow us to process information, make decisions, and perform complex tasks. This remarkable ability has inspired the creation of artificial neurons, like the perceptron, which mimic biological neurons in a simpler form. These artificial neurons are the building blocks of Artificial Intelligence (AI), enabling machines to learn and evolve.</p>
 
 <h2 id="what-is-a-perceptron">What is a Perceptron?</h2>
 
-<p>A perceptron is the fundamental building block of a neural network, analogous to a biological neuron. Its invention laid the foundation for the vast field of Artificial Intelligence we see today.</p>
+<p>Imagine a single neuron,a tiny but essential unit in the vast neural network of your brain. It activates when it receives signals, processes them, and decides what to do next. Similarly, a perceptron is the most basic computational unit of a neural network. Its invention by <a href="https://en.wikipedia.org/wiki/Frank_Rosenblatt">Frank Rosenblatt</a> in the late 1950s laid the foundation for modern AI.</p>
 
-<p>In the late 1950s, <a href="https://en.wikipedia.org/wiki/Frank_Rosenblatt">Frank Rosenblatt</a> introduced a simple yet powerful algorithm to construct machines capable of learning various tasks.</p>
+<p>Think of it as a decision-making machine. It takes inputs, applies some rules, and generates an output. Despite its simplicity, the perceptron unlocks the doorway to understanding more complex systems.</p>
 
-<p>At its core, a perceptron is a mechanism for processing inputs and applying rules to generate outputs. Despite its simplicity, it serves as a gateway to understanding more complex systems.</p>
+<p><img src="./assets/img/posts/20210125/Perceptron.png" alt="Perceptron Illustration" /></p>
 
-<center><img src="./assets/img/posts/20210125/Perceptron.png" /></center>
+<h3 id="breaking-down-the-perceptron">Breaking Down the Perceptron</h3>
 
-<p>Picture a “neuron” that activates when it receives input signals through synapses. The neuron aggregates these signals, applies rules, and generates one or more outputs. Mathematically, a perceptron uses weights to process input signals, combining them into a single value.</p>
+<p>To understand a perceptron, let’s peek inside its mind. It starts with a set of inputs, let’s call them \( x_1, x_2, x_3 \)and their corresponding weights \( w_1, w_2, w_3 \). These weights reflect the importance of each input. The perceptron combines these inputs by multiplying each with its weight and summing them up.</p>
 
-<p>For example, consider a perceptron with three inputs: $x_1 = 1$, $x_2 = 2$, and $x_3 = 3$, and corresponding weights $w_1 = 0.5$, $w_2 = 1$, and $w_3 = -1$. The perceptron calculates the output by multiplying each input by its weight and summing the results:</p>
+<p>
+For example, consider:<br /><br />
 
-<p style="text-align:center">\(<br />
-\begin{align}
-\begin{split}
+- Inputs: \( x_1 = 1, x_2 = 2, x_3 = 3 \)<br />
+- Weights: \( w_1 = 0.5, w_2 = 1, w_3 = -1 \)<br /><br />
+
+The perceptron computes the weighted sum: <br />
+
+\[
 (x_1 \times w_1) + (x_2 \times w_2) + (x_3 \times w_3)
-\end{split}
-\end{align}
-\)</p>
+\]
+Plugging in the values: <br />
 
-<p style="text-align:center">\(<br />
-\begin{align}<br />
-\begin{split}<br />
-(0.5 \times 1) + (1 \times 2) + (-1 \times 3) = 0.5 + 2 - 3 = -0.5
-\end{split}<br />
-\end{align}<br />
-\)</p>
+\[
+(1 \times 0.5) + (2 \times 1) + (3 \times -1) = 0.5 + 2 - 3 = -0.5
+\]
+</p>
+<p>Next, the perceptron applies an <strong>activation function</strong>, which determines the output. If we use a linear activation function (i.e., the value remains as it is), the output here is (-0.5). This output can help classify data, for example, negative values could indicate Type A, and positive values Type B.</p>
 
-<p>After computing this value, an activation function is applied. If we use a linear activation function (i.e., keep the value as is), the output here is -0.5.</p>
+<h3 id="the-magic-of-learning">The Magic of Learning</h3>
 
-<p>In practice, this output helps classify data. For instance, negative values might correspond to Type A and positive values to Type B. The real power of a perceptron comes from its ability to learn through backpropagation, where it adjusts its weights to improve predictions.</p>
+<p>Here’s where the magic happens. A perceptron isn’t just about calculating outputs, it’s about learning. It adjusts its weights based on errors in its predictions, using a process called <strong>backpropagation</strong>.</p>
 
-<tweet>The magic starts with backpropagation, where the perceptron "learns" by iteratively adjusting its weights to minimize errors.</tweet>
+<p>When we train a perceptron, we provide it with a dataset of known inputs and outputs (a training set). The perceptron compares its predictions to the actual outcomes, calculates the error, and tweaks its weights. This iterative process, guided by <strong>gradient descent</strong>, helps the perceptron improve over time, enabling it to make accurate predictions even for unseen data.</p>
 
-<p>To train a perceptron, we use a dataset with known inputs and outputs (a training set). By comparing the perceptron’s predictions with actual outcomes, we calculate errors and adjust the weights accordingly. Over time, this iterative process enables the perceptron to make accurate predictions even on unseen data.</p>
+<blockquote>
+  <p>The magic starts with backpropagation, where the perceptron “learns” by iteratively adjusting its weights to minimize errors.</p>
+</blockquote>
 
-<p>This learning process is driven by gradient descent, a mathematical technique that uses differential calculus to fine-tune the weights. <a href="https://www.youtube.com/watch?v=aircAruvnKk&amp;list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">This video series by 3Blue1Brown explains it wonderfully.</a></p>
+<p>If you’re curious about gradient descent, I highly recommend <a href="https://www.youtube.com/watch?v=aircAruvnKk&amp;list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">this video series by 3Blue1Brown</a>, which explains it beautifully.</p>
 
-<h3 id="my-perceptron-implementation">My Perceptron Implementation</h3>
+<h2 id="final-thoughts">Final Thoughts</h2>
 
-<p>I implemented a single-neuron perceptron to classify whether a point lies above or below a randomly generated line. The perceptron has three inputs and corresponding weights:</p>
+<p>As the perceptron learns, it converges to a solution, a line that separates the data into distinct categories. While perceptrons are excellent for solving linear problems, they have their limitations. For instance, they can’t handle non-linear problems.</p>
 
-<ol>
-  <li>Input 1: The x-coordinate of the point</li>
-  <li>Input 2: The y-coordinate of the point</li>
-  <li>Input 3: The bias, always set to 1 (to handle lines that don’t pass through the origin)</li>
-</ol>
+<p>Modern neural networks, however, build upon the perceptron. By combining multiple perceptrons across layers and introducing advanced neuron types, they tackle a vast array of complex problems. From identifying faces to predicting stock prices, these networks are transforming the world as we know it.</p>
 
-<p>Initially, all weights are set to zero. The perceptron learns using 1,000 random points per iteration.</p>
-
-<p>The perceptron calculates its output using the following activation function:</p>
-
-<ul>
-  <li>If $x \times w_x + y \times w_y + w_{bias}$ is positive, the output is 1.</li>
-  <li>Otherwise, the output is 0.</li>
-</ul>
-
-<p>The error for each point is computed as:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">Expected</th>
-      <th style="text-align: center">Predicted</th>
-      <th style="text-align: center">Error</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">-1</td>
-      <td style="text-align: center">1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-1</td>
-      <td style="text-align: center">-1</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">-1</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">-1</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>When an error occurs, weights are updated as follows:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New_weight = Old_weight + error \times input \times learning_rate
-</code></pre></div></div>
-
-<p>For example:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New_weight_x = Old_weight_x + error \times x \times learning_rate
-</code></pre></div></div>
-
-<p>The learning rate, a critical parameter, determines the adjustment size. To ensure stability as weights approach optimal values, I programmed the learning rate to decrease over iterations:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>learning_rate = 0.01 / (iteration + 1)
-</code></pre></div></div>
-
-<p>This gradual reduction ensures more precise adjustments over time.</p>
-
-<center><img src="./assets/img/posts/20210125/Learning_1000_points_per_iteration.jpg" /></center>
-
-<h3 id="final-thoughts">Final Thoughts</h3>
-
-<p>Ultimately, the perceptron converges to a solution, accurately identifying the line separating the data. While perceptrons are powerful for solving linear problems, they have limitations. For instance, they can’t solve non-linear problems.</p>
-
-<p>Modern neural networks overcome these limitations by combining multiple perceptrons across layers, introducing other types of neurons (e.g., convolutional or recurrent), and enabling solutions for a vast array of complex problems.</p>]]></content><author><name>Abhinav Thorat</name></author><category term="machine learning" /><category term="neural networks" /><summary type="html"><![CDATA[Single neuron perceptron that classifies elements while learning efficiently.]]></summary></entry></feed>
+<p>Starting with a perceptron is like learning the alphabet before writing a novel, it’s simple yet foundational. And for me, it was the perfect entry point into the incredible world of Machine Learning.</p>]]></content><author><name>Abhinav Thorat</name></author><category term="machine learning" /><category term="neural networks" /><summary type="html"><![CDATA[Single neuron perceptron that classifies elements while learning efficiently.]]></summary></entry></feed>
