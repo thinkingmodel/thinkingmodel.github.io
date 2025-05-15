@@ -85,6 +85,16 @@
     
       
   {
+  "tag" : "cinema",
+  "posts" : [
+      
+      "./thomas-shelby.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "copyright",
   "posts" : [
       
@@ -192,6 +202,8 @@
   "tag" : "philosophy",
   "posts" : [
       
+      "./thomas-shelby.html",
+      
       "./navigating-dissonance-unraveling-complex-relationships-in-norwegian-wood.html"
       
     ]
@@ -201,6 +213,8 @@
   {
   "tag" : "psychology",
   "posts" : [
+      
+      "./thomas-shelby.html",
       
       "./region-beta-paradox.html"
       
