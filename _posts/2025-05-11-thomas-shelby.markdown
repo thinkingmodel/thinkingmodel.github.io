@@ -63,6 +63,8 @@ But politics is a different beast. It doesn't play by gangland rules. Enter Oswa
 Mosley is not just a rival; he is a mirror. And in him, Tommy sees the one enemy he may never outmaneuver.
 
 ### The Architect of His Own Shadow
+<center><img src='./assets/img/posts/20250511/last.jpg'></center>
+
 Thomas Shelby is perhaps one of fiction’s closest representations of the INTJ archetype—the "Mastermind." Calculating, visionary, and relentlessly strategic, he moves through life like a chess player always four steps ahead. He speaks little, listens much, and plans meticulously. Every decision—in love, war, or politics—serves a long-term vision. He doesn’t seek approval; he seeks order.
 <tweet>“There's part of me that's unfamiliar to myself and I keep finding myself there.”</tweet>
 Yet his mind, brilliant as it is, is a warzone. His PTSD isn't just trauma—it’s architecture. Nightmares follow him into daylight. His gift for strategy comes with a curse: the inability to rest. He micromanages everything, not out of ego, but to hold the darkness at bay. He trusts few, loves fewer, and carries the ghosts of the fallen like baggage he can’t set down.
