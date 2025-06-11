@@ -2,7 +2,7 @@
 layout: post
 read_time: true
 show_date: true
-title: When World Wreaks Havoc on Itself - The Mind of Thomas Shelby
+title: The Mind of Thomas Shelby
 date:   2025-05-15 17:00:00 +0530
 description: Between Order and Anarchy.
 img: /posts/20250511/main.jpg 
