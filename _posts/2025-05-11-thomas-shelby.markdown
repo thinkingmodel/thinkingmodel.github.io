@@ -75,7 +75,7 @@ His genius builds empires, but his flaws burn bridges. Each victory costs him so
 
 Thomas Shelby isn’t a hero or a villain. He is a blueprint of brilliance and brokenness, order and trauma, love and loss—all tangled in a man who never stops moving. He doesn’t just survive the shadows. He architects them.
 
-###Poetic Justice: The Final Reckoning
+### Poetic Justice: The Final Reckoning
 
 The final chapter of Thomas Shelby’s story offers not just closure but a haunting sense of poetic justice. Every decision, betrayal, and sacrifice across six seasons converges in a moment of reckoning. Polly’s prophecy is fulfilled when Michael, driven by vengeance and ambition, tries to kill Tommy. But Tommy, always steps ahead, anticipates the betrayal and turns the trap back on Michael. His death isn't just retribution, it’s the natural consequence of trying to outplay the master.
 
