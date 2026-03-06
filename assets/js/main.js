@@ -606,6 +606,26 @@
 
 
   /* ─────────────────────────────────────────
+     TAG PAGE FILTERING
+  ───────────────────────────────────────── */
+  function initTagFilter() {
+    if (window.location.pathname.indexOf('/tag.html') === -1) return;
+    var params = new URLSearchParams(window.location.search);
+    var tag = params.get('tag');
+    if (tag) {
+      // ID contains the exact tag name
+      var el = document.getElementById(tag);
+      if (el) {
+        el.classList.remove('hidden');
+      } else {
+        // Fallback for some encoded spaces
+        var fallback = document.getElementById(decodeURIComponent(tag));
+        if (fallback) fallback.classList.remove('hidden');
+      }
+    }
+  }
+
+  /* ─────────────────────────────────────────
      BOOT
   ───────────────────────────────────────── */
   function boot() {
@@ -613,6 +633,7 @@
     initSubscribeModal();
     initNavHover();
     initSearch();
+    initTagFilter();
     initHeroCanvas();
     initStarfield();
     initCursorTrail();
