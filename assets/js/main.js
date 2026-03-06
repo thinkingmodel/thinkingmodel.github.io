@@ -582,7 +582,16 @@
         msgDiv.textContent = 'Error: Mailchimp URL not configured.';
         return;
       }
-      var url = actionUrl.replace('/post?', '/post-json?');
+
+      // Convert various Mailchimp URLs to the JSONP endpoint
+      var url = actionUrl;
+      url = url.replace(/\/subscribe\/post\?/i, '/subscribe/post-json?');
+      url = url.replace(/\/post\?/i, '/post-json?');
+      // If it just says /subscribe? (as in the config), change it to /subscribe/post-json?
+      if (url.indexOf('post-json') === -1 && url.indexOf('/subscribe?') !== -1) {
+        url = url.replace(/\/subscribe\?/i, '/subscribe/post-json?');
+      }
+
       url += '&EMAIL=' + email + '&c=mcCallback';
 
       var oldScript = document.getElementById('mc-jsonp');
