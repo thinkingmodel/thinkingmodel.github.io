@@ -2906,3 +2906,38 @@ blockquote {
   pointer-events: none;
   opacity: 0.85;
 }
+
+/* --- Layout spacing tightening --- */
+/* Reduce the large gap between header and post-card grid */
+.post-card-box {
+  margin-top: 16px;
+}
+
+/* Tighten the content wrapper top margin so cards start closer to header */
+.wrapper {
+  margin-top: 0.25em;
+}
+
+/* Ensure post-card link titles are SOLID white (not transparent from gradient-text) */
+.post-card-link {
+  -webkit-text-fill-color: white !important;
+  background: none !important;
+  background-clip: unset !important;
+  color: white !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Restore solid text for all overlay text on cards */
+.post-card-title-and-meta,
+.post-card-meta,
+.post-card-tags,
+.tag {
+  -webkit-text-fill-color: inherit;
+  background: none;
+  background-clip: unset;
+}
+
+/* Ensure the home page content wrapper has no excess padding-top */
+.content.wrapper {
+  padding-top: 0;
+}
