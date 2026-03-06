@@ -21,11 +21,22 @@ permalink: about:output_ext
       <h1 class="about-name">Abhinav Thorat</h1>
       <p class="about-tagline">Thinking at the intersection of silicon and stars.</p>
       <div class="about-bio">
-        <p>A research scientist with over six years in multinational technology environments, Abhinav works at the
-          crossroads of machine learning, cognitive science, and the deeper questions those fields refuse to answer on
-          their own.</p>
-        <p>This blog is where those questions live — a space for writing that moves between the technical and the
-          philosophical, the ancient and the emergent. Equal parts notebook, observatory, and commonplace book.</p>
+        <p>
+          A curious mind with over
+          <span id="years-exp"></span> years
+          of experience at the intersection of machines and
+          meaning. Abhinav thinks in systems, whether
+          that's the architecture of a neural network, the
+          structure of a galaxy, or the invisible forces
+          that shape why people do what they do.
+        </p>
+        <p>
+          This blog is where those questions live, a space
+          for writing that moves between the technical and
+          the philosophical, the ancient and the emergent.
+          Equal parts research notebook, observatory, and
+          commonplace book.
+        </p>
       </div>
       <div class="about-domains">
         <span class="about-domain-pill"
@@ -91,7 +102,7 @@ permalink: about:output_ext
         <span class="about-stat__label">Essays Published</span>
       </div>
       <div class="about-stat">
-        <span class="about-stat__number">6+</span>
+        <span class="about-stat__number" id="stat-years"></span>
         <span class="about-stat__label">Years in Research</span>
       </div>
       <div class="about-stat">
@@ -148,3 +159,17 @@ permalink: about:output_ext
     </div>
   </section>
 </div>
+
+<script>
+  (function () {
+    const startYear = 2018;
+    const currentYear = new Date().getFullYear();
+    const years = currentYear - startYear;
+
+    const bioYears = document.getElementById('years-exp');
+    if (bioYears) bioYears.textContent = years;
+
+    const statYears = document.getElementById('stat-years');
+    if (statYears) statYears.textContent = years + '+';
+  })();
+</script>
