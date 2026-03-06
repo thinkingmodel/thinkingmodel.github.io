@@ -3594,4 +3594,448 @@ tweet a {
   font-family: 'DM Mono', monospace;
   font-size: 0.8rem;
 }
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+.about-page {
+  width: 100%;
+}
+
+.about-hero {
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(6rem, 12vw, 10rem) 2rem clamp(4rem, 8vw, 6rem);
+}
+
+.about-photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.about-photo {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  clip-path: polygon(0 0, 92% 0, 100% 8%, 100% 100%, 8% 100%, 0 92%);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--glow-nebula);
+  animation: about-photo-in 0.8s ease both;
+}
+
+@keyframes about-photo-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.about-photo-caption {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-ghost);
+  text-align: center;
+}
+
+.about-photo-rule {
+  width: 60px;
+  height: 1px;
+  background: var(--grad-text);
+  border: none;
+  margin: 0 auto;
+}
+
+/* Text side */
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-ghost);
+  margin-bottom: 1.2rem;
+  animation: fade-up 0.5s ease 0.3s both;
+}
+
+.about-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--ink-full);
+  margin: 0 0 1rem;
+  animation: fade-up 0.5s ease 0.5s both;
+}
+
+.about-tagline {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--ink-mid);
+  margin: 0 0 1.75rem;
+  animation: fade-up 0.5s ease 0.7s both;
+}
+
+.about-bio p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--ink-high);
+  margin: 0 0 1.1em;
+  animation: fade-up 0.5s ease 0.9s both;
+}
+
+/* Domain pills */
+.about-domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  animation: fade-up 0.5s ease 1.1s both;
+}
+
+.about-domain-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 2px;
+  border: 1px solid var(--pill-color, rgba(167, 139, 250, 0.3));
+  background: var(--pill-bg, rgba(167, 139, 250, 0.05));
+  color: var(--pill-color, var(--nebula));
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.about-domain-pill:hover {
+  background: var(--pill-hover-bg);
+  border-color: var(--pill-color);
+  transform: translateY(-2px);
+}
+
+/* What this blog is */
+.about-mission {
+  background: var(--surface);
+  padding: clamp(5rem, 10vw, 8rem) 2rem;
+}
+
+.about-mission__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-mission__label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-ghost);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.about-mission__quote {
+  font-family: 'Cormorant SC', serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3.5vw, 2.3rem);
+  color: var(--ink-mid);
+  line-height: 1.4;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.about-mission__quote::before {
+  content: '\201C';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem;
+  color: var(--nebula);
+  opacity: 0.12;
+  position: absolute;
+  top: -3rem;
+  left: -1rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.about-domains-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: left;
+}
+
+.about-domain-col__glyph-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.about-domain-col__desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Stats section */
+.about-stats {
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.about-stats__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.about-stat {
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.about-stat+.about-stat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--border-subtle), transparent);
+}
+
+.about-stat__number {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 3rem;
+  line-height: 1;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.03em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.about-stat--infinite .about-stat__number {
+  background: none;
+  -webkit-text-fill-color: var(--nova);
+  color: var(--nova);
+}
+
+.about-stat__label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-ghost);
+  display: block;
+}
+
+/* Subscribe section */
+.about-subscribe {
+  background: var(--surface);
+  padding: clamp(4rem, 8vw, 6rem) 2rem;
+  text-align: center;
+}
+
+.about-subscribe__inner {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.about-subscribe__glyph {
+  display: inline-block;
+  color: var(--nebula);
+  font-size: 1.2rem;
+  animation: footer-rotate 12s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+.about-subscribe__heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -0.03em;
+  color: var(--ink-full);
+  margin: 0 0 1rem;
+}
+
+.about-subscribe__sub {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-mid);
+  margin: 0 0 2rem;
+  line-height: 1.65;
+}
+
+.about-subscribe__form {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-subscribe__input {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--ink-full);
+  background: var(--elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  padding: 0.75rem 1rem;
+  width: 260px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-subscribe__input:focus {
+  border-color: var(--nebula);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.1);
+}
+
+.about-subscribe__input::placeholder {
+  color: var(--ink-ghost);
+}
+
+.about-subscribe__btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--nebula);
+  background: transparent;
+  border: 1px solid var(--nebula);
+  border-radius: 3px;
+  padding: 0.75rem 1.75rem;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.about-subscribe__btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--nebula);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.about-subscribe__btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.about-subscribe__btn:hover {
+  color: var(--void);
+}
+
+.about-subscribe__btn:hover::before {
+  transform: scaleY(1);
+}
+
+.about-subscribe__note {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--ink-ghost);
+  margin-top: 1rem;
+  display: block;
+  letter-spacing: 0.08em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 5rem;
+    gap: 3rem;
+  }
+
+  .about-photo {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .about-domains {
+    justify-content: center;
+  }
+
+  .about-domains-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .about-domain-col__glyph-label {
+    justify-content: center;
+  }
+
+  .about-stats__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .about-stat+.about-stat::before {
+    display: none;
+  }
+
+  .about-stat {
+    padding: 0;
+  }
+
+  .about-subscribe__form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-subscribe__input {
+    width: 100%;
+    max-width: 320px;
+  }
 }

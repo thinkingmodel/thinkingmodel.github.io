@@ -5,49 +5,143 @@ permalink: about:output_ext
 ---
 {% include calculate_relative_base.html %}
 {% include escape-404.html %}
-<script src="https://kit.fontawesome.com/f99fce08d6.js" crossorigin="anonymous"></script>
-<div class="small-wrapper">
-  <div class="about-container">
-    <section class="about-header">
-      <div class="author-image-container">
-        <a href='{{ site.website }}'><img src="{{ relativebase }}/assets/img/{% if site.author-pic %}{{site.author-pic}}{% endif %}" alt="{{site.author}}"></a>
+<div class="about-page">
+  <!-- SECTION 1 — HERO / INTRODUCTION -->
+  <section class="about-hero">
+    <div class="about-photo-wrap">
+      <img class="about-photo" src="{{ relativebase }}assets/img/Myself_Neon_grey.jpg" alt="Abhinav Thorat">
+      <hr class="about-photo-rule">
+      <div class="about-photo-caption">Research Scientist & AI Researcher</div>
+    </div>
+    <div class="about-text">
+      <div class="about-eyebrow">ABOUT THE AUTHOR</div>
+      <h1 class="about-name">Abhinav Thorat</h1>
+      <p class="about-tagline">Thinking at the intersection of silicon and stars.</p>
+      <div class="about-bio">
+        <p>A research scientist with over six years in multinational technology environments, Abhinav works at the
+          crossroads of machine learning, cognitive science, and the deeper questions those fields refuse to answer on
+          their own.</p>
+        <p>This blog is where those questions live — a space for writing that moves between the technical and the
+          philosophical, the ancient and the emergent. Equal parts notebook, observatory, and commonplace book.</p>
       </div>
-      <h3>{{site.author}}</h3>
-      <p class="subtitle">{{site.about-author}}</p>
-    </section>
-    <section class="about-body">
-      <ul class="contact-list">
-      {% if site.twitter %}
-        <li class="twitter"><a class="twitter" href="https://twitter.com/{{site.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-      {% endif %}
-      {% if site.linkedin %}
-        <li class="linkedin"><a class="linkedin" href="https://in.linkedin.com/in/{{site.linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-      {% endif %}
-      {% if site.youtube %}
-        <li class="youtube"><a class="youtube" href="https://youtube.com/{{site.youtube}}" target="_blank"><i class="fa fa-youtube"></i></a></li>
-      {% endif %}
-      {% if site.github %}
-        <li class="github"><a class="github" href="https://github.com/{{site.github}}" target="_blank"><i class="fa fa-github"></i></a></li>
-      {% endif %}
-      {% if site.email %}
+      <div class="about-domains">
+        <span class="about-domain-pill"
+          style="--pill-color: var(--nebula); --pill-bg: rgba(167,139,250,0.05); --pill-hover-bg: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.3);">
+          <span style="color: var(--nebula);">◆</span> Machine Learning
+        </span>
+        <span class="about-domain-pill"
+          style="--pill-color: var(--nebula); --pill-bg: rgba(167,139,250,0.05); --pill-hover-bg: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.3);">
+          <span style="color: var(--nebula);">◆</span> AI
+        </span>
+        <span class="about-domain-pill"
+          style="--pill-color: var(--pulsar); --pill-bg: rgba(45,212,191,0.05); --pill-hover-bg: rgba(45,212,191,0.12); border-color: rgba(45,212,191,0.3);">
+          <span style="color: var(--pulsar);">●</span> Astrophysics
+        </span>
+        <span class="about-domain-pill"
+          style="--pill-color: var(--quasar); --pill-bg: rgba(251,191,36,0.05); --pill-hover-bg: rgba(251,191,36,0.12); border-color: rgba(251,191,36,0.3);">
+          <span style="color: var(--quasar);">▲</span> Philosophy
+        </span>
+        <span class="about-domain-pill"
+          style="--pill-color: var(--horizon); --pill-bg: rgba(251,146,60,0.05); --pill-hover-bg: rgba(251,146,60,0.12); border-color: rgba(251,146,60,0.3);">
+          <span style="color: var(--horizon);">◉</span> Psychology
+        </span>
+        <span class="about-domain-pill"
+          style="--pill-color: var(--aurora); --pill-bg: rgba(244,114,182,0.05); --pill-hover-bg: rgba(244,114,182,0.12); border-color: rgba(244,114,182,0.3);">
+          <span style="color: var(--aurora);">✦</span> Anthropology
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — WHAT THIS BLOG IS -->
+  <section class="about-mission">
+    <div class="about-mission__inner">
+      <span class="about-mission__label">THE THINKING MODEL</span>
+      <div class="about-mission__quote">
+        A space to think slowly in a world that rewards thinking fast.
+      </div>
+      <div class="about-domains-grid">
+        <div class="about-domain-col">
+          <div class="about-domain-col__glyph-label" style="color: var(--nebula);">◆ Science & Technology</div>
+          <p class="about-domain-col__desc">From transformer architectures to the philosophy of mind that computation
+            keeps bumping into.</p>
+        </div>
+        <div class="about-domain-col">
+          <div class="about-domain-col__glyph-label" style="color: var(--pulsar);">● The Cosmos</div>
+          <p class="about-domain-col__desc">Black holes, event horizons, and the staggering scales that make human
+            problems feel both smaller and more urgent.</p>
+        </div>
+        <div class="about-domain-col">
+          <div class="about-domain-col__glyph-label" style="color: var(--quasar);">▲ Ideas & Society</div>
+          <p class="about-domain-col__desc">Psychology, anthropology, philosophy — the lenses through which patterns in
+            human behaviour become visible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — BY THE NUMBERS -->
+  <section class="about-stats">
+    <div class="about-stats__inner">
+      <div class="about-stat">
+        <span class="about-stat__number">{{ site.posts.size }}</span>
+        <span class="about-stat__label">Essays Published</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat__number">6+</span>
+        <span class="about-stat__label">Years in Research</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat__number">5</span>
+        <span class="about-stat__label">Domains Explored</span>
+      </div>
+      <div class="about-stat about-stat--infinite" title="and counting.">
+        <span class="about-stat__number">∞</span>
+        <span class="about-stat__label">Questions Remaining</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — SUBSCRIBE / CONNECT -->
+  <section class="about-subscribe">
+    <div class="about-subscribe__inner">
+      <div class="about-subscribe__glyph">✦</div>
+      <h2 class="about-subscribe__heading">Join the Expedition</h2>
+      <p class="about-subscribe__sub">New essays on AI, astrophysics, philosophy, and psychology — delivered when
+        they're ready, not on a schedule.</p>
+
+      <!-- Keep existing form target, update classes -->
+      <form class="about-subscribe__form" action="https://tinyletter.com/{{site.tinyletter}}" method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://tinyletter.com/{{site.tinyletter}}', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <input type="text" name="email" id="tlemail" class="about-subscribe__input" placeholder="Your email address" />
+        <input type="hidden" value="1" name="embed" />
+        <button type="submit" class="about-subscribe__btn"><span>Subscribe</span></button>
+      </form>
+      <span class="about-subscribe__note">No noise. No schedule. Just thinking.</span>
+
+      <!-- Retain social links quietly underneath -->
+      <ul class="contact-list" style="justify-content: center; margin-top: 3rem; gap: 1.5rem; opacity: 0.6;">
+        {% if site.twitter %}
+        <li class="twitter"><a class="twitter" href="https://twitter.com/{{site.twitter}}" target="_blank"><i
+              class="fa fa-twitter"></i></a></li>
+        {% endif %}
+        {% if site.linkedin %}
+        <li class="linkedin"><a class="linkedin" href="https://in.linkedin.com/in/{{site.linkedin}}" target="_blank"><i
+              class="fa fa-linkedin"></i></a></li>
+        {% endif %}
+        {% if site.youtube %}
+        <li class="youtube"><a class="youtube" href="https://youtube.com/{{site.youtube}}" target="_blank"><i
+              class="fa fa-youtube"></i></a></li>
+        {% endif %}
+        {% if site.github %}
+        <li class="github"><a class="github" href="https://github.com/{{site.github}}" target="_blank"><i
+              class="fa fa-github"></i></a></li>
+        {% endif %}
+        {% if site.email %}
         <li class="email"><a class="email" href="mailto:{{site.email}}"><i class="fa fa-envelope-o"></i></a></li>
-      {% endif %}
-      {% if site.bandcamp %}
-        <li class="bandcamp"><a class="bandcamp" href="https://{{site.bandcamp}}.bandcamp.com" target="_blank"><i class="fa fa-bandcamp" aria-hidden="true"></i></a></li>
-      {% endif %}
-      {% if site.stackoverflow %}
-      <li class="stackoverflow"><a class="stackoverflow" href="https://stackoverflow.com/users/{{site.stackoverflow}}" target="_blank">
-        <i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
-      {% endif %}
-      {% if site.instagram %}
-      <li class="instagram"><a class="instagram" href="https://instagram.com/{{site.instagram}}" target="_blank">
-        <i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-      {% endif %}
-      {% if site.letterboxd %}
-      <li class="letterboxd"><a class="letterboxd" href="https://letterboxd.com/abhinavwrites/list/abhinav-curated/" target="_blank">
-        <i class="fa-brands fa-letterboxd" aria-hidden="true"></i></a></li>
-      {% endif %}
+        {% endif %}
       </ul>
-    </section> <!-- End About Body-->
-  </div> <!-- End About Container -->
-</div> <!-- End Small Wrapper -->
+    </div>
+  </section>
+</div>
