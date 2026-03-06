@@ -2448,11 +2448,23 @@ tweet a {
 }
 
 /* =========================================================
+/* =========================================================
    CUSTOM ROCKET CURSOR
    ========================================================= */
-body,
 *,
-*::hover {
+*::before,
+*::after,
+body,
+a,
+button,
+input,
+textarea,
+select,
+.nav-link,
+.subscribe-btn,
+.post-card,
+.post-card *,
+.theme-toggle label {
   cursor: none !important;
 }
 
