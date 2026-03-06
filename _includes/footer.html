@@ -8,18 +8,18 @@
     </div>
 
     <!-- Three-column editorial footer -->
-    <div class="wrapper" style="padding-top:1.5rem;padding-bottom:1.5rem;">
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;align-items:start;">
+    <div class="wrapper" style="padding-top:1rem;padding-bottom:1rem;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:start;">
 
             <!-- Col 1: About blurb -->
             <div>
                 <a class="logo-link" title="{{ site.title }}" href="{{ relativebase }}"
-                    style="margin-bottom:1rem;display:inline-block;">
+                    style="margin-bottom:0.5rem;display:inline-block;">
                     <img src="{{ site.logo | prepend: relativebase }}" alt="{{ site.title }} logo"
-                        style="height: 48px; width: auto; opacity: 0.8;">
+                        style="height: 36px; width: auto; opacity: 0.8;">
                 </a>
                 <p
-                    style="font-family:var(--font-display);font-size:1.2rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.6;margin:0 0 .75rem;">
+                    style="font-family:var(--font-display);font-size:1rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.4;margin:0 0 .5rem;">
                     {{ site.description }}
                 </p>
                 <p
@@ -31,9 +31,9 @@
             <!-- Col 2: Navigation -->
             <div>
                 <h3
-                    style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-low);margin-bottom:1.25rem;-webkit-text-fill-color:var(--ink-low);background:none;">
+                    style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-low);margin-bottom:0.75rem;-webkit-text-fill-color:var(--ink-low);background:none;">
                     Navigate</h3>
-                <nav style="display:flex;flex-direction:column;gap:.75rem;">
+                <nav style="display:flex;flex-direction:column;gap:.5rem;">
                     <a href="{{ relativebase }}"
                         style="font-family:var(--font-display);font-size:1.05rem;color:var(--ink-mid);text-decoration:none;transition:color .25s;"
                         onmouseover="this.style.color='var(--nebula)'"
@@ -60,11 +60,11 @@
             <!-- Col 3: Topics/connect -->
             <div>
                 <h3
-                    style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-low);margin-bottom:1.25rem;-webkit-text-fill-color:var(--ink-low);background:none;">
+                    style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-low);margin-bottom:0.75rem;-webkit-text-fill-color:var(--ink-low);background:none;">
                     Domains</h3>
                 {% include get-site-tags.html %}
                 <div class="footer-tag-scroll"
-                    style="display:flex;flex-direction:column;gap:.5rem;max-height:160px;overflow-y:auto;padding-right:1rem;margin-bottom:1.5rem;">
+                    style="display:flex;flex-direction:column;gap:.5rem;max-height:100px;overflow-y:auto;padding-right:1rem;margin-bottom:1rem;">
                     {% for item in (0..site.tags.size) %}{% unless forloop.last %}
                     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
                     <a href="{{ relativebase }}tag.html?tag={{ this_word | url_encode }}"
@@ -73,7 +73,7 @@
                         {{ this_word }}</a>
                     {% endunless %}{% endfor %}
                 </div>
-                <div style="margin-top:1.5rem;display:flex;gap:1rem;">
+                <div style="margin-top:1rem;display:flex;gap:1rem;">
                     {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter | remove:'@' }}"
                         style="color:var(--ink-low);transition:color .25s;"
                         onmouseover="this.style.color='var(--nebula)'" onmouseout="this.style.color='var(--ink-low)'"
@@ -97,7 +97,7 @@
 
         <!-- Bottom bar -->
         <div
-            style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(167,139,250,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+            style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(167,139,250,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
             <p style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:var(--ink-low);margin:0;">
                 © <span id="copyright-year">{{ site.time | date: '%Y' }}</span> {{ site.author }}
             </p>
