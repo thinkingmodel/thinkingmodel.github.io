@@ -322,7 +322,7 @@
   ───────────────────────────────────────── */
   function initScrollReveal() {
     if (!window.IntersectionObserver) return;
-    var elements = document.querySelectorAll('ol.post-card-box li, .list-item, .author-box, .recent-box');
+    var elements = document.querySelectorAll('ol.post-card-box li, .list-item, .author-box, .recent-box, .post-row, .featured-post');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -606,23 +606,231 @@
 
 
   /* ─────────────────────────────────────────
-     TAG PAGE FILTERING
+     TAG & ARCHIVE PAGE LOGIC (Filtering & Sorting)
   ───────────────────────────────────────── */
-  function initTagFilter() {
-    if (window.location.pathname.indexOf('/tag.html') === -1) return;
-    var params = new URLSearchParams(window.location.search);
-    var tag = params.get('tag');
-    if (tag) {
-      // ID contains the exact tag name
-      var el = document.getElementById(tag);
-      if (el) {
-        el.classList.remove('hidden');
+  function initArchiveAndTags() {
+    var container = document.getElementById('post-list-container');
+    if (!container) return;
+
+    // --- SORTING ---
+    var sortBtns = document.querySelectorAll('.sort-btn');
+    sortBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        // Update active state
+        sortBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        var sortType = btn.getAttribute('data-sort');
+        sortPosts(sortType);
+      });
+    });
+
+    function sortPosts(type) {
+      var container = document.getElementById('post-list-container');
+      if (!container) return;
+
+      // Ensure we have a master wrapper to hold sorted items
+      var masterWrapper = document.getElementById('master-post-wrapper');
+      if (!masterWrapper) {
+        masterWrapper = document.createElement('div');
+        masterWrapper.id = 'master-post-wrapper';
+        masterWrapper.className = 'post-row-wrapper';
+        container.appendChild(masterWrapper);
+      }
+
+      // Gather ALL .post-row elements across the page
+      var allRows = Array.from(document.querySelectorAll('.post-row'));
+      if (!allRows.length) return;
+
+      // Handle Year Dividers on Archive Page
+      var isArchive = window.location.pathname.indexOf('/archive.html') > -1;
+      var yearGroups = document.querySelectorAll('.archive-year-group');
+      var dividers = document.querySelectorAll('.archive-year-divider');
+
+      if (isArchive) {
+        if (type === 'newest') {
+          // Restore default year groupings
+          yearGroups.forEach(function (g) { g.style.display = 'block'; });
+          dividers.forEach(function (d) { d.style.display = 'block'; });
+          masterWrapper.style.display = 'none';
+
+          // Move rows back to their original groups based on date
+          allRows.forEach(function (row) {
+            var dateStr = row.getAttribute('data-date');
+            if (dateStr) {
+              var year = new Date(parseInt(dateStr) * 1000).getFullYear();
+              // Find the group header matching this year
+              var groupMatch = Array.from(yearGroups).find(function (g) {
+                var header = g.querySelector('.archive-year-divider');
+                return header && header.textContent.trim() === String(year);
+              });
+              if (groupMatch) {
+                var wrapper = groupMatch.querySelector('.post-row-wrapper');
+                if (wrapper) wrapper.appendChild(row);
+              }
+            }
+          });
+          return; // Exit early, native grouping handles "newest" layout
+        } else {
+          // Hide year boundaries for global sorts (oldest, shortest, longest)
+          yearGroups.forEach(function (g) { g.style.display = 'none'; });
+          dividers.forEach(function (d) { d.style.display = 'none'; });
+          masterWrapper.style.display = 'flex';
+        }
+      }
+
+      // Global Sort
+      allRows.sort(function (a, b) {
+        var valA, valB;
+        if (type === 'newest' || type === 'oldest') {
+          valA = parseInt(a.getAttribute('data-date')) || 0;
+          valB = parseInt(b.getAttribute('data-date')) || 0;
+          return type === 'newest' ? valB - valA : valA - valB;
+        } else if (type === 'shortest' || type === 'longest') {
+          valA = parseInt(a.getAttribute('data-wordcount')) || 0;
+          valB = parseInt(b.getAttribute('data-wordcount')) || 0;
+          return type === 'shortest' ? valA - valB : valB - valA;
+        }
+        return 0;
+      });
+
+      // Append to the active wrapper
+      var targetContainer = isArchive && type !== 'newest' ? masterWrapper : null;
+
+      // If not archive, or it's a tag page, we sort within their existing groups
+      if (!targetContainer) {
+        var tagGroups = document.querySelectorAll('.tag-group');
+        tagGroups.forEach(function (group) {
+          var groupRows = Array.from(group.querySelectorAll('.post-row'));
+          groupRows.sort(function (a, b) {
+            var valA = type === 'shortest' || type === 'longest' ? parseInt(a.getAttribute('data-wordcount')) || 0 : parseInt(a.getAttribute('data-date')) || 0;
+            var valB = type === 'shortest' || type === 'longest' ? parseInt(b.getAttribute('data-wordcount')) || 0 : parseInt(b.getAttribute('data-date')) || 0;
+            if (type === 'newest' || type === 'longest') return valB - valA;
+            return valA - valB;
+          });
+          var localWrapper = group.querySelector('.post-row-wrapper');
+          groupRows.forEach(function (row) {
+            if (localWrapper) localWrapper.appendChild(row);
+            triggerReveal(row);
+          });
+        });
       } else {
-        // Fallback for some encoded spaces
-        var fallback = document.getElementById(decodeURIComponent(tag));
-        if (fallback) fallback.classList.remove('hidden');
+        // It is archive with global sort
+        allRows.forEach(function (row) {
+          targetContainer.appendChild(row);
+          triggerReveal(row);
+        });
       }
     }
+
+    function triggerReveal(row) {
+      row.classList.remove('reveal', 'visible');
+      setTimeout(function () { row.classList.add('reveal', 'visible'); }, 50);
+    }
+
+    // --- ENHANCED TAG FILTERING ---
+    var isTagPage = window.location.pathname.indexOf('/tag.html') > -1;
+    var isTagsPage = window.location.pathname.indexOf('/tags.html') > -1;
+    var params = new URLSearchParams(window.location.search);
+    var targetTag = params.get('tag');
+
+    // On tag.html, only show the targeted tag group
+    if (isTagPage && targetTag) {
+      var groups = document.querySelectorAll('.tag-group');
+      groups.forEach(function (g) { g.style.display = 'none'; });
+
+      var targetGroup = document.getElementById(targetTag) || document.getElementById(decodeURIComponent(targetTag));
+      if (targetGroup) {
+        targetGroup.style.display = 'block';
+        targetGroup.classList.remove('hidden');
+      }
+    }
+
+    // Filter interactivity on tags.html
+    var tagPills = document.querySelectorAll('.tag-cloud a');
+    var globalEmpty = document.querySelector('.global-empty-state');
+
+    if (isTagsPage && tagPills.length > 0) {
+      tagPills.forEach(function (pill) {
+        pill.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          // Toggle active
+          var wasActive = pill.classList.contains('active');
+          tagPills.forEach(function (p) { p.classList.remove('active'); });
+          if (!wasActive) pill.classList.add('active');
+
+          var selectedTag = wasActive ? null : new URL(pill.href).searchParams.get('tag');
+          var visibleGroups = 0;
+
+          var groups = document.querySelectorAll('.tag-group');
+          groups.forEach(function (g) {
+            if (!selectedTag) {
+              g.style.display = 'block'; // Show all
+              visibleGroups++;
+            } else {
+              if (g.id === selectedTag || g.id === decodeURIComponent(selectedTag)) {
+                g.style.display = 'block';
+                visibleGroups++;
+              } else {
+                g.style.display = 'none';
+              }
+            }
+          });
+
+          // Toggle global empty state
+          if (globalEmpty) {
+            globalEmpty.style.display = visibleGroups === 0 ? 'block' : 'none';
+          }
+        });
+      });
+
+      // Auto-filter if URL parameter exists
+      if (targetTag) {
+        var matchingPill = Array.from(tagPills).find(function (a) {
+          return new URL(a.href).searchParams.get('tag') === targetTag;
+        });
+        if (matchingPill) matchingPill.click();
+      }
+    }
+
+    // --- TAG DOT COLORS ---
+    var knownColors = {
+      'astrophysics': '#FFD700',
+      'literature': '#A2AAAD',
+      'technology': '#00d4aa',
+      'ai': '#00d4aa',
+      'philosophy': '#ff4d4d',
+      'psychology': '#ff4d4d',
+      'cybernetics': '#7c5cbf'
+    };
+
+    function getTagColor(rawTag) {
+      if (!rawTag) return 'var(--accent)';
+      var clean = rawTag.toLowerCase().trim();
+      if (knownColors[clean]) return knownColors[clean];
+
+      var hash = 0;
+      for (var i = 0; i < clean.length; i++) {
+        hash = clean.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      var hue = Math.abs(hash) % 360;
+      return 'hsl(' + hue + ', 70%, 65%)';
+    }
+
+    var dots = document.querySelectorAll('.tag-dot');
+    dots.forEach(function (dot) {
+      var tag = dot.getAttribute('data-tag');
+      dot.style.setProperty('--tag-color', getTagColor(tag));
+    });
+
+    if (tagPills.length > 0) {
+      tagPills.forEach(function (pill) {
+        var tagText = pill.textContent.trim();
+        pill.style.setProperty('--tag-color', getTagColor(tagText));
+      });
+    }
+
   }
 
   /* ─────────────────────────────────────────
@@ -633,7 +841,7 @@
     initSubscribeModal();
     initNavHover();
     initSearch();
-    initTagFilter();
+    initArchiveAndTags();
     initHeroCanvas();
     initStarfield();
     initCursorTrail();

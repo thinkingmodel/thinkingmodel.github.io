@@ -6,25 +6,86 @@ infinite: yes
 ---
 {% include calculate_relative_base.html %}
 
-<div class="archive tag-master">
-	<form class="search-form inline">
-		<div id="search-container">
-			<input type="text" id="search-input" class="search" placeholder="Search" data-cursor="text">
+<div class="archive-container wrapper tag-master">
+	<!-- Interactive Starfield Canvas -->
+	<canvas id="starfield-canvas" aria-hidden="true"></canvas>
+
+	<header class="archive-header">
+		<h1 class="archive-title">Archive</h1>
+		<p class="archive-subtitle">Chronicles of the Thinking Model.</p>
+	</header>
+
+	<div class="tag-filter-bar">
+		<form class="search-form inline">
+			<div id="search-container" style="width: 100%; max-width: 300px;">
+				<input type="text" id="search-input" class="search" placeholder="Search essays..." data-cursor="text"
+					style="width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(167,139,250,0.3); color: var(--text); font-family: var(--font-mono); font-size: 0.8rem; padding: 0.5rem 0; outline: none; transition: border-color 0.3s;">
+			</div>
+		</form>
+
+		<div class="sort-controls">
+			<button class="sort-btn active" data-sort="newest" data-cursor="link">Newest</button>
+			<button class="sort-btn" data-sort="oldest" data-cursor="link">Oldest</button>
+			<button class="sort-btn" data-sort="shortest" data-cursor="link">Shortest</button>
+			<button class="sort-btn" data-sort="longest" data-cursor="link">Longest</button>
 		</div>
-	</form>
-	<ul id="results-container" class="results-search"></ul>
-	<div class="post-list">
-		{% for post in site.posts limit: 3 %}
-		<div class="post post-card" data-cursor="read" data-cursor-label="READ">
-			{% include remove_double_slash.html %}
-			<a class="post-list-title" href="{{ post_url }}">{{ post.title }}</a>
-			{% include post_meta.html type="post-card-meta" %}
-			<div class="post-excerpt">
-				{{ post.content | markdownify | strip_newlines | truncatewords: 100 }}<a class="read-more"
-					href="{{ post_url }}"> read more</a>
+	</div>
+
+	<ul id="results-container" class="results-search" style="margin-bottom: 2rem;"></ul>
+
+	<div class="archive-content" id="post-list-container">
+		{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+		{% for year in posts_by_year %}
+		<div class="archive-year-group">
+			<h2 class="archive-year-divider">{{ year.name }}</h2>
+			<div class="post-row-wrapper">
+				{% for post in year.items %}
+				{% include remove_double_slash.html %}
+
+				{% if forloop.parentloop.first and forloop.first and page.url == "/archive.html" %}
+				<!-- Featured Post (Latest) -->
+				<article class="featured-post" data-tags="{{ post.tags | join: ',' }}"
+					data-wordcount="{{ post.content | strip_html | number_of_words }}"
+					data-date="{{ post.date | date: '%s' }}" data-cursor="read" data-cursor-label="READ">
+					<a href="{{ post_url }}" class="featured-link">
+						<div class="featured-content">
+							<span class="featured-label">LATEST</span>
+							<h3 class="featured-title">{{ post.title }}</h3>
+							<p class="featured-excerpt">{{ post.content | strip_html | truncatewords: 40 }}</p>
+							<div class="post-row-meta">
+								{% include post_meta.html type="post-row-meta" %}
+							</div>
+						</div>
+					</a>
+				</article>
+				{% else %}
+				<!-- Standard Row -->
+				<article class="post-row" data-tags="{{ post.tags | join: ',' }}"
+					data-wordcount="{{ post.content | strip_html | number_of_words }}"
+					data-date="{{ post.date | date: '%s' }}" data-cursor="read" data-cursor-label="READ">
+					<a href="{{ post_url }}" class="post-row-link">
+						<div class="post-row-content">
+							<h3 class="post-row-title">{{ post.title }}</h3>
+							<div class="post-row-meta">
+								{% include post_meta.html type="post-row-meta" %}
+							</div>
+						</div>
+					</a>
+				</article>
+				{% endif %}
+
+				{% endfor %}
 			</div>
 		</div>
 		{% endfor %}
+
+		<!-- Global Empty State -->
+		<p class="empty-state global-empty-state" style="display: none;">
+			<span class="empty-glyph">✧</span>
+			No essays found matching your criteria.
+		</p>
 	</div>
 </div>
+
 {% include spinner.html %}
