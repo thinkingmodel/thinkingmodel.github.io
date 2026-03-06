@@ -1,8 +1,27 @@
 ---
 layout: default
 ---
+{% include calculate_relative_base.html %}
+
 <div class="flex-container transparent">
   {% include header.html %}
+
+  <!-- ═══ HERO SECTION ═══ -->
+  <section class="hero" aria-label="Site hero">
+    <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <div class="hero-line" aria-hidden="true"></div>
+      <p class="hero-eyebrow">A space to think.</p>
+      <h1 class="hero-title">The Thinking Model</h1>
+      <p class="hero-subtitle">AI · Astrophysics · Philosophy · Literature · Psychology</p>
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="hero-scroll-label">Explore</span>
+        <div class="hero-scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ POST GRID ═══ -->
   <div class="content wrapper">
     {{ content }}
     {% include search.html %}
@@ -11,6 +30,7 @@ layout: default
       {% include get-site-tags.html %}
       {% include tag_cloud.html %}
     </div>
-  </div> <!-- End Wrapper -->
+  </div>
+
   {% include footer.html %}
-</div><!-- End flex-container -->
+</div>
