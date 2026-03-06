@@ -376,7 +376,6 @@ function renderMeteors() {
                 continue;
             }
             drawMeteor(m);
-            if (m.label) drawLabel(m);
         }
     }
     requestAnimationFrame(renderMeteors);
