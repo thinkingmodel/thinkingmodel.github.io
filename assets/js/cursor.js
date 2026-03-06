@@ -1,82 +1,101 @@
-/**
- * Custom Animated Rocket Cursor
- */
+// ─── STATE ───────────────────────────────────────────
+const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+const ring = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+const LERP = 0.12;
+let rafId = null;
+let isClicking = false;
+let isHovering = false;
 
-(function () {
-    // Ignore touch devices where custom cursors are useless
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+// ─── ELEMENTS ────────────────────────────────────────
+const dot = document.createElement('div');
+const ringEl = document.createElement('div');
+dot.className = 'cursor-dot';
+ringEl.className = 'cursor-ring';
+document.body.appendChild(dot);
+document.body.appendChild(ringEl);
 
-    const cursorEl = document.createElement('div');
-    cursorEl.id = 'custom-cursor';
-    cursorEl.style.opacity = '0'; // Hide until first mousemove
+// ─── LERP FUNCTION ───────────────────────────────────
+const lerp = (a, b, t) => a + (b - a) * t;
 
-    // Lucide "rocket" icon SVG (pointing top-right)
-    cursorEl.innerHTML = `
-    <svg class="cursor-rocket" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
-      <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
-      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
-      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
-    </svg>
-  `;
+// ─── ANIMATION LOOP ──────────────────────────────────
+function animate() {
+    // Ring follows mouse with lerp (smooth lag)
+    ring.x = lerp(ring.x, mouse.x, LERP);
+    ring.y = lerp(ring.y, mouse.y, LERP);
 
-    // Create 8 fire particles
-    for (let i = 0; i < 8; i++) {
-        const p = document.createElement('div');
-        p.classList.add('cursor-fire-particle');
-        cursorEl.appendChild(p);
-    }
+    // Dot is instant
+    dot.style.transform = `translate(${mouse.x}px, ${mouse.y}px) translate(-50%, -50%)`;
+    ringEl.style.transform = `translate(${ring.x}px, ${ring.y}px) translate(-50%, -50%)`;
 
-    document.body.appendChild(cursorEl);
+    rafId = requestAnimationFrame(animate);
+}
 
-    let isVisible = false;
+// ─── MOUSE TRACKING ──────────────────────────────────
+document.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
 
-    document.addEventListener('mousemove', (e) => {
-        if (!isVisible) {
-            isVisible = true;
-            cursorEl.style.opacity = '1';
+// ─── CLICK STATES ────────────────────────────────────
+document.addEventListener('mousedown', () => {
+    isClicking = true;
+    dot.classList.add('is-clicking');
+    ringEl.classList.add('is-clicking');
+});
+
+document.addEventListener('mouseup', () => {
+    isClicking = false;
+    dot.classList.remove('is-clicking');
+    ringEl.classList.remove('is-clicking');
+});
+
+// ─── HOVER DETECTION ─────────────────────────────────
+// All interactive elements
+const interactiveSelectors = [
+    'a', 'button', '[role="button"]',
+    '.post-card', 'input', 'textarea',
+    'select', 'label', '[data-cursor]'
+].join(', ');
+
+document.addEventListener('mouseover', (e) => {
+    const target = e.target.closest(interactiveSelectors);
+    if (target) {
+        isHovering = true;
+        const cursorType = target.dataset.cursor || 'link';
+        ringEl.setAttribute('data-state', cursorType);
+        dot.setAttribute('data-state', cursorType);
+        ringEl.classList.add('is-hovering');
+        dot.classList.add('is-hovering');
+
+        // Text-swap cursor for post cards
+        if (target.classList.contains('post-card')) {
+            ringEl.setAttribute('data-state', 'read');
+            ringEl.dataset.label = target.dataset.cursorLabel || 'READ';
         }
-        // The tip of the rocket is at (22, 2) in the 24x24 SVG box.
-        // Offset the cursor element so the tip aligns with the actual pointer coordinates.
-        cursorEl.style.transform = `translate3d(${e.clientX - 22}px, ${e.clientY - 2}px, 0)`;
-    }, { passive: true });
+    }
+});
 
-    document.addEventListener('mouseleave', () => {
-        isVisible = false;
-        cursorEl.style.opacity = '0';
-    });
+document.addEventListener('mouseout', (e) => {
+    const target = e.target.closest(interactiveSelectors);
+    if (target) {
+        isHovering = false;
+        ringEl.removeAttribute('data-state');
+        dot.removeAttribute('data-state');
+        ringEl.classList.remove('is-hovering');
+        dot.classList.remove('is-hovering');
+        ringEl.dataset.label = '';
+    }
+});
 
-    document.addEventListener('mouseenter', () => {
-        isVisible = true;
-        cursorEl.style.opacity = '1';
-    });
+// ─── CURSOR HIDE ON LEAVE / SHOW ON ENTER ────────────
+document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ringEl.style.opacity = '0';
+});
+document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ringEl.style.opacity = '1';
+});
 
-    let burstTimeout;
-
-    document.addEventListener('mousedown', () => {
-        cursorEl.classList.remove('fire-burst');
-        // Force DOM reflow to restart CSS animation
-        void cursorEl.offsetWidth;
-
-        // Randomize particle vectors for the burst
-        const particles = cursorEl.querySelectorAll('.cursor-fire-particle');
-        particles.forEach(p => {
-            // Rocket flies up-right, so fire bursts down-left
-            // tx: negative, ty: positive
-            const tx = (Math.random() * -30) - 5;
-            const ty = (Math.random() * 30) + 5;
-            p.style.setProperty('--tx', `${tx}px`);
-            p.style.setProperty('--ty', `${ty}px`);
-
-            const colors = ['#fb923c', '#fbbf24', '#f472b6', '#a78bfa'];
-            p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        });
-
-        cursorEl.classList.add('fire-burst');
-
-        clearTimeout(burstTimeout);
-        burstTimeout = setTimeout(() => {
-            cursorEl.classList.remove('fire-burst');
-        }, 400);
-    });
-})();
+// ─── START ───────────────────────────────────────────
+animate();

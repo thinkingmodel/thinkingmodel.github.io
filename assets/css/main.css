@@ -2462,89 +2462,161 @@ tweet a {
 
 /* =========================================================
 /* =========================================================
-   CUSTOM ROCKET CURSOR
+   CUSTOM DOT + RING CURSOR
    ========================================================= */
+/* Hide default cursor everywhere */
 *,
 *::before,
-*::after,
-body,
-a,
-button,
-input,
-textarea,
-select,
-.nav-link,
-.subscribe-btn,
-.post-card,
-.post-card *,
-.theme-toggle label {
+*::after {
   cursor: none !important;
 }
 
-#custom-cursor {
+/* ── Base Elements ── */
+.cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  width: 24px;
-  height: 24px;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate3d(-100px, -100px, 0);
-  /* hide initially */
-  will-change: transform;
-}
-
-.cursor-rocket {
-  width: 24px;
-  height: 24px;
-  color: var(--ink-full);
-  fill: currentColor;
-  stroke: currentColor;
-  stroke-width: 1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
-  animation: rocketBob 1.5s ease-in-out infinite;
-  display: block;
-}
-
-@keyframes rocketBob {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-3px);
-  }
-}
-
-.cursor-fire-particle {
-  position: absolute;
-  top: 20px;
-  left: 6px;
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
+  background: #f0eeff;
   border-radius: 50%;
   pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+  transition:
+    width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(167, 139, 250, 0.6);
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: none;
+  z-index: 99998;
+  will-change: transform;
+  transition:
+    width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0px;
+  /* grows when text-swap activates */
+  color: transparent;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* ── HOVER STATE — on links, buttons ── */
+.cursor-dot.is-hovering {
+  width: 4px;
+  height: 4px;
+  background: #a78bfa;
+}
+
+.cursor-ring.is-hovering {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(167, 139, 250, 0.9);
+  background: rgba(167, 139, 250, 0.05);
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.2);
+}
+
+/* ── CLICK STATE — squish on mousedown ── */
+.cursor-dot.is-clicking {
+  width: 4px;
+  height: 4px;
+  background: #2dd4bf;
+  transform-origin: center;
+}
+
+.cursor-ring.is-clicking {
+  width: 28px;
+  height: 28px;
+  border-color: rgba(45, 212, 191, 0.9);
+  background: rgba(45, 212, 191, 0.08);
+  box-shadow: 0 0 24px rgba(45, 212, 191, 0.3);
+}
+
+/* ── TEXT-SWAP STATE — on post cards ── */
+.cursor-ring[data-state="read"] {
+  width: 72px;
+  height: 72px;
+  border-color: rgba(167, 139, 250, 0.8);
+  background: rgba(10, 10, 30, 0.85);
+  backdrop-filter: blur(8px);
+  font-size: 0.6rem;
+  color: #a78bfa;
+  letter-spacing: 0.15em;
+}
+
+/* Inject the label text via JS dataset */
+.cursor-ring[data-state="read"]::after {
+  content: attr(data-label);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #a78bfa;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cursor-dot[data-state="read"] {
   opacity: 0;
-  mix-blend-mode: screen;
 }
 
-.fire-burst .cursor-fire-particle {
-  animation: fireBurst 0.4s ease-out forwards;
+/* ── IMAGE / MEDIA HOVER STATE ── */
+.cursor-ring[data-state="view"] {
+  width: 64px;
+  height: 64px;
+  border-color: rgba(45, 212, 191, 0.8);
+  background: rgba(10, 10, 30, 0.85);
+  backdrop-filter: blur(8px);
 }
 
-@keyframes fireBurst {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
+.cursor-ring[data-state="view"]::after {
+  content: 'VIEW';
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #2dd4bf;
+  letter-spacing: 0.15em;
+}
+
+/* ── DISABLED / TEXT AREAS ── */
+.cursor-ring[data-state="text"] {
+  width: 2px;
+  height: 28px;
+  border-radius: 1px;
+  border-color: rgba(167, 139, 250, 0.8);
+}
+
+.cursor-dot[data-state="text"] {
+  opacity: 0;
+}
+
+/* ── MOBILE: restore default cursor ── */
+@media (hover: none) and (pointer: coarse) {
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
   }
 
-  100% {
-    transform: translate(var(--tx), var(--ty)) scale(0);
-    opacity: 0;
+  * {
+    cursor: auto !important;
   }
 }
 
