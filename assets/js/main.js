@@ -7,35 +7,67 @@
   'use strict';
 
   /* ─────────────────────────────────────────
-     BURGER MENU TOGGLE
-     Slides .main-nav via .flex-container class toggling
+     MOBILE MENU OVERLAY
   ───────────────────────────────────────── */
   function initMenu() {
-    var menuIcon = document.querySelector('.menu-icon');
-    var menuIconClose = document.querySelector('.menu-icon-close');
-    var flex = document.querySelector('.flex-container');
-    if (!menuIcon || !flex) return;
+    var toggle = document.querySelector('.nav-mobile-toggle');
+    var overlay = document.querySelector('.mobile-menu-overlay');
+    if (!toggle || !overlay) return;
 
-    function openMenu() {
-      flex.classList.add('active', 'opaque');
-      flex.classList.remove('transparent');
-    }
-    function closeMenu() {
-      flex.classList.remove('opaque');
-      flex.classList.add('transparent');
-      setTimeout(function () { flex.classList.remove('active'); }, 600);
-    }
-
-    menuIcon.addEventListener('click', function (e) { e.stopPropagation(); openMenu(); });
-    if (menuIconClose) menuIconClose.addEventListener('click', function (e) { e.stopPropagation(); closeMenu(); });
-
-    // Clicking the dimmed overlay closes the menu
-    flex.addEventListener('click', function (e) {
-      if (flex.classList.contains('active') &&
-        !e.target.closest('.main-nav') &&
-        !e.target.closest('.menu-icon')) {
-        closeMenu();
+    function toggleMenu() {
+      var isActive = toggle.classList.contains('active');
+      if (isActive) {
+        toggle.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      } else {
+        toggle.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      toggleMenu();
+    });
+
+    // Close on link click inside overlay
+    overlay.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        toggleMenu();
+      }
+    });
+  }
+
+  /* ─────────────────────────────────────────
+     PREMIUM DESKTOP NAV HOVER (Staggered letters)
+  ───────────────────────────────────────── */
+  function initNavHover() {
+    if (prefersReducedMotion) return;
+    var links = document.querySelectorAll('.nav-desktop .nav-link');
+    links.forEach(function (link) {
+      var text = link.textContent.trim();
+      link.textContent = ''; // Clear text
+      var delay = 0;
+      for (var i = 0; i < text.length; i++) {
+        var span = document.createElement('span');
+        span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+        span.style.display = 'inline-block';
+        span.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        span.style.transitionDelay = delay + 's';
+        delay += 0.015;
+        link.appendChild(span);
+      }
+
+      link.addEventListener('mouseenter', function () {
+        var spans = link.querySelectorAll('span');
+        spans.forEach(function (s) { s.style.transform = 'translateY(-2px)'; });
+      });
+      link.addEventListener('mouseleave', function () {
+        var spans = link.querySelectorAll('span');
+        spans.forEach(function (s) { s.style.transform = 'none'; });
+      });
     });
   }
 
@@ -476,6 +508,7 @@
   ───────────────────────────────────────── */
   function boot() {
     initMenu();
+    initNavHover();
     initSearch();
     initHeroCanvas();
     initStarfield();
