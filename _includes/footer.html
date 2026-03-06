@@ -8,21 +8,15 @@
     </div>
 
     <!-- Three-column editorial footer -->
-    <div class="wrapper" style="padding-top:3rem;padding-bottom:3rem;">
+    <div class="wrapper" style="padding-top:1.5rem;padding-bottom:1.5rem;">
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3rem;align-items:start;">
 
             <!-- Col 1: About blurb -->
             <div>
                 <a class="logo-link" title="{{ site.title }}" href="{{ relativebase }}"
                     style="margin-bottom:1rem;display:inline-block;">
-                    <svg width="40px" height="40px" xmlns="http://www.w3.org/2000/svg"
-                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 649 649" style="opacity:.6;">
-                        <g fill="currentColor" stroke="none">
-                            <path
-                                d="M2938 6380 c-551 -53 -1031 -220 -1478 -514 -306 -201 -588 -470 -810 -771 -276 -374 -475 -850 -559 -1336 -64 -371 -53 -836 29 -1211 155 -712 552 -1347 1130 -1810 450 -360 1021 -589 1640 -659 58 -6 202 -12 320 -12 282 0 503 26 756 87 902 220 1680 841 2079 1661 303 622 402 1333 279 2005 -90 496 -313 984 -634 1390 -111 140 -378 404 -519 513 -456 352 -957 560 -1549 643 -126 17 -558 26 -684 14z"
-                                transform="translate(0,644) scale(.1,-.1)" />
-                        </g>
-                    </svg>
+                    <img src="{{ site.logo | prepend: relativebase }}" alt="{{ site.title }} logo"
+                        style="height: 48px; width: auto; opacity: 0.8;">
                 </a>
                 <p
                     style="font-family:var(--font-display);font-size:1.2rem;font-weight:300;font-style:italic;color:var(--ink-mid);line-height:1.6;margin:0 0 .75rem;">
@@ -69,21 +63,27 @@
                     style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-low);margin-bottom:1.25rem;-webkit-text-fill-color:var(--ink-low);background:none;">
                     Domains</h3>
                 <div style="display:flex;flex-direction:column;gap:.5rem;">
-                    <span
-                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--nebula);">◆
-                        Artificial Intelligence</span>
-                    <span
-                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--pulsar);">◆
-                        Astrophysics</span>
-                    <span
-                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--quasar);">◆
-                        Philosophy</span>
-                    <span
-                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--nova);">◆
-                        Literature</span>
-                    <span
-                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--supernova);">◆
-                        Psychology</span>
+                    <a href="{{ relativebase }}tags.html#Artificial%20Intelligence"
+                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--nebula);text-decoration:none;transition:color .25s;"
+                        onmouseover="this.style.color='var(--ink-full)'" onmouseout="this.style.color='var(--nebula)'">◆
+                        Artificial Intelligence</a>
+                    <a href="{{ relativebase }}tags.html#Astrophysics"
+                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--pulsar);text-decoration:none;transition:color .25s;"
+                        onmouseover="this.style.color='var(--ink-full)'" onmouseout="this.style.color='var(--pulsar)'">◆
+                        Astrophysics</a>
+                    <a href="{{ relativebase }}tags.html#Philosophy"
+                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--quasar);text-decoration:none;transition:color .25s;"
+                        onmouseover="this.style.color='var(--ink-full)'" onmouseout="this.style.color='var(--quasar)'">◆
+                        Philosophy</a>
+                    <a href="{{ relativebase }}tags.html#Literature"
+                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--nova);text-decoration:none;transition:color .25s;"
+                        onmouseover="this.style.color='var(--ink-full)'" onmouseout="this.style.color='var(--nova)'">◆
+                        Literature</a>
+                    <a href="{{ relativebase }}tags.html#Psychology"
+                        style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.08em;color:var(--supernova);text-decoration:none;transition:color .25s;"
+                        onmouseover="this.style.color='var(--ink-full)'"
+                        onmouseout="this.style.color='var(--supernova)'">◆
+                        Psychology</a>
                 </div>
                 <div style="margin-top:1.5rem;display:flex;gap:1rem;">
                     {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter | remove:'@' }}"
