@@ -834,6 +834,105 @@
   }
 
   /* ─────────────────────────────────────────
+     POST PAGE JS
+  ───────────────────────────────────────── */
+  function clampTags() {
+    var tagRows = document.querySelectorAll('.post-header__tags');
+    tagRows.forEach(function (row) {
+      // Find direct child tag pills that aren't the overflow badge
+      var tags = row.querySelectorAll('.post-header__tag');
+      var sep = row.querySelectorAll('.post-header__tag-sep');
+      var containerWidth = row.offsetWidth;
+      var usedWidth = 0;
+      var hiddenCount = 0;
+
+      tags.forEach(function (tag, i) {
+        usedWidth += tag.offsetWidth + 8; // padding approximation
+        // Reserve 40px for "+N" badge
+        if (usedWidth > containerWidth - 40) {
+          tag.style.display = 'none';
+          if (sep[i]) sep[i].style.display = 'none';
+          hiddenCount++;
+        }
+      });
+
+      if (hiddenCount > 0) {
+        var badge = document.createElement('span');
+        badge.className = 'post-header__tag-overflow';
+        badge.textContent = '+' + hiddenCount;
+        row.appendChild(badge);
+      }
+    });
+  }
+
+  function initPostLayout() {
+    if (!document.querySelector('.post-page')) return;
+
+    // 1. Clamp Tags
+    clampTags();
+    window.addEventListener('resize', function () {
+      // Reset
+      document.querySelectorAll('.post-header__tag, .post-header__tag-sep').forEach(function (t) {
+        t.style.display = '';
+      });
+      document.querySelectorAll('.post-header__tag-overflow').forEach(function (b) {
+        b.remove();
+      });
+      clampTags();
+    });
+
+    // 2. Read Time Calculator
+    var readTimeEls = document.querySelectorAll('.read-time');
+    readTimeEls.forEach(function (el) {
+      var wordCount = parseInt(el.getAttribute('data-wordcount')) || 0;
+      var minutes = Math.ceil(wordCount / 200);
+      if (minutes < 1) minutes = 1;
+      el.textContent = minutes + ' min read';
+    });
+
+    // 3. TOC Auto Generator
+    var tocList = document.getElementById('post-toc-list');
+    var headings = document.querySelectorAll('.post-body h2, .post-body h3');
+
+    if (tocList && headings.length > 0) {
+      headings.forEach(function (h, index) {
+        if (!h.id) {
+          h.id = 'heading-' + index;
+        }
+        var li = document.createElement('li');
+        li.className = 'post-toc__item post-toc__item--' + h.tagName.toLowerCase();
+
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.className = 'post-toc__link';
+        a.textContent = h.textContent;
+
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      // 4. TOC Active Link Observer
+      var tocLinks = document.querySelectorAll('.post-toc__link');
+      if (window.IntersectionObserver) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(function (l) { l.classList.remove('is-active'); });
+              var active = document.querySelector('.post-toc__link[href="#' + entry.target.id + '"]');
+              if (active) active.classList.add('is-active');
+            }
+          });
+        }, {
+          rootMargin: '-20% 0px -70% 0px',
+          threshold: 0
+        });
+
+        headings.forEach(function (h) { observer.observe(h); });
+      }
+    }
+  }
+
+  /* ─────────────────────────────────────────
      BOOT
   ───────────────────────────────────────── */
   function boot() {
@@ -856,6 +955,7 @@
     initTOC();
     initLazyImages();
     initBackToTop();
+    initPostLayout();
   }
 
   if (document.readyState === 'loading') {

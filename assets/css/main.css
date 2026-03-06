@@ -3193,3 +3193,405 @@ tweet a {
     color: var(--text);
   }
 }
+
+/* =========================================================
+   POST HEADER
+   ========================================================= */
+.post-header__tags {
+  display: flex;
+  flex-wrap: nowrap;
+  /* NO wrapping — ever */
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  /* hide overflow cleanly */
+  max-width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.post-header__tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-mid);
+  white-space: nowrap;
+  /* tag text never wraps */
+  flex-shrink: 0;
+  /* tags never compress */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.post-header__tag::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--tag-color, var(--nebula));
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.post-header__tag+.post-header__tag::after {
+  content: none;
+}
+
+.post-header__tag-sep {
+  color: var(--ink-ghost);
+  font-size: 0.5rem;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.post-header__tag-overflow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--ink-ghost);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: 0.25rem;
+}
+
+.post-header__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--ink-full);
+  margin: 0 0 1.25rem 0;
+  overflow-wrap: break-word;
+  /* Prevent title from ever overflowing */
+  word-break: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+.post-header__meta {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.post-header__meta-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--ink-low);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.post-header__meta-sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ink-ghost);
+  flex-shrink: 0;
+}
+
+.post-header__divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      var(--border-subtle),
+      transparent);
+  margin-bottom: 3rem;
+  border: none;
+}
+
+/* =========================================================
+   POST LAYOUT & BODY
+   ========================================================= */
+.post-page {
+  min-height: 100vh;
+  background: var(--void);
+}
+
+.post-header {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(5rem, 10vw, 8rem) 2rem 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.post-body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 2rem clamp(4rem, 8vw, 6rem);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.post-body * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.post-body img {
+  width: 100%;
+  max-width: calc(100% + 4rem);
+  margin-left: -2rem;
+  margin-right: -2rem;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.post-body table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* =========================================================
+   POST SIDEBAR (TOC)
+   ========================================================= */
+.post-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (min-width: 1100px) {
+  .post-layout {
+    grid-template-columns: 1fr 220px;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+.post-sidebar {
+  display: none;
+  position: sticky;
+  top: calc(64px + 2rem);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1100px) {
+  .post-sidebar {
+    display: block;
+  }
+}
+
+.post-toc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-toc__label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-ghost);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.post-toc__item {
+  margin-bottom: 0.6rem;
+}
+
+.post-toc__link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--ink-low);
+  text-decoration: none;
+  display: block;
+  line-height: 1.5;
+  padding-left: 0.75rem;
+  border-left: 1px solid var(--border-subtle);
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.post-toc__link:hover,
+.post-toc__link.is-active {
+  color: var(--nebula);
+  border-left-color: var(--nebula);
+}
+
+.post-toc__item--h3 .post-toc__link {
+  padding-left: 1.5rem;
+  font-size: 0.6rem;
+  color: var(--ink-ghost);
+}
+
+/* =========================================================
+   POST RESPONSIVE / MOBILE
+   ========================================================= */
+@media (max-width: 768px) {
+  .post-header {
+    padding: 5rem 1.25rem 0;
+  }
+
+  .post-header__tags {
+    gap: 0.4rem;
+  }
+
+  .post-header__title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+
+  .post-header__meta {
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .post-body {
+    padding: 0 1.25rem clamp(3rem, 6vw, 5rem);
+  }
+
+  .post-body img {
+    max-width: calc(100% + 2.5rem);
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    border-radius: 0;
+  }
+
+  .post-sidebar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-header__title {
+    font-size: 1.75rem;
+  }
+
+  .post-header__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .post-header__meta-sep {
+    display: none;
+  }
+}
+
+/* =========================================================
+   READING EXPERIENCE POLISH
+   ========================================================= */
+.post-body p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.2rem;
+  line-height: 1.85;
+  color: var(--ink-high);
+  margin: 0 0 1.6em 0;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.post-body>p:first-of-type::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.2em;
+  font-weight: 600;
+  line-height: 0.75;
+  float: left;
+  margin: 0.1em 0.1em 0 0;
+  background: linear-gradient(135deg, var(--nebula), var(--pulsar));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.post-body h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--ink-full);
+  margin: 3rem 0 1rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.post-body h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--nebula);
+  margin: 2.5rem 0 0.75rem;
+}
+
+.post-body blockquote {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.75rem;
+  border-left: 3px solid var(--nebula);
+  background: var(--elevated);
+  border-radius: 0 6px 6px 0;
+}
+
+.post-body blockquote p {
+  font-family: 'Cormorant SC', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--ink-mid);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.post-body a {
+  color: var(--nebula);
+  text-decoration: none;
+  background: linear-gradient(var(--nebula), var(--nebula)) no-repeat 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.3s ease;
+  padding-bottom: 1px;
+}
+
+.post-body a:hover {
+  background-size: 100% 1px;
+}
+
+.post-body code {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82em;
+  background: var(--elevated);
+  color: var(--pulsar);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid var(--border-subtle);
+}
+
+.post-body hr {
+  border: none;
+  text-align: center;
+  margin: 3rem 0;
+  color: var(--ink-ghost);
+  letter-spacing: 0.5em;
+}
+
+.post-body hr::after {
+  content: '· · ·';
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+}
+}
