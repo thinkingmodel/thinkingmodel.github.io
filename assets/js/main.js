@@ -504,10 +504,104 @@
   }
 
   /* ─────────────────────────────────────────
+     SUBSCRIBE MODAL (AJAX JSONP)
+  ───────────────────────────────────────── */
+  function initSubscribeModal() {
+    var triggers = document.querySelectorAll('.subscribe-trigger');
+    var modal = document.getElementById('subscribe-modal');
+    var closeBtn = document.querySelector('.subscribe-modal-close');
+    var form = document.getElementById('subscribe-ajax-form');
+    var msgDiv = document.getElementById('sub-ajax-msg');
+    var emailInput = document.getElementById('sub-ajax-email');
+
+    if (!modal) return;
+
+    function openModal() {
+      // Close mobile menu if it's open so they don't overlap
+      var mobileNav = document.querySelector('.mobile-menu-overlay');
+      if (mobileNav && mobileNav.classList.contains('active')) {
+        document.querySelector('.nav-mobile-toggle').classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      modal.classList.add('active');
+      if (emailInput) setTimeout(function () { emailInput.focus(); }, 100);
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      if (form) form.reset();
+      if (msgDiv) {
+        msgDiv.textContent = '';
+        msgDiv.className = 'sub-modal-message';
+      }
+    }
+
+    triggers.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    if (!form || !msgDiv || !emailInput) return;
+
+    window.mcCallback = function (res) {
+      if (res.result === 'success') {
+        msgDiv.textContent = 'Success! Welcome to The Thinking Model.';
+        msgDiv.className = 'sub-modal-message success';
+        form.reset();
+        setTimeout(closeModal, 3000);
+      } else {
+        var msg = res.msg.replace('0 - ', '');
+        var temp = document.createElement('div');
+        temp.innerHTML = msg;
+        msgDiv.textContent = temp.textContent || temp.innerText || 'An error occurred. Please try again.';
+        msgDiv.className = 'sub-modal-message error';
+      }
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      msgDiv.textContent = 'Subscribing...';
+      msgDiv.className = 'sub-modal-message';
+
+      var email = encodeURIComponent(emailInput.value);
+      var actionUrl = form.getAttribute('action');
+      if (!actionUrl) {
+        msgDiv.textContent = 'Error: Mailchimp URL not configured.';
+        return;
+      }
+      var url = actionUrl.replace('/post?', '/post-json?');
+      url += '&EMAIL=' + email + '&c=mcCallback';
+
+      var oldScript = document.getElementById('mc-jsonp');
+      if (oldScript) oldScript.remove();
+
+      var script = document.createElement('script');
+      script.id = 'mc-jsonp';
+      script.src = url;
+      document.body.appendChild(script);
+    });
+  }
+
+
+  /* ─────────────────────────────────────────
      BOOT
   ───────────────────────────────────────── */
   function boot() {
     initMenu();
+    initSubscribeModal();
     initNavHover();
     initSearch();
     initHeroCanvas();

@@ -1,0 +1,32 @@
+<!-- Premium Subscribe Modal -->
+<div class="subscribe-modal-overlay" id="subscribe-modal" aria-hidden="true">
+    <div class="subscribe-modal-content">
+        <button class="subscribe-modal-close" aria-label="Close modal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+
+        <div class="subscribe-modal-header">
+            <h2 class="sub-modal-title">Join the Expedition</h2>
+            <p class="sub-modal-desc">Subscribe for the latest on AI, astrophysics, philosophy, and psychology.</p>
+        </div>
+
+        <!-- The form action is manipulated by JS for AJAX -->
+        <form id="subscribe-ajax-form" action="{{ site.mailchimp }}" method="post" novalidate>
+            <div class="sub-input-group">
+                <input type="email" name="EMAIL" id="sub-ajax-email" class="sub-modal-input"
+                    placeholder="Your email address" required>
+                <button type="submit" class="sub-modal-submit">Subscribe</button>
+            </div>
+            <!-- Anti-bot honeypot -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name="b_c46bb8ed6c348caf9e090ae4b_2fc7b963c8" tabindex="-1" value="">
+            </div>
+
+            <div class="sub-modal-message" id="sub-ajax-msg"></div>
+        </form>
+    </div>
+</div>

@@ -2534,3 +2534,138 @@ select,
     opacity: 0;
   }
 }
+
+/* =========================================================
+   SUBSCRIBE MODAL (PREMIUM UI)
+   ========================================================= */
+.subscribe-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 12, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.subscribe-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.subscribe-modal-content {
+  background: var(--surface);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 12px;
+  padding: 3rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  text-align: center;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(167, 139, 250, 0.1);
+}
+
+.subscribe-modal-overlay.active .subscribe-modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.subscribe-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--ink-mid);
+  padding: 0.5rem;
+  cursor: none !important;
+  transition: color 0.3s;
+}
+
+.subscribe-modal-close:hover {
+  color: var(--nebula);
+}
+
+.sub-modal-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink-full);
+}
+
+.sub-modal-desc {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--ink-mid);
+  margin-bottom: 2rem;
+}
+
+.sub-input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sub-modal-input {
+  flex: 1;
+  background: rgba(13, 13, 34, 0.8);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: var(--ink-full);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.sub-modal-input:focus {
+  outline: none;
+  border-color: var(--nebula);
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.2);
+}
+
+.sub-modal-submit {
+  background: rgba(45, 212, 191, 0.1);
+  color: var(--pulsar);
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.sub-modal-submit:hover {
+  background: rgba(45, 212, 191, 0.2);
+  border-color: var(--pulsar);
+  box-shadow: 0 0 15px rgba(45, 212, 191, 0.3);
+  color: #fff;
+}
+
+.sub-modal-submit:disabled {
+  opacity: 0.5;
+}
+
+.sub-modal-message {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  min-height: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.sub-modal-message.success {
+  color: var(--pulsar);
+}
+
+.sub-modal-message.error {
+  color: var(--nova);
+}

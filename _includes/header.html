@@ -34,8 +34,7 @@
       </button>
 
       <!-- Glowing Subscribe CTA -->
-      <a href="{{ site.mailchimp | default: '#' }}" class="nav-btn-subscribe subscribe-btn" target="_blank"
-        rel="noopener">Subscribe</a>
+      <button class="nav-btn-subscribe subscribe-trigger">Subscribe</button>
     </nav>
 
     <!-- Mobile Burger Toggle -->
@@ -53,6 +52,6 @@
     <a href="{{ relativebase }}archive.html">All Posts</a>
     <a href="{{ relativebase }}tags.html">Tags</a>
     <a href="{{ relativebase }}about.html">About</a>
-    <a href="{{ site.mailchimp | default: '#' }}" class="mobile-nav-subscribe" target="_blank">Subscribe</a>
+    <button class="mobile-nav-subscribe subscribe-trigger">Subscribe</button>
   </nav>
 </div>
