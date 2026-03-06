@@ -7,6 +7,64 @@
   'use strict';
 
   /* ─────────────────────────────────────────
+     BURGER MENU TOGGLE
+     Slides .main-nav via .flex-container class toggling
+  ───────────────────────────────────────── */
+  function initMenu() {
+    var menuIcon = document.querySelector('.menu-icon');
+    var menuIconClose = document.querySelector('.menu-icon-close');
+    var flex = document.querySelector('.flex-container');
+    if (!menuIcon || !flex) return;
+
+    function openMenu() {
+      flex.classList.add('active', 'opaque');
+      flex.classList.remove('transparent');
+    }
+    function closeMenu() {
+      flex.classList.remove('opaque');
+      flex.classList.add('transparent');
+      setTimeout(function () { flex.classList.remove('active'); }, 600);
+    }
+
+    menuIcon.addEventListener('click', function (e) { e.stopPropagation(); openMenu(); });
+    if (menuIconClose) menuIconClose.addEventListener('click', function (e) { e.stopPropagation(); closeMenu(); });
+
+    // Clicking the dimmed overlay closes the menu
+    flex.addEventListener('click', function (e) {
+      if (flex.classList.contains('active') &&
+        !e.target.closest('.main-nav') &&
+        !e.target.closest('.menu-icon')) {
+        closeMenu();
+      }
+    });
+  }
+
+  /* ─────────────────────────────────────────
+     SEARCH PANEL TOGGLE
+  ───────────────────────────────────────── */
+  function initSearch() {
+    var searchIcon = document.querySelector('.search-icon a');
+    var searchClose = document.querySelector('.search-icon-close');
+    var searchBox = document.querySelector('.search-box');
+    var searchInput = document.getElementById('search-input');
+    if (!searchBox) return;
+
+    if (searchIcon) {
+      searchIcon.addEventListener('click', function (e) {
+        e.preventDefault();
+        searchBox.classList.add('search-active');
+        if (searchInput) setTimeout(function () { searchInput.focus(); }, 200);
+      });
+    }
+    if (searchClose) searchClose.addEventListener('click', function () {
+      searchBox.classList.remove('search-active');
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') searchBox.classList.remove('search-active');
+    });
+  }
+
+  /* ─────────────────────────────────────────
      UTILITY: reduced-motion check
   ───────────────────────────────────────── */
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,11 +96,11 @@
           x: Math.random() * W, y: Math.random() * H,
           ox: 0, oy: 0,
           r: layer === 0 ? Math.random() * .6 + .3 :
-             layer === 1 ? Math.random() * .9 + .5 :
-                           Math.random() * 1.4 + .8,
+            layer === 1 ? Math.random() * .9 + .5 :
+              Math.random() * 1.4 + .8,
           base: layer === 0 ? Math.random() * .35 + .1 :
-                layer === 1 ? Math.random() * .5 + .2 :
-                              Math.random() * .6 + .3,
+            layer === 1 ? Math.random() * .5 + .2 :
+              Math.random() * .6 + .3,
           speed: Math.random() * .015 + .004,
           phase: Math.random() * Math.PI * 2,
           layer: layer,
@@ -54,7 +112,7 @@
     var mouseX = 0, mouseY = 0;
     var targetMX = 0, targetMY = 0;
     document.addEventListener('mousemove', function (e) {
-      targetMX = (e.clientX / window.innerWidth  - .5) * 2;
+      targetMX = (e.clientX / window.innerWidth - .5) * 2;
       targetMY = (e.clientY / window.innerHeight - .5) * 2;
     });
 
@@ -140,7 +198,7 @@
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width  = window.innerWidth  * dpr;
+    canvas.width = window.innerWidth * dpr;
     canvas.height = window.innerHeight * dpr;
     ctx.scale(dpr, dpr);
 
@@ -150,7 +208,7 @@
     document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
 
     window.addEventListener('resize', function () {
-      canvas.width  = window.innerWidth  * dpr;
+      canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       ctx.scale(dpr, dpr);
     });
@@ -187,12 +245,12 @@
     cards.forEach(function (card) {
       card.addEventListener('mousemove', function (e) {
         var rect = card.getBoundingClientRect();
-        var cx = rect.left + rect.width  / 2;
-        var cy = rect.top  + rect.height / 2;
-        var dx = (e.clientX - cx) / (rect.width  / 2);
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var dx = (e.clientX - cx) / (rect.width / 2);
         var dy = (e.clientY - cy) / (rect.height / 2);
         var rx = dy * -3;
-        var ry = dx *  3;
+        var ry = dx * 3;
         card.style.transform = 'translateY(-6px) perspective(1000px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
       });
       card.addEventListener('mouseleave', function () {
@@ -300,12 +358,12 @@
       var btn = document.createElement('button');
       btn.textContent = 'Copy';
       btn.style.cssText = [
-        'position:absolute','top:.6rem','right:.6rem',
-        'font-family:var(--font-mono)','font-size:.6rem',
-        'letter-spacing:.1em','text-transform:uppercase',
-        'background:rgba(167,139,250,.15)','color:var(--nebula)',
-        'border:1px solid rgba(167,139,250,.3)','border-radius:4px',
-        'padding:3px 10px','cursor:pointer','transition:all .25s'
+        'position:absolute', 'top:.6rem', 'right:.6rem',
+        'font-family:var(--font-mono)', 'font-size:.6rem',
+        'letter-spacing:.1em', 'text-transform:uppercase',
+        'background:rgba(167,139,250,.15)', 'color:var(--nebula)',
+        'border:1px solid rgba(167,139,250,.3)', 'border-radius:4px',
+        'padding:3px 10px', 'cursor:pointer', 'transition:all .25s'
       ].join(';');
       block.style.position = 'relative';
       block.appendChild(btn);
@@ -417,6 +475,8 @@
      BOOT
   ───────────────────────────────────────── */
   function boot() {
+    initMenu();
+    initSearch();
     initHeroCanvas();
     initStarfield();
     initCursorTrail();
