@@ -4556,6 +4556,18 @@ tweet a {
    RESEARCH PAGE — PENDING STATES & NEW ELEMENTS
    ========================================================= */
 
+/* Curiosity hook — whispered question above the summary */
+.paper-card__hook {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-mid, rgba(255, 255, 255, 0.55));
+  border-left: 2px solid var(--nebula, #a78bfa);
+  padding-left: 12px;
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+}
+
 /* Image placeholder — minimal separator strip when no image yet */
 .paper-card__image-placeholder {
   width: 100%;

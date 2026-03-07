@@ -73,6 +73,11 @@ permalink: /research.html
 
                 <hr class="paper-card__rule">
 
+                {% comment %} Curiosity hook — styled question above the summary {% endcomment %}
+                {% if paper.curiosity_hook and paper.curiosity_hook != "" %}
+                <p class="paper-card__hook">{{ paper.curiosity_hook }}</p>
+                {% endif %}
+
                 {% comment %} Summary — only show when generated {% endcomment %}
                 {% if paper.summary and paper.summary != "" %}
                 <div class="paper-card__summary is-visible">
