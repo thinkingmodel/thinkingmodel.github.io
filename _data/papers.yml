@@ -1,31 +1,3 @@
-- id: kanite
-  title: "KANITE: Kolmogorov-Arnold Networks for ITE Estimation"
-  authors: "Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar"
-  venue: "ECML PKDD 2025"
-  year: 2025
-  domain: "Causal Inference"
-  domainColor: "#a78bfa"
-  abstract: "Proposes new ITE estimation algorithms built on Kolmogorov-Arnold Networks for individual treatment effect estimation in causal inference, addressing confounding factors and treatment assignment bias."
-  link: "https://link.springer.com/chapter/10.1007/978-3-032-05962-8_24"
-  arxiv: null
-  scholarId: "mPkYJu8AAAAJ"
-  summary: ""
-  imageName: ""
-
-- id: network-causal
-  title: "Estimation of Individual Causal Effects in Network Setup for Multiple Treatments"
-  authors: "Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar, Naoyuki Onoe"
-  venue: "AAAI 2024 — GCLR Workshop"
-  year: 2024
-  domain: "Causal Inference"
-  domainColor: "#a78bfa"
-  abstract: "Addresses estimation of individual causal effects in networked environments with multiple treatments, tackling interference between units and the complexity of multi-treatment causal graphs."
-  link: "https://arxiv.org/abs/2312.11573"
-  arxiv: "https://arxiv.org/abs/2312.11573"
-  scholarId: "mPkYJu8AAAAJ"
-  summary: ""
-  imageName: ""
-
 - id: image-causal
   title: "I See, Therefore I Do: Estimating Causal Effects for Image Treatments"
   authors: "Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar"
@@ -40,16 +12,44 @@
   summary: ""
   imageName: ""
 
-- id: conceptual-causal
-  title: "A Conceptual Framework to Unify Estimation of Individual Causal Effects in Multiple Treatments"
+- id: network-causal
+  title: "Estimation of Individual Causal Effects in Network Setup for Multiple Treatments"
   authors: "Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar, Naoyuki Onoe"
-  venue: "AAAI 2024 — GCLR"
-  year: 2024
+  venue: "arXiv 2023"
+  year: 2023
   domain: "Causal Inference"
   domainColor: "#a78bfa"
-  abstract: "Introduces a foundational framework combining multiple treatments into a unified causal space, laying the conceptual groundwork for multi-treatment estimation setups."
-  link: null
+  abstract: "Addresses estimation of individual causal effects in networked environments with multiple treatments, tackling interference between units and the complexity of multi-treatment causal graphs."
+  link: "https://arxiv.org/abs/2312.11573"
+  arxiv: "https://arxiv.org/abs/2312.11573"
+  scholarId: "mPkYJu8AAAAJ"
+  summary: ""
+  imageName: ""
+
+- id: kanite
+  title: "KANITE: Kolmogorov-Arnold Networks for ITE Estimation"
+  authors: "Eeshan Mehendale, Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar"
+  venue: "ECML PKDD 2025"
+  year: 2025
+  domain: "Causal Inference"
+  domainColor: "#a78bfa"
+  abstract: "Proposes new ITE estimation algorithms built on Kolmogorov-Arnold Networks for individual treatment effect estimation in causal inference, addressing confounding factors and treatment assignment bias."
+  link: "https://link.springer.com/chapter/10.1007/978-3-032-05962-8_24"
   arxiv: null
+  scholarId: "mPkYJu8AAAAJ"
+  summary: ""
+  imageName: ""
+
+- id: thought-space
+  title: "From What to Why: Thought-Space Recommendation with Small Language Models"
+  authors: "Priyanka Biswas, Patar Shaik, Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar"
+  venue: "arXiv 2024"
+  year: 2024
+  domain: "NLP & Recommendation"
+  domainColor: "#34d399"
+  abstract: "Proposes a thought-space recommendation framework using small language models to move beyond surface-level 'what' recommendations toward understanding the underlying 'why' of user intent and decision-making."
+  link: "https://arxiv.org/abs/2510.08626"
+  arxiv: "https://arxiv.org/abs/2510.08626"
   scholarId: "mPkYJu8AAAAJ"
   summary: ""
   imageName: ""
