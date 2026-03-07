@@ -65,13 +65,12 @@ def generate_summary(client, paper):
     authors_str = ", ".join(a["name"] for a in paper.get("authors", []))
 
     prompt = (
-        "You are an expert science communicator writing for an intelligent general audience.\n"
-        "Write exactly 20 lines about this research paper.\n"
-        "Each line must be a complete, standalone thought written in flowing prose.\n"
-        "No bullet points. No numbering. No headers. No markdown.\n"
-        "Do NOT start with \"This paper\".\n"
-        "Cover: the fundamental problem, why it matters in the real world, "
-        "the core insight, the method, key results, broader implications, and what makes this work novel.\n\n"
+        "You are an expert science communicator. "
+        "Write exactly 20 lines about this research paper. "
+        "Make it accessible to an intelligent non-specialist reader. "
+        "Cover: what problem it solves, why it matters, the core insight, the method used, and the real-world implications. "
+        "Each line should be a complete thought. No bullet points. No numbering. Just 20 flowing lines of prose.\n"
+        "CRITICAL INSTRUCTION: Do NOT alter the title of the paper in your response. exactly use the title provided.\n"
         f"Paper title: {paper['title']}\n"
         f"Authors: {authors_str}\n"
         f"Venue: {paper['venue']}\n"
@@ -93,16 +92,16 @@ def generate_image(client, paper):
     image_path = IMAGES_DIR / image_filename
 
     prompt = (
-        f"A cinematic, wide-format scientific visualization representing the research concept: "
+        f"A cinematic horizontal banner representing the research concept: "
         f"\"{paper['title']}\". "
-        "Visual style: deep cosmic dark background (near-black with deep blue undertones), "
-        "glowing abstract data structures, causal graph nodes rendered as constellations "
-        "connected by luminous edges, flowing gradient light in violet and teal. "
-        "Photorealistic yet surreal. Dramatic cinematic lighting. "
-        "No text. No labels. No people. No faces. "
-        "Pure abstract conceptual scientific art. "
-        "16:9 landscape orientation. Ultra high detail. "
-        "Mood: contemplative, intelligent, beautiful."
+        "IMPORTANT: Place the key visual element centered horizontally, "
+        "concentrated in the upper-center third of the frame. "
+        "The bottom third should fade into deep darkness. "
+        "Style: deep cosmic dark background, glowing abstract data nodes "
+        "as constellations with luminous connecting edges, violet and teal "
+        "gradient light. Photorealistic, surreal, no text, no labels, "
+        "no people, no faces. Ultra high detail. "
+        "Mood: mysterious, intelligent, like a window into an idea."
     )
 
     response = client.images.generate(

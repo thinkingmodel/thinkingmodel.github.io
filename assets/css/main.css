@@ -4221,6 +4221,17 @@ tweet a {
   margin: 1.5rem 0;
 }
 
+.paper-card__hook {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--ink-mid);
+  border-left: 2px solid var(--nebula);
+  padding-left: 12px;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+}
+
 /* AI Summary */
 .paper-card__summary {
   font-family: 'Crimson Pro', serif;
@@ -4568,35 +4579,46 @@ tweet a {
   line-height: 1.6;
 }
 
-/* Image placeholder — minimal separator strip when no image yet */
-.paper-card__image-placeholder {
+/* Curiosity Strip image container */
+.paper-image-strip {
   width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--nebula, #a78bfa) 0%, var(--pulsar, #7b61ff) 100%);
-  opacity: 0.35;
-}
-
-.paper-card__placeholder-text {
-  display: none;
-}
-
-/* Image wrap for generated images */
-.paper-card__image-wrap {
-  width: 100%;
+  height: 120px;
+  /* tall enough to intrigue, small enough to not dominate */
   overflow: hidden;
-  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+  position: relative;
+  border-radius: 6px 6px 0 0;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
 }
 
-.paper-card__image {
+.paper-image-strip img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 220px;
+  /* taller than container so we show the most interesting middle */
   object-fit: cover;
+  object-position: center 30%;
+  /* show upper-middle of image, avoids empty dark corners */
   display: block;
-  transition: transform 0.4s ease;
+  filter: saturate(1.15) brightness(0.85);
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
-.paper-card:hover .paper-card__image {
-  transform: scale(1.02);
+.paper-card:hover .paper-image-strip img,
+.paper-image-strip:hover img {
+  transform: scale(1.04) translateY(-6px);
+  filter: saturate(1.3) brightness(0.95);
+}
+
+/* Subtle shimmer overlay to tie image into card background */
+.paper-image-strip::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(167, 139, 250, 0.08) 0%,
+      transparent 60%,
+      rgba(45, 212, 191, 0.05) 100%);
+  pointer-events: none;
 }
 
 /* Summary pending — clean subtle text */

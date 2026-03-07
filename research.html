@@ -22,13 +22,25 @@ permalink: /research.html
 
             {% comment %} Image — only rendered when generated {% endcomment %}
             {% if paper.image_path and paper.image_path != "" %}
-            <div class="paper-card__image-wrap">
+            <div class="paper-image-strip">
                 <img src="{{ paper.image_path | relative_url }}" alt="Visual representation of {{ paper.title }}"
-                    class="paper-card__image fade-in" loading="lazy" />
+                    loading="lazy" decoding="async" />
             </div>
             {% else %}
-            <div class="paper-card__image-placeholder">
-                <span class="paper-card__placeholder-text">AI image pending generation</span>
+            <div class="paper-image-strip paper-image-placeholder">
+                <div style="
+                    width:100%; 
+                    height:120px; 
+                    background: linear-gradient(135deg, var(--elevated) 0%, var(--overlay) 100%);
+                    display:flex; 
+                    align-items:center; 
+                    justify-content:center;
+                    font-family: 'DM Mono', monospace;
+                    font-size: 0.7rem;
+                    color: var(--ink-low);
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                ">Generating visual...</div>
             </div>
             {% endif %}
 
@@ -54,7 +66,10 @@ permalink: /research.html
 
                 <hr class="paper-card__rule">
 
-
+                {% comment %} Curiosity hook — styled question above the summary {% endcomment %}
+                {% if paper.curiosity_hook and paper.curiosity_hook != "" %}
+                <p class="paper-card__hook">{{ paper.curiosity_hook }}</p>
+                {% endif %}
 
                 {% comment %} Summary — only show when generated {% endcomment %}
                 {% if paper.summary and paper.summary != "" %}
