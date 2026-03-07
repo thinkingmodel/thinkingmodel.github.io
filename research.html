@@ -14,26 +14,7 @@ permalink: /research.html
         <div class="hero-line" style="margin-top: 2rem;"></div>
     </div>
 
-    <div class="research-stats">
-        <span class="research-stat">
-            <span class="research-stat__num">{{ site.data.papers.papers | size }}</span>
-            <span class="research-stat__label">Publications</span>
-        </span>
-        <span class="research-stat-sep">·</span>
-        <span class="research-stat">
-            <span class="research-stat__num" id="total-cites">—</span>
-            <span class="research-stat__label">Citations</span>
-        </span>
-        <span class="research-stat-sep">·</span>
-        <span class="research-stat">
-            <span class="research-stat__num">2023–2025</span>
-            <span class="research-stat__label">Active Years</span>
-        </span>
-        <a href="https://scholar.google.com/citations?user=mPkYJu8AAAAJ" target="_blank" rel="noopener noreferrer"
-            class="research-scholar-btn">
-            View on Scholar →
-        </a>
-    </div>
+
 
     <div id="papers-container">
         {% for paper in site.data.papers.papers %}
@@ -73,10 +54,7 @@ permalink: /research.html
 
                 <hr class="paper-card__rule">
 
-                {% comment %} Curiosity hook — styled question above the summary {% endcomment %}
-                {% if paper.curiosity_hook and paper.curiosity_hook != "" %}
-                <p class="paper-card__hook">{{ paper.curiosity_hook }}</p>
-                {% endif %}
+
 
                 {% comment %} Summary — only show when generated {% endcomment %}
                 {% if paper.summary and paper.summary != "" %}
