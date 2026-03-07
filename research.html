@@ -71,15 +71,7 @@ permalink: /research.html
                 <p class="paper-card__hook">{{ paper.curiosity_hook }}</p>
                 {% endif %}
 
-                {% comment %} Summary — only show when generated {% endcomment %}
-                {% if paper.summary and paper.summary != "" %}
-                <div class="paper-card__summary is-visible">
-                    {{ paper.summary | newline_to_br }}
-                </div>
                 <hr class="paper-card__rule">
-                {% else %}
-                <p class="paper-card__summary-pending">AI summary coming soon.</p>
-                {% endif %}
 
                 <div class="paper-card__actions">
 

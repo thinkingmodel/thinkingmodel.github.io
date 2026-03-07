@@ -16,64 +16,9 @@ papers:
   domain_color: '#a78bfa'
   link: https://link.springer.com/chapter/10.1007/978-3-032-05962-8_24
   arxiv: null
-  has_ai_content: true
-  summary: 'Predicting how an individual would respond to a specific treatment — without
-    actually administering it — is one of the hardest problems in causal inference.
-    KANITE addresses this by bringing Kolmogorov-Arnold Networks (KANs) into the treatment
-    effect estimation arena. Unlike traditional neural networks, KANs place learnable
-    activation functions on edges rather than nodes, giving them far stronger function
-    approximation properties. This architectural choice allows the model to decompose
-    complex multi-variable causal relationships into simpler, interpretable components.
-    The authors benchmark KANITE against leading ITE baselines across multiple datasets,
-    demonstrating consistent accuracy gains. Confounding — where treatment assignment
-    is correlated with outcomes — is a central challenge that KANITE handles through
-    its representation learning design. Presented at ECML PKDD 2025, this work pushes
-    the frontier of how deep learning interacts with causal reasoning. Practical applications
-    range from personalized medicine to policy evaluation, wherever knowing the counterfactual
-    matters. The work signals a broader turn in the field: classical causal inference
-    is converging with modern network architectures. KANITE is both a technical contribution
-    and a proof of concept that richer function spaces lead to richer causal insight.'
   image_path: /assets/research/images/kanite.png
   curiosity_hook: Can a new kind of neural network teach us to predict exactly how
     any one person would respond to a treatment before it is ever given?
-- id: network-causal
-  title: Estimation of Individual Causal Effects in Network Setup for Multiple Treatments
-  authors:
-  - name: Abhinav Thorat
-    self: true
-  - name: Ravi Kolla
-    self: false
-  - name: Niranjan Pedanekar
-    self: false
-  - name: Naoyuki Onoe
-    self: false
-  venue: AAAI 2024 - GCLR Workshop
-  year: 2023
-  domain: Causal Inference
-  domain_color: '#a78bfa'
-  link: https://arxiv.org/abs/2312.11573
-  arxiv: https://arxiv.org/abs/2312.11573
-  has_ai_content: true
-  summary: 'Most causal inference methods assume individuals act independently — an
-    assumption that collapses the moment you introduce social networks, market dynamics,
-    or any interconnected system. This paper tackles the problem of estimating individual
-    causal effects when both multiple treatments and network interference are present
-    simultaneously. The core challenge: a treatment applied to one node in a graph
-    can ripple outward and shift outcomes for its neighbors. The authors propose a
-    graph-based framework combining network structure with multi-treatment causal
-    modeling, leveraging graph neural networks to capture these interference patterns.
-    Validated on synthetic and semi-synthetic benchmarks, the method outperforms baselines
-    that ignore network effects. The work has immediate relevance to public health
-    interventions, social media influence modeling, and advertising experiments where
-    spillovers are unavoidable. Presented at the AAAI 2024 GCLR Workshop, it represents
-    a meaningful step toward causal inference that matches how the real world is actually
-    wired. The framework handles an unbounded number of treatment combinations without
-    combinatorial explosion. It opens practical pathways for A/B testing in networked
-    systems where independence assumptions are simply false. This research places
-    individual-level causal understanding at the center of complex system analysis.'
-  image_path: /assets/research/images/network-causal.png
-  curiosity_hook: Does understanding the network effect between humans help us analyse
-    cause and effect across multiple real-world scenarios?
 - id: image-causal
   title: 'I See, Therefore I Do: Estimating Causal Effects for Image Treatments'
   authors:
@@ -89,21 +34,6 @@ papers:
   domain_color: '#a78bfa'
   link: https://arxiv.org/abs/2412.06810
   arxiv: https://arxiv.org/abs/2412.06810
-  has_ai_content: true
-  summary: 'What happens when the treatment itself is an image — a photograph, a product
-    visual, an advertisement? Standard causal inference assumes treatments are discrete
-    or scalar; this paper breaks that assumption. The authors tackle the under-explored
-    problem of estimating causal effects when the intervention is a high-dimensional
-    visual stimulus. Their framework encodes images into representation spaces that
-    preserve causal structure, then applies treatment effect estimation on top of
-    these embeddings. This bridges two usually separate disciplines: computer vision
-    and causal reasoning. The work has immediate and significant applications in e-commerce,
-    advertising, and medical imaging, where visual inputs drive decisions. Imagine
-    quantifying how much a product''s image — not just its price — causes a purchase.
-    Results demonstrate that ignoring the causal structure of image treatments leads
-    to badly biased estimates. The paper is one of the first rigorous treatments of
-    visual causality at the individual level. It opens a new research direction at
-    the intersection of perception and counterfactual reasoning.'
   image_path: /assets/research/images/image-causal.png
   curiosity_hook: What if a photograph itself is the treatment and we could measure
     exactly how much it changed your decision?
@@ -126,22 +56,26 @@ papers:
   domain_color: '#2dd4bf'
   link: https://arxiv.org/abs/2510.08626
   arxiv: https://arxiv.org/abs/2510.08626
-  has_ai_content: true
-  summary: 'Most recommender systems optimize for what a user clicked — not why. This
-    paper proposes a fundamentally different framing: model the user''s latent thought
-    space to understand the intent behind their behavior. The authors introduce a
-    thought-space recommendation framework powered by small language models, deliberately
-    avoiding the computational overhead of frontier LLMs without sacrificing quality.
-    By grounding recommendations in inferred motivations rather than raw interaction
-    history, the system can generalize better and adapt faster to new users. Experiments
-    show that small, properly trained language models can match or exceed the recommendation
-    accuracy of much larger models when thought-space representations are used. The
-    work challenges the assumption that bigger models are always better for complex
-    reasoning tasks. Applications span content platforms, e-commerce, and any domain
-    where user intent is richer than their click history suggests. The "thought-space"
-    abstraction itself is a novel contribution — a structured intermediate representation
-    bridging user queries and item semantics. This research points toward recommender
-    systems that are not just accurate but genuinely interpretable.'
   image_path: /assets/research/images/thought-space.png
   curiosity_hook: What if a recommendation system could understand not what you clicked
     but why you wanted it in the first place?
+- id: network-causal
+  title: Estimation of Individual Causal Effects in Network Setup for Multiple Treatments
+  authors:
+  - name: Abhinav Thorat
+    self: true
+  - name: Ravi Kolla
+    self: false
+  - name: Niranjan Pedanekar
+    self: false
+  - name: Naoyuki Onoe
+    self: false
+  venue: AAAI 2024 - GCLR Workshop
+  year: 2023
+  domain: Causal Inference
+  domain_color: '#a78bfa'
+  link: https://arxiv.org/abs/2312.11573
+  arxiv: https://arxiv.org/abs/2312.11573
+  image_path: /assets/research/images/network-causal.png
+  curiosity_hook: Does understanding the network effect between humans help us analyse
+    cause and effect across multiple real-world scenarios?
