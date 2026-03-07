@@ -4556,23 +4556,16 @@ tweet a {
    RESEARCH PAGE — PENDING STATES & NEW ELEMENTS
    ========================================================= */
 
-/* Image placeholder when AI image hasn't been generated yet */
+/* Image placeholder — minimal separator strip when no image yet */
 .paper-card__image-placeholder {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  background: var(--elevated, #0d1117);
-  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 3px;
+  background: linear-gradient(90deg, var(--nebula, #a78bfa) 0%, var(--pulsar, #7b61ff) 100%);
+  opacity: 0.35;
 }
 
 .paper-card__placeholder-text {
-  font-family: 'DM Mono', 'Courier New', monospace;
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--ink-ghost, rgba(255, 255, 255, 0.18));
+  display: none;
 }
 
 /* Image wrap for generated images */
@@ -4594,26 +4587,13 @@ tweet a {
   transform: scale(1.02);
 }
 
-/* Summary pending state */
+/* Summary pending — clean subtle text */
 .paper-card__summary-pending {
-  font-family: 'DM Mono', 'Courier New', monospace;
-  font-size: 0.65rem;
-  color: var(--ink-ghost, rgba(255, 255, 255, 0.25));
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--ink-ghost, rgba(255, 255, 255, 0.2));
   margin: 0 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.paper-card__summary-pending code {
-  background: var(--elevated, #0d1117);
-  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
-  padding: 0.4rem 0.75rem;
-  border-radius: 3px;
-  color: var(--pulsar, #7b61ff);
-  font-size: 0.60rem;
-  display: block;
-  user-select: all;
+  letter-spacing: 0.01em;
 }
 
 /* Secondary arxiv button (teal accent) */
