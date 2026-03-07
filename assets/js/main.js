@@ -931,68 +931,67 @@
       }
     }
   }
-}
 
   /* ─────────────────────────────────────────
      ABOUT PAGE JS
   ───────────────────────────────────────── */
   function initAboutParallax() {
-  const aboutPhoto = document.querySelector('.about-photo');
+    const aboutPhoto = document.querySelector('.about-photo');
 
-  if (aboutPhoto) {
-    let ticking = false;
+    if (aboutPhoto) {
+      let ticking = false;
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrolled = window.scrollY;
-          const rate = scrolled * 0.08; // very subtle
-          const hero = aboutPhoto.closest('.about-hero');
-          if (hero) {
-            const heroBottom = hero.getBoundingClientRect().bottom + scrolled;
-            if (scrolled < heroBottom) {
-              aboutPhoto.style.transform = `translateY(${rate}px)`;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+            const rate = scrolled * 0.08; // very subtle
+            const hero = aboutPhoto.closest('.about-hero');
+            if (hero) {
+              const heroBottom = hero.getBoundingClientRect().bottom + scrolled;
+              if (scrolled < heroBottom) {
+                aboutPhoto.style.transform = `translateY(${rate}px)`;
+              }
             }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
   }
-}
 
-/* ─────────────────────────────────────────
-   BOOT
-───────────────────────────────────────── */
-function boot() {
-  initMenu();
-  initSubscribeModal();
-  initNavHover();
-  initSearch();
-  initArchiveAndTags();
-  initHeroCanvas();
-  initStarfield();
-  initCursorTrail();
-  initCardTilt();
-  initMagneticButtons();
-  initScrollReveal();
-  initReadingProgressBar();
-  initStickyHeader();
-  initCopyrightYear();
-  initCopyCodeButtons();
-  initCardNumbers();
-  initTOC();
-  initLazyImages();
-  initBackToTop();
-  initPostLayout();
-  initAboutParallax();
-}
+  /* ─────────────────────────────────────────
+     BOOT
+  ───────────────────────────────────────── */
+  function boot() {
+    initMenu();
+    initSubscribeModal();
+    initNavHover();
+    initSearch();
+    initArchiveAndTags();
+    initHeroCanvas();
+    initStarfield();
+    initCursorTrail();
+    initCardTilt();
+    initMagneticButtons();
+    initScrollReveal();
+    initReadingProgressBar();
+    initStickyHeader();
+    initCopyrightYear();
+    initCopyCodeButtons();
+    initCardNumbers();
+    initTOC();
+    initLazyImages();
+    initBackToTop();
+    initPostLayout();
+    initAboutParallax();
+  }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', boot);
-} else {
-  boot();
-}
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 
-}) ();
+})();

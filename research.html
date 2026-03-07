@@ -1,0 +1,111 @@
+---
+layout: default
+title: Research
+permalink: /research.html
+---
+<div class="research-page">
+    <div class="header-page">
+        <div class="hero-eyebrow">RESEARCH</div>
+        <h1 class="hero-title">Published Work</h1>
+        <p class="hero-tagline"
+            style="font-family: 'Crimson Pro', serif; font-style: italic; color: var(--ink-mid); font-size: 1.4rem; margin-top: 1rem;">
+            Causal inference, counterfactual reasoning, and the question of why.
+        </p>
+        <div class="hero-line" style="margin-top: 2rem;"></div>
+    </div>
+
+    <div class="research-stats">
+        <span class="research-stat">
+            <span class="research-stat__num">3</span>
+            <span class="research-stat__label">Publications</span>
+        </span>
+        <span class="research-stat-sep">·</span>
+        <span class="research-stat">
+            <span class="research-stat__num" id="total-cites">—</span>
+            <span class="research-stat__label">Citations</span>
+        </span>
+        <span class="research-stat-sep">·</span>
+        <span class="research-stat">
+            <span class="research-stat__num">2024–2025</span>
+            <span class="research-stat__label">Active Years</span>
+        </span>
+        <a href="https://scholar.google.com/citations?user=mPkYJu8AAAAJ" target="_blank" rel="noopener noreferrer"
+            class="research-scholar-btn">
+            View on Scholar →
+        </a>
+    </div>
+
+    <div id="papers-container">
+        {% for paper in site.data.papers %}
+        <div class="paper-card" id="paper-{{ paper.id }}">
+
+            {% if paper.imageName and paper.imageName != "" %}
+            <img src="{{ '/assets/img/research/' | append: paper.imageName | relative_url }}" alt="{{ paper.title }}"
+                class="paper-card__image fade-in" />
+            {% else %}
+            <div class="paper-image-placeholder">
+                <div class="paper-image-skeleton"></div>
+            </div>
+            {% endif %}
+
+            <div class="paper-card__body">
+                <div class="paper-card__meta">
+                    <span class="paper-card__venue">{{ paper.venue }}</span>
+                    <span class="paper-card__domain" style="--domain-color: {{ paper.domainColor }}">{{ paper.domain
+                        }}</span>
+                </div>
+                <h2 class="paper-card__title">{{ paper.title }}</h2>
+
+                {% assign authors_html = paper.authors | replace: 'Abhinav Thorat', '<span class="self">Abhinav
+                    Thorat</span>' %}
+                <div class="paper-card__authors">{{ authors_html }}</div>
+
+                <hr class="paper-card__rule">
+
+                <div class="paper-card__summary is-visible">
+                    {% if paper.summary and paper.summary != "" %}
+                    {{ paper.summary | newline_to_br }}
+                    {% else %}
+                    <p
+                        style="color: var(--ink-ghost); font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6;">
+                        [ AI Summary Pending Generation ]
+                    </p>
+                    {% endif %}
+                </div>
+
+                <div class="paper-card__actions">
+                    {% if paper.link %}
+                    <a href="{{ paper.link }}" target="_blank" class="paper-card__action"><span>Read Paper →</span></a>
+                    {% endif %}
+
+                    {% if paper.arxiv %}
+                    <a href="{{ paper.arxiv }}" target="_blank" class="paper-card__action"><span>arXiv →</span></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<!-- Real-time citations fetcher -->
+<script>
+    async function fetchCitations() {
+        try {
+            const res = await fetch('https://corsproxy.io/?' + encodeURIComponent('https://scholar.google.com/citations?user=mPkYJu8AAAAJ&hl=en'));
+            const html = await res.text();
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            let total = 0;
+            doc.querySelectorAll('.gsc_a_tr').forEach(row => {
+                const citeStr = row.querySelector('.gsc_a_ac')?.textContent?.trim() || "0";
+                total += parseInt(citeStr) || 0;
+            });
+            document.getElementById('total-cites').textContent = total > 0 ? total : '—';
+        } catch (e) {
+            // Fallback gracefully 
+            document.getElementById('total-cites').textContent = '—';
+        }
+    }
+    document.addEventListener('DOMContentLoaded', fetchCitations);
+</script>

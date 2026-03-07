@@ -1,0 +1,41 @@
+- id: kanite
+  title: "KANITE: Kolmogorov-Arnold Networks for ITE Estimation"
+  authors: "Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar"
+  venue: "ECML PKDD 2025"
+  year: 2025
+  domain: "Causal Inference"
+  domainColor: "#a78bfa"
+  abstract: "Proposes new ITE estimation algorithms built on Kolmogorov-Arnold Networks for individual treatment effect estimation in causal inference, addressing confounding factors and treatment assignment bias."
+  link: "https://link.springer.com/chapter/10.1007/978-3-032-05962-8_24"
+  arxiv: null
+  scholarId: "mPkYJu8AAAAJ"
+  summary: ""
+  imageName: ""
+
+- id: network-causal
+  title: "Estimation of Individual Causal Effects in Network Setup for Multiple Treatments"
+  authors: "Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar, Naoyuki Onoe"
+  venue: "AAAI 2024 — GCLR Workshop"
+  year: 2024
+  domain: "Causal Inference"
+  domainColor: "#a78bfa"
+  abstract: "Addresses estimation of individual causal effects in networked environments with multiple treatments, tackling interference between units and the complexity of multi-treatment causal graphs."
+  link: "https://arxiv.org/abs/2312.11573"
+  arxiv: "https://arxiv.org/abs/2312.11573"
+  scholarId: "mPkYJu8AAAAJ"
+  summary: ""
+  imageName: ""
+
+- id: image-causal
+  title: "I See, Therefore I Do: Estimating Causal Effects for Image Treatments"
+  authors: "Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar"
+  venue: "arXiv 2024"
+  year: 2024
+  domain: "Causal Inference"
+  domainColor: "#a78bfa"
+  abstract: "Extends causal inference to visual domains, treating images as treatments and estimating their causal effects — bridging computer vision and causal reasoning for real-world decision making."
+  link: "https://arxiv.org/abs/2412.06810"
+  arxiv: "https://arxiv.org/abs/2412.06810"
+  scholarId: "mPkYJu8AAAAJ"
+  summary: ""
+  imageName: ""

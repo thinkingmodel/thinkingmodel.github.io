@@ -12,26 +12,13 @@
     </a>
 
     <!-- Right: Desktop Navigation -->
-    <nav class="nav-desktop" aria-label="Main Navigation">
-      <a href="{{ relativebase }}archive.html" class="nav-link" data-text="All Posts">All Posts</a>
-      <a href="{{ relativebase }}tags.html" class="nav-link" data-text="Tags">Tags</a>
-      <a href="{{ relativebase }}about.html" class="nav-link" data-text="About">About</a>
-
-      <!-- Theme/Reading mode toggle -->
-      <button class="nav-toggle-mode" aria-label="Toggle Reading Mode" title="Reading Mode">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" style="width:16px;height:16px;">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-      </button>
+    <nav class="nav-desktop site-nav" aria-label="Main Navigation">
+      <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}"
+        data-text="Articles">Articles</a>
+      <a href="{{ '/research.html' | relative_url }}"
+        class="nav-link {% if page.url contains 'research' %}active{% endif %}" data-text="Research">Research</a>
+      <a href="{{ '/about.html' | relative_url }}" class="nav-link {% if page.url contains 'about' %}active{% endif %}"
+        data-text="About">About</a>
 
       <!-- Glowing Subscribe CTA -->
       <button class="nav-btn-subscribe subscribe-trigger">Subscribe</button>
@@ -49,9 +36,9 @@
 <div class="mobile-menu-overlay" aria-hidden="true">
   <nav class="mobile-nav-links">
     <a href="{{ relativebase }}">Home</a>
-    <a href="{{ relativebase }}archive.html">All Posts</a>
-    <a href="{{ relativebase }}tags.html">Tags</a>
-    <a href="{{ relativebase }}about.html">About</a>
+    <a href="{{ '/' | relative_url }}">Articles</a>
+    <a href="{{ '/research.html' | relative_url }}">Research</a>
+    <a href="{{ '/about.html' | relative_url }}">About</a>
     <button class="mobile-nav-subscribe subscribe-trigger">Subscribe</button>
   </nav>
 </div>
