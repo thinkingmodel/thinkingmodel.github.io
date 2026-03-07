@@ -4551,3 +4551,98 @@ tweet a {
     max-width: 320px;
   }
 }
+
+/* =========================================================
+   RESEARCH PAGE — PENDING STATES & NEW ELEMENTS
+   ========================================================= */
+
+/* Image placeholder when AI image hasn't been generated yet */
+.paper-card__image-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--elevated, #0d1117);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paper-card__placeholder-text {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-ghost, rgba(255, 255, 255, 0.18));
+}
+
+/* Image wrap for generated images */
+.paper-card__image-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+}
+
+.paper-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.paper-card:hover .paper-card__image {
+  transform: scale(1.02);
+}
+
+/* Summary pending state */
+.paper-card__summary-pending {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  font-size: 0.65rem;
+  color: var(--ink-ghost, rgba(255, 255, 255, 0.25));
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.paper-card__summary-pending code {
+  background: var(--elevated, #0d1117);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+  padding: 0.4rem 0.75rem;
+  border-radius: 3px;
+  color: var(--pulsar, #7b61ff);
+  font-size: 0.60rem;
+  display: block;
+  user-select: all;
+}
+
+/* Secondary arxiv button (teal accent) */
+.paper-card__action--secondary {
+  border-color: rgba(45, 212, 191, 0.35) !important;
+  color: #2dd4bf !important;
+}
+
+.paper-card__action--secondary:hover {
+  background: rgba(45, 212, 191, 0.08) !important;
+  border-color: rgba(45, 212, 191, 0.6) !important;
+}
+
+/* Disabled / link coming soon */
+.paper-card__action--disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+  border-radius: 4px;
+  color: var(--ink-ghost, rgba(255, 255, 255, 0.18));
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.06em;
+}
+
+/* Author self highlight (Abhinav Thorat) */
+.author-self {
+  color: var(--nebula, #a78bfa);
+  font-weight: 500;
+}

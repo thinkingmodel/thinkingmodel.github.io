@@ -1,0 +1,64 @@
+Generating summary for 'KANITE: Kolmogorov-Arnold Networks for ITE Estimation'...
+ -> Error generating summary: 429 Client Error: Too Many Requests for url: https://api.openai.com/v1/chat/completions
+ -> Response body: {
+    "error": {
+        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
+        "type": "insufficient_quota",
+        "param": null,
+        "code": "insufficient_quota"
+    }
+}
+
+Generating image for 'KANITE: Kolmogorov-Arnold Networks for ITE Estimation'...
+ -> Error generating image: 400 Client Error: Bad Request for url: https://api.openai.com/v1/images/generations
+ -> Response body: {
+  "error": {
+    "message": "Billing hard limit has been reached",
+    "type": "image_generation_user_error",
+    "param": null,
+    "code": "billing_hard_limit_reached"
+  }
+}
+Generating summary for 'Estimation of Individual Causal Effects in Network Setup for Multiple Treatments'...
+ -> Error generating summary: 429 Client Error: Too Many Requests for url: https://api.openai.com/v1/chat/completions
+ -> Response body: {
+    "error": {
+        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
+        "type": "insufficient_quota",
+        "param": null,
+        "code": "insufficient_quota"
+    }
+}
+
+Generating image for 'Estimation of Individual Causal Effects in Network Setup for Multiple Treatments'...
+ -> Error generating image: 400 Client Error: Bad Request for url: https://api.openai.com/v1/images/generations
+ -> Response body: {
+  "error": {
+    "message": "Billing hard limit has been reached",
+    "type": "image_generation_user_error",
+    "param": null,
+    "code": "billing_hard_limit_reached"
+  }
+}
+Generating summary for 'I See, Therefore I Do: Estimating Causal Effects for Image Treatments'...
+ -> Error generating summary: 429 Client Error: Too Many Requests for url: https://api.openai.com/v1/chat/completions
+ -> Response body: {
+    "error": {
+        "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.",
+        "type": "insufficient_quota",
+        "param": null,
+        "code": "insufficient_quota"
+    }
+}
+
+Generating image for 'I See, Therefore I Do: Estimating Causal Effects for Image Treatments'...
+ -> Error generating image: 400 Client Error: Bad Request for url: https://api.openai.com/v1/images/generations
+ -> Response body: {
+  "error": {
+    "message": "Billing hard limit has been reached",
+    "type": "image_generation_user_error",
+    "param": null,
+    "code": "billing_hard_limit_reached"
+  }
+}
+All papers already have summaries and images. Nothing to do.
