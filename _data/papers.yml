@@ -39,3 +39,17 @@
   scholarId: "mPkYJu8AAAAJ"
   summary: ""
   imageName: ""
+
+- id: conceptual-causal
+  title: "A Conceptual Framework to Unify Estimation of Individual Causal Effects in Multiple Treatments"
+  authors: "Abhinav Thorat, Ravi Kolla, Niranjan Pedanekar, Naoyuki Onoe"
+  venue: "AAAI 2024 — GCLR"
+  year: 2024
+  domain: "Causal Inference"
+  domainColor: "#a78bfa"
+  abstract: "Introduces a foundational framework combining multiple treatments into a unified causal space, laying the conceptual groundwork for multi-treatment estimation setups."
+  link: null
+  arxiv: null
+  scholarId: "mPkYJu8AAAAJ"
+  summary: ""
+  imageName: ""
