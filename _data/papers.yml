@@ -2,8 +2,6 @@ papers:
 - id: kanite
   title: 'KANITE: Kolmogorov-Arnold Networks for ITE Estimation'
   authors:
-  - name: Eeshan Mehendale
-    self: false
   - name: Abhinav Thorat
     self: true
   - name: Ravi Kolla
@@ -40,9 +38,9 @@ papers:
 - id: thought-space
   title: 'From What to Why: Thought-Space Recommendation with Small Language Models'
   authors:
-  - name: Priyanka Biswas
+  - name: Prosenjit Biswas
     self: false
-  - name: Patar Shaik
+  - name: Pervez Shaik
     self: false
   - name: Abhinav Thorat
     self: true
