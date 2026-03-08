@@ -2807,19 +2807,14 @@ tweet a {
 /* --- Filter & Sort Bar --- */
 .tag-filter-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
   padding: 1rem 0;
   border-bottom: 1px solid rgba(167, 139, 250, 0.15);
   margin-bottom: 3rem;
-  position: sticky;
-  top: 60px;
-  /* Below sticky header */
-  background: rgba(8, 8, 15, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  position: relative;
   z-index: 10;
 }
 
@@ -4659,4 +4654,142 @@ tweet a {
 .author-self {
   color: var(--nebula, #a78bfa);
   font-weight: 500;
+}
+
+/* =========================================================
+   TAGS PAGE - FLOATING PLANETS
+   ========================================================= */
+.planets-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Re-enable pointer events on individual planets only */
+.tag-planet {
+  pointer-events: all;
+  position: fixed;
+  border-radius: 50%;
+  background: var(--planet-gradient);
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
+  box-shadow:
+    0 0 4px color-mix(in srgb, var(--planet-color) 80%, transparent),
+    0 0 16px color-mix(in srgb, var(--planet-color) 40%, transparent),
+    0 0 40px color-mix(in srgb, var(--planet-color) 12%, transparent);
+}
+
+/* Specular highlight — light reflection top-left */
+.tag-planet::before {
+  content: '';
+  position: absolute;
+  top: 12%;
+  left: 14%;
+  width: 30%;
+  height: 20%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse,
+      rgba(255, 255, 255, 0.28) 0%,
+      transparent 100%);
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+/* Atmospheric band */
+.tag-planet::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+.tag-planet[data-count="1"] {
+  width: 38px;
+  height: 38px;
+}
+
+.tag-planet[data-count="2"] {
+  width: 48px;
+  height: 48px;
+}
+
+.tag-planet[data-count="3"] {
+  width: 58px;
+  height: 58px;
+}
+
+.tag-planet:hover {
+  transform: scale(1.22);
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--planet-color) 100%, transparent),
+    0 0 32px color-mix(in srgb, var(--planet-color) 65%, transparent),
+    0 0 80px color-mix(in srgb, var(--planet-color) 28%, transparent);
+  z-index: 100 !important;
+}
+
+.planet-label {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--elevated, #131330);
+  border: 1px solid var(--planet-color);
+  color: var(--ink-high, #d4cef5);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  padding: 3px 10px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 101;
+}
+
+.planet-label em {
+  font-style: normal;
+  opacity: 0.4;
+  margin-left: 5px;
+}
+
+.tag-planet:hover .planet-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 640px) {
+  .planets-layer {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    padding: 2rem 1rem;
+    pointer-events: all;
+  }
+
+  .tag-planet {
+    position: static;
+    transform: none !important;
+  }
+
+  .planet-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }

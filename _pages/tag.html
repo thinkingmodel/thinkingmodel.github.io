@@ -7,14 +7,43 @@ infinite: yes
 {% include calculate_relative_base.html %}
 {% include get-site-tags.html %}
 
+<div class="planets-layer" id="planetsLayer">
+  {% assign color_mappings = "artificial intelligence:#a78bfa|radial-gradient(circle at 35% 35%, #c4b0ff, #a78bfa 50%, #1a0f3a),machine learning:#a78bfa|radial-gradient(circle at 35% 35%, #c4b0ff, #a78bfa 50%, #1a0f3a),neural networks:#a78bfa|radial-gradient(circle at 35% 35%, #c4b0ff, #a78bfa 50%, #1a0f3a),large language model:#a78bfa|radial-gradient(circle at 35% 35%, #c4b0ff, #a78bfa 50%, #1a0f3a),generative models:#a78bfa|radial-gradient(circle at 35% 35%, #c4b0ff, #a78bfa 50%, #1a0f3a),astronomy:#2dd4bf|radial-gradient(circle at 35% 35%, #7ffff0, #2dd4bf 50%, #0a2f2c),astrophysics:#2dd4bf|radial-gradient(circle at 35% 35%, #7ffff0, #2dd4bf 50%, #0a2f2c),cosmology:#2dd4bf|radial-gradient(circle at 35% 35%, #7ffff0, #2dd4bf 50%, #0a2f2c),philosophy:#fbbf24|radial-gradient(circle at 35% 35%, #ffe599, #fbbf24 50%, #2d1f00),paradox:#fbbf24|radial-gradient(circle at 35% 35%, #ffe599, #fbbf24 50%, #2d1f00),kafkaesque:#fbbf24|radial-gradient(circle at 35% 35%, #ffe599, #fbbf24 50%, #2d1f00),art:#f472b6|radial-gradient(circle at 35% 35%, #ffadd6, #f472b6 50%, #2d0a1a),book:#f472b6|radial-gradient(circle at 35% 35%, #ffadd6, #f472b6 50%, #2d0a1a),creativity:#f472b6|radial-gradient(circle at 35% 35%, #ffadd6, #f472b6 50%, #2d0a1a),psychology:#fb923c|radial-gradient(circle at 35% 35%, #ffc89a, #fb923c 50%, #2d1200),behaviour:#fb923c|radial-gradient(circle at 35% 35%, #ffc89a, #fb923c 50%, #2d1200),sociology:#fb923c|radial-gradient(circle at 35% 35%, #ffc89a, #fb923c 50%, #2d1200),politics:#9189c4|radial-gradient(circle at 35% 35%, #b8b0e8, #9189c4 50%, #16143a),history:#9189c4|radial-gradient(circle at 35% 35%, #b8b0e8, #9189c4 50%, #16143a),copyright:#9189c4|radial-gradient(circle at 35% 35%, #b8b0e8, #9189c4 50%, #16143a)" | split: "," %}
+
+  {% for tag in site.tags %}
+    {% assign tag_name = tag[0] %}
+    {% assign tag_count = tag[1] | size %}
+    {% assign clean_tag_name = tag_name | downcase %}
+
+    {% assign tag_color = "#9189c4" %}
+    {% assign tag_gradient = "radial-gradient(circle at 35% 35%, #b8b0e8, #9189c4 50%, #16143a)" %}
+    {% for mapping in color_mappings %}
+      {% assign parts = mapping | split: ":" %}
+      {% if parts[0] == clean_tag_name %}
+        {% assign styles = parts[1] | split: "|" %}
+        {% assign tag_color = styles[0] %}
+        {% assign tag_gradient = styles[1] %}
+      {% endif %}
+    {% endfor %}
+
+    <a class="tag-planet"
+       href="./tag.html?tag={{ tag_name | url_encode }}"
+       style="--planet-color: {{ tag_color }};
+              --planet-gradient: {{ tag_gradient }};"
+       data-count="{{ tag_count }}"
+       data-name="{{ tag_name }}">
+      <span class="planet-label">
+        {{ tag_name }}<em>{{ tag_count }}</em>
+      </span>
+    </a>
+  {% endfor %}
+</div>
+
 <div class="archive-container wrapper">
 	<!-- Interactive Starfield Canvas -->
 	<canvas id="starfield-canvas" aria-hidden="true"></canvas>
 
 	<div class="tag-filter-bar" style="margin-top: 2rem;">
-		<div class="tag-cloud-wrapper">
-			{% include tag_cloud.html %}
-		</div>
 
 		<div class="sort-controls">
 			<button class="sort-btn active" data-sort="newest" data-cursor="link">Newest</button>

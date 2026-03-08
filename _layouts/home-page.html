@@ -28,7 +28,36 @@ layout: default
     {% include pagination.html %}
     <div class="center-tags">
       {% include get-site-tags.html %}
-      {% include tag_cloud.html %}
+
+      <div class="signal-bar-section">
+        <p class="signal-bar-label">Transmitting on</p>
+        <div class="signal-bar-field" id="signalBarField">
+          {% assign tag_colors = "artificial intelligence:#a78bfa,machine learning:#a78bfa,neural networks:#a78bfa,large language model:#a78bfa,generative models:#a78bfa,astronomy:#2dd4bf,astrophysics:#2dd4bf,cosmology:#2dd4bf,philosophy:#fbbf24,paradox:#fbbf24,kafkaesque:#fbbf24,art:#f472b6,book:#f472b6,creativity:#f472b6,psychology:#fb923c,behaviour:#fb923c,sociology:#fb923c,politics:#9189c4,history:#9189c4,copyright:#9189c4" | split: "," %}
+
+          {% for tag in site.tags %}
+            {% assign tag_name = tag[0] %}
+            {% assign tag_count = tag[1] | size %}
+            {% assign clean_tag_name = tag_name | downcase %}
+
+            {% assign tag_color = "#9189c4" %}
+            {% for mapping in tag_colors %}
+              {% assign parts = mapping | split: ":" %}
+              {% if parts[0] == clean_tag_name %}
+                {% assign tag_color = parts[1] %}
+              {% endif %}
+            {% endfor %}
+
+            <a class="signal-bar-item"
+               href="./tag.html?tag={{ tag_name | url_encode }}"
+               style="--bar-color: {{ tag_color }};"
+               data-count="{{ tag_count }}"
+               data-name="{{ tag_name }}">
+              <span class="signal-bar-tooltip">{{ tag_name }} <em>{{ tag_count }}</em></span>
+              <span class="signal-bar-column"></span>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 

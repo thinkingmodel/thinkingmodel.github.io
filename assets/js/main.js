@@ -995,3 +995,154 @@
   }
 
 })();
+
+
+(function () {
+  const layer = document.getElementById('planetsLayer');
+  if (!layer) return;
+
+  // Disable animation on mobile
+  if (window.matchMedia('(max-width: 640px)').matches) return;
+
+  const planets = Array.from(layer.querySelectorAll('.tag-planet'));
+  const PADDING = 60;
+
+  const getW = () => window.innerWidth;
+  const getH = () => window.innerHeight;
+
+  // Wait one frame so planet sizes are real
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+
+      const states = planets.map((planet) => {
+        const size = planet.offsetWidth || 38;
+        return {
+          el: planet,
+          size,
+          x: PADDING + Math.random() * (getW() - size - PADDING * 2),
+          y: PADDING + Math.random() * (getH() - size - PADDING * 2),
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          phase: Math.random() * Math.PI * 2,
+          paused: false,
+        };
+      });
+
+      // Pause floating on hover so planet stays still while reading label
+      planets.forEach((planet, i) => {
+        planet.addEventListener('mouseenter', () => {
+          states[i].paused = true;
+          planet.style.zIndex = 100;
+        });
+        planet.addEventListener('mouseleave', () => {
+          states[i].paused = false;
+          planet.style.zIndex = '';
+        });
+      });
+
+      let t = 0;
+
+      function tick() {
+        t++;
+        const cw = getW();
+        const ch = getH();
+
+        states.forEach((s, i) => {
+          if (s.paused) return;
+
+          // Sine wave drift for organic floating feel
+          s.x += s.vx + Math.sin(t * 0.009 + s.phase) * 0.22;
+          s.y += s.vy + Math.cos(t * 0.007 + s.phase) * 0.18;
+
+          // Bounce off walls
+          const maxX = cw - s.size;
+          const maxY = ch - s.size;
+
+          if (s.x < 0) { s.x = 0; s.vx = Math.abs(s.vx); }
+          if (s.x > maxX) { s.x = maxX; s.vx = -Math.abs(s.vx); }
+          if (s.y < 0) { s.y = 0; s.vy = Math.abs(s.vy); }
+          if (s.y > maxY) { s.y = maxY; s.vy = -Math.abs(s.vy); }
+
+          // Soft repulsion — planets push each other away
+          states.forEach((other, j) => {
+            if (i === j) return;
+            const dx = s.x - other.x;
+            const dy = s.y - other.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const minDist = 100;
+            if (dist < minDist && dist > 0) {
+              const force = (minDist - dist) / minDist * 0.25;
+              s.x += (dx / dist) * force;
+              s.y += (dy / dist) * force;
+            }
+          });
+
+          // Move the physical element smoothly using relative positions, not transforms, because transform handles the hover scaling
+          s.el.style.left = s.x + 'px';
+          s.el.style.top = s.y + 'px';
+        });
+
+        requestAnimationFrame(tick);
+      }
+
+      // Initialize initial left/top rendering to 0 to prevent glitching before frames calculate
+      states.forEach(s => {
+          s.el.style.left = s.x + 'px';
+          s.el.style.top = s.y + 'px';
+      })
+
+      requestAnimationFrame(tick);
+    });
+  });
+})();
+
+
+
+(function () {
+  const field = document.getElementById('signalBarField');
+  if (!field) return;
+
+  const items = Array.from(field.querySelectorAll('.signal-bar-item'));
+  const MIN_HEIGHT = 20;   // px — minimum bar height
+  const MAX_HEIGHT = 56;   // px — maximum bar height
+
+  // Assign each bar a random base height influenced by data-count
+  // and a unique animation phase so they breathe independently
+  items.forEach((item, i) => {
+    const col   = item.querySelector('.signal-bar-column');
+    const count = parseInt(item.dataset.count) || 1;
+
+    // Base height: count=1 → 20–38px range, count=2 → 32–52px range
+    const base  = MIN_HEIGHT + (count - 1) * 14 + Math.random() * 18;
+    const amp   = 6 + Math.random() * 8;     // breathing amplitude
+    const speed = 0.8 + Math.random() * 1.4; // breathing speed (seconds)
+    const phase = Math.random() * Math.PI * 2;
+
+    let startTime = null;
+    let paused = false;
+    let pausedHeight = base;
+
+    item.addEventListener('mouseenter', () => {
+      paused = true;
+      // Snap to max on hover for emphasis
+      col.style.height = Math.min(base + amp, MAX_HEIGHT) + 'px';
+    });
+    item.addEventListener('mouseleave', () => {
+      paused = false;
+    });
+
+    function animate(ts) {
+      if (!startTime) startTime = ts;
+      if (!paused) {
+        const elapsed = (ts - startTime) / 1000;
+        const h = base + Math.sin(elapsed * speed * Math.PI * 2 + phase) * amp;
+        col.style.height = Math.max(MIN_HEIGHT, Math.min(MAX_HEIGHT, h)) + 'px';
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // Stagger start so they don't all pulse together
+    setTimeout(() => requestAnimationFrame(animate), i * 60);
+  });
+})();
+
