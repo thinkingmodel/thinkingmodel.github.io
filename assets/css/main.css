@@ -4833,6 +4833,7 @@ tweet a {
   border-radius: 3px 3px 0 0;
   background: var(--bar-color);
   opacity: 0.45;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--bar-color) 40%, transparent);
   transition: opacity 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -4860,7 +4861,7 @@ tweet a {
   opacity: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 30;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
 .signal-bar-tooltip em {
@@ -4890,4 +4891,3 @@ tweet a {
     gap: 3px;
   }
 }
-
