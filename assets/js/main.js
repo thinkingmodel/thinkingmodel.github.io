@@ -1087,8 +1087,8 @@
 
       // Initialize initial left/top rendering to 0 to prevent glitching before frames calculate
       states.forEach(s => {
-          s.el.style.left = s.x + 'px';
-          s.el.style.top = s.y + 'px';
+        s.el.style.left = s.x + 'px';
+        s.el.style.top = s.y + 'px';
       })
 
       requestAnimationFrame(tick);
@@ -1099,50 +1099,42 @@
 
 
 (function () {
-  const field = document.getElementById('signalBarField');
-  if (!field) return;
+  const barField = document.getElementById('signalBarField');
+  if (!barField) return;
 
-  const items = Array.from(field.querySelectorAll('.signal-bar-item'));
-  const MIN_HEIGHT = 20;   // px — minimum bar height
-  const MAX_HEIGHT = 56;   // px — maximum bar height
+  const items = Array.from(barField.querySelectorAll('.signal-bar-item'));
+  const MIN_H = 18;
+  const MAX_H = 56;
 
-  // Assign each bar a random base height influenced by data-count
-  // and a unique animation phase so they breathe independently
   items.forEach((item, i) => {
-    const col   = item.querySelector('.signal-bar-column');
+    const col = item.querySelector('.signal-bar-column');
+    if (!col) return;
     const count = parseInt(item.dataset.count) || 1;
-
-    // Base height: count=1 → 20–38px range, count=2 → 32–52px range
-    const base  = MIN_HEIGHT + (count - 1) * 14 + Math.random() * 18;
-    const amp   = 6 + Math.random() * 8;     // breathing amplitude
-    const speed = 0.8 + Math.random() * 1.4; // breathing speed (seconds)
+    const base = MIN_H + (count - 1) * 14 + Math.random() * 14;
+    const amp = 5 + Math.random() * 8;
+    const speed = 0.7 + Math.random() * 1.2;
     const phase = Math.random() * Math.PI * 2;
-
-    let startTime = null;
     let paused = false;
-    let pausedHeight = base;
 
     item.addEventListener('mouseenter', () => {
       paused = true;
-      // Snap to max on hover for emphasis
-      col.style.height = Math.min(base + amp, MAX_HEIGHT) + 'px';
+      col.style.height = Math.min(base + amp + 4, MAX_H) + 'px';
     });
     item.addEventListener('mouseleave', () => {
       paused = false;
     });
 
+    let startTime = null;
     function animate(ts) {
       if (!startTime) startTime = ts;
       if (!paused) {
-        const elapsed = (ts - startTime) / 1000;
-        const h = base + Math.sin(elapsed * speed * Math.PI * 2 + phase) * amp;
-        col.style.height = Math.max(MIN_HEIGHT, Math.min(MAX_HEIGHT, h)) + 'px';
+        const t = (ts - startTime) / 1000;
+        const h = base + Math.sin(t * speed * Math.PI * 2 + phase) * amp;
+        col.style.height = Math.max(MIN_H, Math.min(MAX_H, h)) + 'px';
       }
       requestAnimationFrame(animate);
     }
-
-    // Stagger start so they don't all pulse together
-    setTimeout(() => requestAnimationFrame(animate), i * 60);
+    setTimeout(() => requestAnimationFrame(animate), i * 55);
   });
 })();
 

@@ -4793,3 +4793,101 @@ tweet a {
     transform: translateX(-50%) translateY(0);
   }
 }
+
+.signal-bar-section {
+  margin: 3rem 0 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.signal-bar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-low);
+  margin-bottom: 1rem;
+}
+
+.signal-bar-field {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 64px;
+}
+
+.signal-bar-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.signal-bar-column {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  background: var(--bar-color);
+  opacity: 0.45;
+  transition: opacity 0.25s ease, box-shadow 0.25s ease;
+}
+
+.signal-bar-item:hover .signal-bar-column {
+  opacity: 1;
+  box-shadow: 0 0 14px var(--bar-color),
+    0 0 32px color-mix(in srgb, var(--bar-color) 45%, transparent);
+}
+
+.signal-bar-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--elevated);
+  border: 1px solid var(--bar-color);
+  color: var(--ink-high);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 30;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.signal-bar-tooltip em {
+  font-style: normal;
+  opacity: 0.4;
+  margin-left: 6px;
+}
+
+.signal-bar-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--bar-color);
+}
+
+.signal-bar-item:hover .signal-bar-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 640px) {
+  .signal-bar-field {
+    height: 44px;
+    gap: 3px;
+  }
+}
+
