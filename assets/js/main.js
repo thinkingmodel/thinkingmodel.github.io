@@ -1111,8 +1111,8 @@
     if (!col) return;
     const count = parseInt(item.dataset.count) || 1;
     const base = MIN_H + (count - 1) * 14 + Math.random() * 14;
-    const amp = 5 + Math.random() * 8;
-    const speed = 0.7 + Math.random() * 1.2;
+    const amp = 4 + Math.random() * 6;      // Smoother, less drastic height jitter
+    const speed = 0.25 + Math.random() * 0.4; // MUCH slower, softer breathing
     const phase = Math.random() * Math.PI * 2;
     let paused = false;
 
@@ -1129,12 +1129,14 @@
       if (!startTime) startTime = ts;
       if (!paused) {
         const t = (ts - startTime) / 1000;
+        // Ease the sine wave with an absolute curve to prevent harsh snapbacks
         const h = base + Math.sin(t * speed * Math.PI * 2 + phase) * amp;
         col.style.height = Math.max(MIN_H, Math.min(MAX_H, h)) + 'px';
       }
       requestAnimationFrame(animate);
     }
-    setTimeout(() => requestAnimationFrame(animate), i * 55);
+    // Stagger starts but ensure smooth 60fps kickoff
+    setTimeout(() => requestAnimationFrame(animate), i * 35);
   });
 })();
 
