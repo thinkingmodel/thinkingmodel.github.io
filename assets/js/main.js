@@ -998,102 +998,144 @@
 
 
 (function () {
-  const layer = document.getElementById('planetsLayer');
-  if (!layer) return;
+  var scene   = document.getElementById('solarScene');
+  var canvas  = document.getElementById('orbitRings');
+  if (!scene || !canvas) return;
+  if (window.matchMedia('(max-width:640px)').matches) return;
 
-  // Disable animation on mobile
-  if (window.matchMedia('(max-width: 640px)').matches) return;
+  var ctx     = canvas.getContext('2d');
+  var planets = Array.from(scene.querySelectorAll('.solar-planet'));
+  if (!planets.length) return;
 
-  const planets = Array.from(layer.querySelectorAll('.tag-planet'));
-  const PADDING = 60;
+  function resize() {
+    canvas.width  = scene.offsetWidth;
+    canvas.height = scene.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', function() { resize(); draw(); });
 
-  const getW = () => window.innerWidth;
-  const getH = () => window.innerHeight;
+  /* Sun is off screen bottom-left */
+  function sun() {
+    return {
+      x: scene.offsetWidth  * -0.10,
+      y: scene.offsetHeight *  1.15
+    };
+  }
 
-  // Wait one frame so planet sizes are real
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-
-      const states = planets.map((planet) => {
-        const size = planet.offsetWidth || 38;
-        return {
-          el: planet,
-          size,
-          x: PADDING + Math.random() * (getW() - size - PADDING * 2),
-          y: PADDING + Math.random() * (getH() - size - PADDING * 2),
-          vx: (Math.random() - 0.5) * 0.6,
-          vy: (Math.random() - 0.5) * 0.6,
-          phase: Math.random() * Math.PI * 2,
-          paused: false,
-        };
+  /* Build 7 elliptical orbits all centered on sun */
+  function buildOrbits() {
+    var s    = sun();
+    var diag = Math.hypot(scene.offsetWidth, scene.offsetHeight);
+    var minR = diag * 0.35;
+    var maxR = diag * 0.95;
+    var step = (maxR - minR) / 6;
+    var TILT = -40 * Math.PI / 180;
+    var result = [];
+    for (var i = 0; i < 7; i++) {
+      var r = minR + step * i;
+      result.push({
+        cx:    s.x,
+        cy:    s.y,
+        rx:    r,
+        ry:    r * 0.38,
+        tilt:  TILT,
+        dir:   i % 2 === 0 ? 1 : -1,
+        speed: 0.00020 - i * 0.000020
       });
+    }
+    return result;
+  }
 
-      // Pause floating on hover so planet stays still while reading label
-      planets.forEach((planet, i) => {
-        planet.addEventListener('mouseenter', () => {
-          states[i].paused = true;
-          planet.style.zIndex = 100;
-        });
-        planet.addEventListener('mouseleave', () => {
-          states[i].paused = false;
-          planet.style.zIndex = '';
-        });
-      });
+  var orbits = buildOrbits();
 
-      let t = 0;
+  /* Draw faint dashed orbit arcs */
+  function draw() {
+    orbits = buildOrbits();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    orbits.forEach(function(o, i) {
+      ctx.save();
+      ctx.translate(o.cx, o.cy);
+      ctx.rotate(o.tilt);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, o.rx, o.ry, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(167,139,250,' + (0.05 + i * 0.015) + ')';
+      ctx.lineWidth   = 0.7;
+      ctx.setLineDash([3, 11]);
+      ctx.stroke();
+      ctx.restore();
+    });
+  }
+  draw();
 
-      function tick() {
-        t++;
-        const cw = getW();
-        const ch = getH();
+  /* Get x,y on ellipse at angle t */
+  function pos(o, t) {
+    var lx = o.rx * Math.cos(t);
+    var ly = o.ry * Math.sin(t);
+    var c  = Math.cos(o.tilt);
+    var s  = Math.sin(o.tilt);
+    return {
+      x: o.cx + lx * c - ly * s,
+      y: o.cy + lx * s + ly * c
+    };
+  }
 
-        states.forEach((s, i) => {
-          if (s.paused) return;
+  /* Assign each planet to an orbit with evenly spaced start angle */
+  var states = planets.map(function(planet, i) {
+    var orbitIdx   = i % 7;
+    var siblings   = Math.ceil(planets.length / 7);
+    var posInOrbit = Math.floor(i / 7);
+    var startAngle = (posInOrbit / siblings) * Math.PI * 2;
+    var paused     = false;
 
-          // Sine wave drift for organic floating feel
-          s.x += s.vx + Math.sin(t * 0.009 + s.phase) * 0.22;
-          s.y += s.vy + Math.cos(t * 0.007 + s.phase) * 0.18;
+    planet.addEventListener('mouseenter', function() {
+      paused = true;
+      planet.style.animationPlayState = 'paused';
+      planet.style.transform = 'scale(1.3)';
+      planet.style.opacity   = '1';
+      planet.style.zIndex    = '50';
+    });
+    planet.addEventListener('mouseleave', function() {
+      paused = false;
+      planet.style.animationPlayState = 'running';
+      planet.style.zIndex = '';
+      /* tick() restores depth-based transform and opacity on next frame */
+    });
 
-          // Bounce off walls
-          const maxX = cw - s.size;
-          const maxY = ch - s.size;
+    return {
+      el:     planet,
+      orbit:  orbitIdx,
+      angle:  startAngle,
+      paused: function() { return paused; }
+    };
+  });
 
-          if (s.x < 0) { s.x = 0; s.vx = Math.abs(s.vx); }
-          if (s.x > maxX) { s.x = maxX; s.vx = -Math.abs(s.vx); }
-          if (s.y < 0) { s.y = 0; s.vy = Math.abs(s.vy); }
-          if (s.y > maxY) { s.y = maxY; s.vy = -Math.abs(s.vy); }
-
-          // Soft repulsion — planets push each other away
-          states.forEach((other, j) => {
-            if (i === j) return;
-            const dx = s.x - other.x;
-            const dy = s.y - other.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const minDist = 100;
-            if (dist < minDist && dist > 0) {
-              const force = (minDist - dist) / minDist * 0.25;
-              s.x += (dx / dist) * force;
-              s.y += (dy / dist) * force;
-            }
-          });
-
-          // Move the physical element smoothly using relative positions, not transforms, because transform handles the hover scaling
-          s.el.style.left = s.x + 'px';
-          s.el.style.top = s.y + 'px';
-        });
-
-        requestAnimationFrame(tick);
+  /* Animation loop — only orbital math, no random movement */
+  function tick() {
+    states.forEach(function(s) {
+      var o    = orbits[s.orbit];
+      if (!s.paused()) {
+        s.angle += o.speed * o.dir;
       }
+      var p    = pos(o, s.angle);
+      var size = s.el.offsetWidth || 32;
+      s.el.style.left = (p.x - size / 2) + 'px';
+      s.el.style.top  = (p.y - size / 2) + 'px';
 
-      // Initialize initial left/top rendering to 0 to prevent glitching before frames calculate
-      states.forEach(s => {
-        s.el.style.left = s.x + 'px';
-        s.el.style.top = s.y + 'px';
-      })
+      if (!s.paused()) {
+        var depth   = (Math.sin(s.angle - 1.2) + 1) / 2;
+        s.el.style.opacity   = 0.55 + depth * 0.45;
+        s.el.style.transform = 'scale(' + (0.78 + depth * 0.26) + ')';
+      }
+    });
+    requestAnimationFrame(tick);
+  }
 
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
       requestAnimationFrame(tick);
     });
   });
+
 })();
 
 
@@ -1138,5 +1180,135 @@
     // Stagger starts but ensure smooth 60fps kickoff
     setTimeout(() => requestAnimationFrame(animate), i * 35);
   });
+})();
+
+
+/* ─────────────────────────────────────────────────────────
+   HOMEPAGE FLOATING PLANETS  (random drift + sine bob)
+   No anchor point — each planet drifts independently and
+   bounces off hero edges.
+───────────────────────────────────────────────────────── */
+(function () {
+  'use strict';
+
+  var scene = document.getElementById('homepagePlanets');
+  if (!scene) return;
+
+  var planets = Array.from(scene.querySelectorAll('.solar-planet'));
+  if (!planets.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    /* Still place planets; just don't animate */
+    planets.forEach(function (p) {
+      p.style.position = 'absolute';
+      p.style.left     = (8 + Math.random() * 84) + '%';
+      p.style.top      = (8 + Math.random() * 84) + '%';
+      p.style.opacity  = '0.55';
+    });
+    return;
+  }
+
+  if (window.innerWidth < 640) return; /* hidden via CSS; guard JS too */
+
+  function sz(el) {
+    var c = parseInt(el.dataset.count, 10) || 1;
+    return c >= 3 ? 56 : c === 2 ? 44 : 32;
+  }
+
+  var states = planets.map(function (planet) {
+    var s     = sz(planet);
+    var W     = window.innerWidth;
+    var H     = window.innerHeight;
+    return {
+      el:         planet,
+      s:          s,
+      x:          s + Math.random() * Math.max(0, W - s * 2),
+      y:          s + Math.random() * Math.max(0, H - s * 2),
+      vx:         (Math.random() - 0.5) * 0.32,
+      vy:         (Math.random() - 0.5) * 0.18,
+      bobAmp:     3 + Math.random() * 7,
+      bobSpeed:   0.16 + Math.random() * 0.26,
+      bobPhase:   Math.random() * Math.PI * 2,
+      depPhase:   Math.random() * Math.PI * 2,
+      depSpeed:   0.04 + Math.random() * 0.07,
+      paused:     false
+    };
+  });
+
+  /* Set initial positions — still invisible */
+  states.forEach(function (s) {
+    s.el.style.left = s.x + 'px';
+    s.el.style.top  = s.y + 'px';
+  });
+
+  /* Hover: freeze + enlarge; lift scene above nav/overlays */
+  states.forEach(function (s) {
+    s.el.addEventListener('mouseenter', function () {
+      s.paused                      = true;
+      s.el.style.animationPlayState = 'paused';
+      s.el.style.transform          = 'scale(1.3)';
+      s.el.style.opacity            = '1';
+      s.el.style.zIndex             = '50';
+      s.el.style.mixBlendMode       = 'normal';
+      scene.style.zIndex            = '9999';
+    });
+    s.el.addEventListener('mouseleave', function () {
+      s.paused                      = false;
+      s.el.style.animationPlayState = 'running';
+      s.el.style.zIndex             = '';
+      s.el.style.mixBlendMode       = '';
+      scene.style.zIndex            = '15';
+    });
+  });
+
+  /* Staggered fade-in */
+  requestAnimationFrame(function () {
+    states.forEach(function (s, i) {
+      setTimeout(function () {
+        s.el.style.transition = 'opacity 1.8s ease';
+        s.el.style.opacity    = '0.65';
+        setTimeout(function () { s.el.style.transition = ''; }, 1900);
+      }, i * 60);
+    });
+  });
+
+  var prevNow = null;
+
+  function tick(now) {
+    requestAnimationFrame(tick);
+    var dt  = prevNow ? Math.min((now - prevNow) / 16.67, 3) : 1;
+    prevNow = now;
+
+    var W = window.innerWidth;
+    var H = window.innerHeight;
+    var t = now / 1000;
+
+    states.forEach(function (s) {
+      if (s.paused) return;
+
+      /* Drift */
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
+
+      /* Edge bounce */
+      if (s.x < 0)         { s.x = 0;         s.vx =  Math.abs(s.vx); }
+      if (s.x + s.s > W)   { s.x = W - s.s;   s.vx = -Math.abs(s.vx); }
+      if (s.y < 0)         { s.y = 0;          s.vy =  Math.abs(s.vy); }
+      if (s.y + s.s > H)   { s.y = H - s.s;   s.vy = -Math.abs(s.vy); }
+
+      /* Gentle sine bob */
+      var bob   = Math.sin(t * s.bobSpeed * Math.PI * 2 + s.bobPhase) * s.bobAmp;
+      /* Depth breathing (scale + opacity) */
+      var depth = (Math.sin(t * s.depSpeed * Math.PI * 2 + s.depPhase) + 1) / 2;
+
+      s.el.style.left      = s.x + 'px';
+      s.el.style.top       = (s.y + bob) + 'px';
+      s.el.style.opacity   = (0.38 + depth * 0.57).toFixed(3);
+      s.el.style.transform = 'scale(' + (0.78 + depth * 0.26).toFixed(3) + ')';
+    });
+  }
+
+  requestAnimationFrame(tick);
+
 })();
 

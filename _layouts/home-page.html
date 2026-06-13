@@ -9,6 +9,63 @@ layout: default
   <!-- ═══ HERO SECTION ═══ -->
   <section class="hero" aria-label="Site hero">
     <canvas id="starfield-canvas" aria-hidden="true"></canvas>
+
+    <!-- ── FLOATING PLANETS ── -->
+    <div class="hp-planets" id="homepagePlanets" aria-hidden="true">
+
+      {% assign featured_tags = "artificial intelligence,machine learning,astrophysics,cosmology,philosophy,paradox,psychology,creativity,book" | split: "," %}
+      {% assign hp_tag_colors = "artificial intelligence:#a78bfa,machine learning:#a78bfa,astrophysics:#2dd4bf,cosmology:#2dd4bf,philosophy:#fbbf24,paradox:#fbbf24,psychology:#fb923c,creativity:#f472b6,book:#f472b6" | split: "," %}
+
+      {% for tag in site.tags %}
+      {% assign hp_tag_name  = tag[0] %}
+      {% assign hp_clean_tag = hp_tag_name | downcase %}
+      {% unless featured_tags contains hp_clean_tag %}{% continue %}{% endunless %}
+      {% assign hp_tag_count = tag[1] | size %}
+      {% assign hp_color     = "#9189c4" %}
+      {% for m in hp_tag_colors %}
+        {% assign hp_parts = m | split: ":" %}
+        {% if hp_parts[0] == hp_clean_tag %}{% assign hp_color = hp_parts[1] %}{% endif %}
+      {% endfor %}
+      {% assign hp_display = site.data.tag_names[hp_clean_tag] | default: hp_tag_name %}
+      {% if hp_tag_count >= 3 %}{% assign hp_sz = "3" %}{% elsif hp_tag_count == 2 %}{% assign hp_sz = "2" %}{% else %}{% assign hp_sz = "1" %}{% endif %}
+      {% assign hp_spin = forloop.index | times: 3 | plus: 12 %}
+
+      <a class="solar-planet"
+         href="./tag.html?tag={{ hp_tag_name | url_encode }}"
+         style="--pc: {{ hp_color }}; --spin-dur: {{ hp_spin }}s;"
+         data-count="{{ hp_sz }}" data-name="{{ hp_tag_name }}" data-type="tag">
+        <span class="solar-planet-label">{{ hp_display }}</span>
+      </a>
+      {% endfor %}
+
+      <!-- Decorative exoplanets -->
+      <div class="solar-planet solar-planet--deco" style="--pc:#7eb8e0;--spin-dur:22s;" data-count="3" data-type="deco">
+        <div class="solar-deco-card"><div class="solar-deco-card__name">Kepler-22b</div><p class="solar-deco-card__desc">Super-Earth in the habitable zone of a Sun-like star, 600 ly away. Surface temperatures may allow liquid water.</p></div>
+      </div>
+      <div class="solar-planet solar-planet--deco" style="--pc:#82c4a0;--spin-dur:18s;" data-count="2" data-type="deco">
+        <div class="solar-deco-card"><div class="solar-deco-card__name">TRAPPIST-1e</div><p class="solar-deco-card__desc">One of seven rocky worlds around a cool red dwarf 40 ly away. Three planets sit in the habitable zone.</p></div>
+      </div>
+      <div class="solar-planet solar-planet--deco" style="--pc:#4a9eff;--spin-dur:26s;" data-count="1" data-type="deco">
+        <div class="solar-deco-card"><div class="solar-deco-card__name">HD 189733 b</div><p class="solar-deco-card__desc">A cobalt-blue giant where silicate glass rains sideways at 9,000 km/h. Its vivid blue is from silica clouds, not oceans.</p></div>
+      </div>
+      <div class="solar-planet solar-planet--deco" style="--pc:#ff7043;--spin-dur:16s;" data-count="1" data-type="deco">
+        <div class="solar-deco-card"><div class="solar-deco-card__name">WASP-12b</div><p class="solar-deco-card__desc">A hot Jupiter so close to its star it has been tidally stretched into an egg. It will be fully consumed in ~3 million years.</p></div>
+      </div>
+      <div class="solar-planet solar-planet--deco" style="--pc:#c084fc;--spin-dur:30s;" data-count="2" data-type="deco">
+        <div class="solar-deco-card"><div class="solar-deco-card__name">Proxima Centauri b</div><p class="solar-deco-card__desc">The nearest known exoplanet at 4.2 ly. Orbits in the habitable zone but endures intense stellar X-ray flares.</p></div>
+      </div>
+      <div class="solar-planet solar-planet--deco" style="--pc:#fbbf24;--spin-dur:24s;" data-count="2" data-type="deco">
+        <div class="solar-deco-card"><div class="solar-deco-card__name">Kepler-452b</div><p class="solar-deco-card__desc">Earth's older cousin — 1,400 ly away, orbiting a Sun-like star 1.6 billion years older than ours.</p></div>
+      </div>
+      <div class="solar-planet solar-planet--deco" style="--pc:#e57373;--spin-dur:20s;" data-count="1" data-type="deco">
+        <div class="solar-deco-card"><div class="solar-deco-card__name">WASP-76b</div><p class="solar-deco-card__desc">On this ultra-hot Jupiter, iron vaporises on the dayside and condenses to rain as liquid metal on the cooler nightside.</p></div>
+      </div>
+      <div class="solar-planet solar-planet--deco" style="--pc:#ff8a65;--spin-dur:14s;" data-count="1" data-type="deco">
+        <div class="solar-deco-card"><div class="solar-deco-card__name">55 Cancri e</div><p class="solar-deco-card__desc">A lava world twice Earth's diameter, 41 ly away. Completes an orbit in just 18 hours — its surface is molten rock.</p></div>
+      </div>
+
+    </div>
+
     <div class="hero-content">
       <div class="hero-line" aria-hidden="true"></div>
       <p class="hero-eyebrow">A space to think.</p>
@@ -26,48 +83,6 @@ layout: default
     {{ content }}
     {% include search.html %}
     {% include pagination.html %}
-    <div class="center-tags">
-      {% include get-site-tags.html %}
-
-      <div class="signal-bar-section">
-        <p class="signal-bar-label">Transmitting on</p>
-        <div class="signal-bar-field" id="signalBarField">
-          {% assign tag_colors = "artificial intelligence:linear-gradient(180deg, #c4b0ff, #8b5cf6)|machine
-          learning:linear-gradient(180deg, #c4b0ff, #8b5cf6)|neural networks:linear-gradient(180deg, #c4b0ff,
-          #8b5cf6)|large language model:linear-gradient(180deg, #c4b0ff, #8b5cf6)|generative
-          models:linear-gradient(180deg, #c4b0ff, #8b5cf6)|astronomy:linear-gradient(180deg, #5eead4,
-          #0d9488)|astrophysics:linear-gradient(180deg, #5eead4, #0d9488)|cosmology:linear-gradient(180deg, #5eead4,
-          #0d9488)|philosophy:linear-gradient(180deg, #fde047, #d97706)|paradox:linear-gradient(180deg, #fde047,
-          #d97706)|kafkaesque:linear-gradient(180deg, #fde047, #d97706)|art:linear-gradient(180deg, #f9a8d4,
-          #db2777)|book:linear-gradient(180deg, #f9a8d4, #db2777)|creativity:linear-gradient(180deg, #f9a8d4,
-          #db2777)|psychology:linear-gradient(180deg, #fdba74, #ea580c)|behaviour:linear-gradient(180deg, #fdba74,
-          #ea580c)|sociology:linear-gradient(180deg, #fdba74, #ea580c)|politics:linear-gradient(180deg, #a5b4fc,
-          #4f46e5)|history:linear-gradient(180deg, #a5b4fc, #4f46e5)|copyright:linear-gradient(180deg, #a5b4fc,
-          #4f46e5)" | split: "|" %}
-
-          {% for tag in site.tags %}
-          {% assign tag_name = tag[0] %}
-          {% assign tag_count = tag[1] | size %}
-          {% assign clean_tag_name = tag_name | downcase %}
-
-          {% assign tag_color = "linear-gradient(180deg, #a5b4fc, #4f46e5)" %}
-          {% for mapping in tag_colors %}
-          {% assign parts = mapping | split: ":" %}
-          {% if parts[0] == clean_tag_name %}
-          {% assign tag_color = parts[1] %}
-          {% endif %}
-          {% endfor %}
-
-          <a class="signal-bar-item" href="./tag.html?tag={{ tag_name | url_encode }}"
-            style="--bar-color: {{ tag_color }};" data-count="{{ tag_count }}" data-name="{{ tag_name }}">
-            <span class="signal-bar-tooltip">{% assign display_name = site.data.tag_names[clean_tag_name] | default:
-              tag_name %}{{ display_name }} <em>{{ tag_count }}</em></span>
-            <span class="signal-bar-column"></span>
-          </a>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
   </div>
 
   {% include footer.html %}

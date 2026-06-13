@@ -4659,138 +4659,338 @@ tweet a {
 /* =========================================================
    TAGS PAGE - FLOATING PLANETS
    ========================================================= */
-.planets-layer {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
+/* ── Container ── */
+.solar-scene {
+  position: relative;
+  width: 100%;
+  height: 68vh;
+  min-height: 460px;
   overflow: hidden;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: transparent;
 }
 
-/* Re-enable pointer events on individual planets only */
-.tag-planet {
-  pointer-events: all;
-  position: fixed;
+/* ── Sun layers — all anchored to bottom-left corner ── */
+.solar-sun-core {
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background: var(--planet-gradient);
+  background: radial-gradient(circle,
+      rgba(255, 255, 220, 1) 0%,
+      rgba(255, 200, 50, 0.9) 30%,
+      rgba(251, 146, 60, 0.6) 60%,
+      transparent 100%);
+  pointer-events: none;
+  z-index: 4;
+  filter: blur(2px);
+}
+
+.solar-sun-corona {
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(255, 200, 50, 0.5) 0%,
+      rgba(251, 146, 60, 0.25) 40%,
+      rgba(251, 191, 36, 0.08) 70%,
+      transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+  filter: blur(8px);
+}
+
+.solar-sun-flood {
+  position: absolute;
+  bottom: -30%;
+  left: -20%;
+  width: 90%;
+  height: 90%;
+  background: radial-gradient(ellipse at 15% 85%,
+      rgba(251, 191, 36, 0.10) 0%,
+      rgba(251, 146, 60, 0.05) 40%,
+      transparent 75%);
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(20px);
+}
+
+.solar-sun-rays {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg at -8% 108%,
+      transparent 0deg,
+      rgba(255, 210, 60, 0.04) 3deg,
+      transparent 7deg,
+      transparent 22deg,
+      rgba(255, 210, 60, 0.04) 25deg,
+      transparent 29deg,
+      transparent 44deg,
+      rgba(255, 210, 60, 0.04) 47deg,
+      transparent 51deg,
+      transparent 66deg,
+      rgba(255, 210, 60, 0.04) 69deg,
+      transparent 73deg,
+      transparent 88deg,
+      rgba(255, 210, 60, 0.04) 91deg,
+      transparent 95deg,
+      transparent 110deg,
+      rgba(255, 210, 60, 0.04) 113deg,
+      transparent 117deg,
+      transparent 360deg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Orbit canvas ── */
+.solar-orbit-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ── Planet field ── */
+.solar-planets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* ── Planet base ── */
+.solar-planet {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: all;
   cursor: pointer;
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.35s ease;
+  /* Lit from bottom-left where sun is */
+  background: radial-gradient(circle at 28% 72%,
+      color-mix(in srgb, var(--pc) 20%, white) 0%,
+      var(--pc) 45%,
+      color-mix(in srgb, var(--pc) 35%, black) 100%);
   box-shadow:
-    0 0 4px color-mix(in srgb, var(--planet-color) 80%, transparent),
-    0 0 16px color-mix(in srgb, var(--planet-color) 40%, transparent),
-    0 0 40px color-mix(in srgb, var(--planet-color) 12%, transparent);
+    0 0 6px color-mix(in srgb, var(--pc) 80%, transparent),
+    0 0 18px color-mix(in srgb, var(--pc) 35%, transparent),
+    0 0 40px color-mix(in srgb, var(--pc) 12%, transparent);
+  mix-blend-mode: screen;
+  /* Self rotation — JS sets duration and direction */
+  animation: solar-spin-cw var(--spin-dur, 20s) linear infinite;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    mix-blend-mode 0.1s;
+  will-change: left, top;
 }
 
-/* Specular highlight — light reflection top-left */
-.tag-planet::before {
+/* Specular highlight — sunlit side bottom-left */
+.solar-planet::before {
   content: '';
   position: absolute;
-  top: 12%;
-  left: 14%;
-  width: 30%;
-  height: 20%;
+  bottom: 14%;
+  left: 12%;
+  width: 28%;
+  height: 18%;
   border-radius: 50%;
   background: radial-gradient(ellipse,
-      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0.35) 0%,
       transparent 100%);
-  filter: blur(3px);
+  filter: blur(2px);
   pointer-events: none;
 }
 
 /* Atmospheric band */
-.tag-planet::after {
+.solar-planet::after {
   content: '';
   position: absolute;
-  top: 40%;
-  left: 0;
-  width: 100%;
-  height: 20%;
+  top: 38%;
+  left: 5%;
+  width: 90%;
+  height: 16%;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.05);
   pointer-events: none;
 }
 
-.tag-planet[data-count="1"] {
-  width: 38px;
-  height: 38px;
+/* Sizes by post count */
+.solar-planet[data-count="1"] {
+  width: 32px;
+  height: 32px;
 }
 
-.tag-planet[data-count="2"] {
-  width: 48px;
-  height: 48px;
+.solar-planet[data-count="2"] {
+  width: 44px;
+  height: 44px;
 }
 
-.tag-planet[data-count="3"] {
-  width: 58px;
-  height: 58px;
+.solar-planet[data-count="3"] {
+  width: 56px;
+  height: 56px;
 }
 
-.tag-planet:hover {
-  transform: scale(1.22);
+/* Hover */
+.solar-planet:hover {
+  transform: scale(1.3);
+  mix-blend-mode: normal;
   box-shadow:
-    0 0 8px color-mix(in srgb, var(--planet-color) 100%, transparent),
-    0 0 32px color-mix(in srgb, var(--planet-color) 65%, transparent),
-    0 0 80px color-mix(in srgb, var(--planet-color) 28%, transparent);
-  z-index: 100 !important;
+    0 0 12px color-mix(in srgb, var(--pc) 100%, transparent),
+    0 0 35px color-mix(in srgb, var(--pc) 60%, transparent),
+    0 0 80px color-mix(in srgb, var(--pc) 22%, transparent);
+  z-index: 50;
+  animation-play-state: paused;
 }
 
-.planet-label {
+/* Label grows from planet on hover */
+.solar-planet::after {
+  /* override band style on hover via separate approach */
+}
+
+/* Use a data-label approach — JS inserts label span */
+.solar-planet-label {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 7px);
   left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  background: var(--elevated, #131330);
-  border: 1px solid var(--planet-color);
-  color: var(--ink-high, #d4cef5);
+  transform: translateX(-50%) translateY(5px);
+  background: color-mix(in srgb, var(--pc) 15%,
+      rgba(8, 8, 20, 0.88));
+  color: color-mix(in srgb, var(--pc) 65%, white);
   font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.04em;
+  font-size: 0.58rem;
+  letter-spacing: 0.05em;
   white-space: nowrap;
-  padding: 3px 10px;
-  border-radius: 4px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--pc) 35%, transparent);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 101;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  z-index: 60;
 }
 
-.planet-label em {
-  font-style: normal;
-  opacity: 0.4;
-  margin-left: 5px;
-}
-
-.tag-planet:hover .planet-label {
+.solar-planet:hover .solar-planet-label {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
 
+/* ── Decorative exoplanet tooltip card ── */
+.solar-deco-card {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  width: 210px;
+  background: color-mix(in srgb, var(--pc) 10%, rgba(6, 6, 18, 0.94));
+  border: 1px solid color-mix(in srgb, var(--pc) 28%, transparent);
+  border-radius: 10px;
+  padding: 11px 15px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 60;
+  box-shadow:
+    0 4px 24px rgba(0,0,0,0.55),
+    0 0 18px color-mix(in srgb, var(--pc) 18%, transparent);
+}
+
+.solar-deco-card__name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.60rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--pc) 85%, white);
+  margin-bottom: 6px;
+}
+
+.solar-deco-card__desc {
+  font-size: 0.72rem;
+  color: rgba(210, 205, 230, 0.72);
+  line-height: 1.48;
+  margin: 0;
+}
+
+.solar-planet--deco:hover .solar-deco-card {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Spin keyframes */
+@keyframes solar-spin-cw {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes solar-spin-ccw {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Mobile */
 @media (max-width: 640px) {
-  .planets-layer {
+  .solar-scene {
+    height: auto;
+    min-height: unset;
+    overflow: visible;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .solar-orbit-canvas,
+  .solar-sun-core,
+  .solar-sun-corona,
+  .solar-sun-flood,
+  .solar-sun-rays {
+    display: none;
+  }
+
+  .solar-planets {
     position: static;
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 18px;
     justify-content: center;
-    padding: 2rem 1rem;
     pointer-events: all;
   }
 
-  .tag-planet {
+  .solar-planet {
     position: static;
-    transform: none !important;
+    mix-blend-mode: normal;
+    animation: none;
   }
 
-  .planet-label {
+  .solar-planet-label {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* =========================================================
+   HOMEPAGE FLOATING PLANETS
+   ========================================================= */
+.hp-planets {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.hp-planets .solar-planet {
+  position: absolute;
+  pointer-events: all;
+  opacity: 0; /* JS fades in */
+}
+
+@media (max-width: 640px) {
+  .hp-planets {
+    display: none;
   }
 }
 
@@ -4890,4 +5090,115 @@ tweet a {
     height: 44px;
     gap: 3px;
   }
+}
+
+/* Sun core — tiny bright star at bottom-left corner */
+.solar-sun-core {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255,255,220,1.0)  0%,
+    rgba(255,200,60,0.85) 35%,
+    rgba(251,146,60,0.50) 65%,
+    transparent           100%);
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Sun inner corona */
+.solar-sun-corona {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(255,200,60,0.45)  0%,
+    rgba(251,146,60,0.20) 45%,
+    transparent           75%);
+  filter: blur(10px);
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* Sun light flood across whole scene */
+.solar-sun-flood {
+  position: absolute;
+  bottom: -40%;
+  left: -25%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 18% 85%,
+    rgba(251,191,36,0.10) 0%,
+    rgba(251,146,60,0.05) 40%,
+    transparent           72%);
+  filter: blur(22px);
+  pointer-events: none;
+  z-index: 8;
+}
+
+/* Sun rays — conic starburst from bottom-left */
+.solar-sun-rays {
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 0deg at -8% 108%,
+    transparent            0deg,
+    rgba(255,210,60,0.04)  3deg,
+    transparent            8deg,
+    transparent           28deg,
+    rgba(255,210,60,0.04) 31deg,
+    transparent           36deg,
+    transparent           56deg,
+    rgba(255,210,60,0.04) 59deg,
+    transparent           64deg,
+    transparent           84deg,
+    rgba(255,210,60,0.04) 87deg,
+    transparent           92deg,
+    transparent          112deg,
+    rgba(255,210,60,0.04)115deg,
+    transparent          120deg,
+    transparent          360deg
+  );
+  pointer-events: none;
+.sol-core {
+  position:absolute; bottom:-30px; left:-30px;
+  width:100px; height:100px; border-radius:50%;
+  background:radial-gradient(circle,
+    #ffffcc 0%, #ffc83d 40%, #fb923c55 70%, transparent 100%);
+  filter:blur(3px); pointer-events:none; z-index:10;
+}
+.sol-corona {
+  position:absolute; bottom:-110px; left:-110px;
+  width:340px; height:340px; border-radius:50%;
+  background:radial-gradient(circle,
+    #ffc83d70 0%, #fb923c33 45%, transparent 75%);
+  filter:blur(12px); pointer-events:none; z-index:9;
+}
+.sol-flood {
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 0% 100%,
+    #fbbf241a 0%, #fb923c0d 40%, transparent 70%);
+  pointer-events:none; z-index:8;
+}
+.sol-rays {
+  position:absolute; inset:0;
+  background:conic-gradient(from 0deg at -8% 108%,
+    transparent 0deg, #ffd23c0a 4deg, transparent 9deg,
+    transparent 29deg, #ffd23c0a 33deg, transparent 38deg,
+    transparent 58deg, #ffd23c0a 62deg, transparent 67deg,
+    transparent 87deg, #ffd23c0a 91deg, transparent 96deg,
+    transparent 360deg);
+  pointer-events:none; z-index:7;
+}
+#orbitRings {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  pointer-events:none; z-index:11;
 }
