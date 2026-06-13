@@ -1197,35 +1197,45 @@
   var planets = Array.from(scene.querySelectorAll('.solar-planet'));
   if (!planets.length) return;
 
+  var isMobile = window.innerWidth < 640;
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    /* Still place planets; just don't animate */
     planets.forEach(function (p) {
-      p.style.position = 'absolute';
-      p.style.left     = (8 + Math.random() * 84) + '%';
-      p.style.top      = (8 + Math.random() * 84) + '%';
-      p.style.opacity  = '0.55';
+      p.style.left    = (8 + Math.random() * 84) + '%';
+      p.style.top     = (8 + Math.random() * 84) + '%';
+      p.style.opacity = '0.55';
     });
     return;
   }
 
-  if (window.innerWidth < 640) return; /* hidden via CSS; guard JS too */
+  /* Mobile: keep 3 tag planets + 3 deco planets, hide the rest */
+  if (isMobile) {
+    var tagGroup  = planets.filter(function (p) { return p.dataset.type === 'tag'; });
+    var decoGroup = planets.filter(function (p) { return p.dataset.type === 'deco'; });
+    var kept = tagGroup.slice(0, 3).concat(decoGroup.slice(0, 3));
+    planets.forEach(function (p) {
+      if (kept.indexOf(p) === -1) p.style.display = 'none';
+    });
+    planets = kept;
+  }
 
   function sz(el) {
+    if (isMobile) return 28;
     var c = parseInt(el.dataset.count, 10) || 1;
     return c >= 3 ? 56 : c === 2 ? 44 : 32;
   }
 
   var states = planets.map(function (planet) {
-    var s     = sz(planet);
-    var W     = window.innerWidth;
-    var H     = window.innerHeight;
+    var s = sz(planet);
+    var W = window.innerWidth;
+    var H = window.innerHeight;
     return {
       el:         planet,
       s:          s,
       x:          s + Math.random() * Math.max(0, W - s * 2),
       y:          s + Math.random() * Math.max(0, H - s * 2),
-      vx:         (Math.random() - 0.5) * 0.32,
-      vy:         (Math.random() - 0.5) * 0.18,
+      vx:         (Math.random() - 0.5) * (isMobile ? 0.16 : 0.32),
+      vy:         (Math.random() - 0.5) * (isMobile ? 0.09 : 0.18),
       bobAmp:     3 + Math.random() * 7,
       bobSpeed:   0.16 + Math.random() * 0.26,
       bobPhase:   Math.random() * Math.PI * 2,
@@ -1235,15 +1245,26 @@
     };
   });
 
-  /* Set initial positions — still invisible */
   states.forEach(function (s) {
     s.el.style.left = s.x + 'px';
     s.el.style.top  = s.y + 'px';
   });
 
-  /* Hover: freeze + enlarge; lift scene above nav/overlays */
+  /* Compute whether card should open upward or right-align based on position */
+  function applyCardDir(el) {
+    var rect = el.getBoundingClientRect();
+    el.classList.toggle('solar-planet--card-up',    rect.bottom + 160 > window.innerHeight);
+    el.classList.toggle('solar-planet--card-right', rect.left  + 105 > window.innerWidth - 24);
+  }
+
+  function clearCardDir(el) {
+    el.classList.remove('solar-planet--card-up', 'solar-planet--card-right', 'solar-planet--active');
+  }
+
   states.forEach(function (s) {
+    /* Desktop hover */
     s.el.addEventListener('mouseenter', function () {
+      applyCardDir(s.el);
       s.paused                      = true;
       s.el.style.animationPlayState = 'paused';
       s.el.style.transform          = 'scale(1.3)';
@@ -1253,12 +1274,37 @@
       scene.style.zIndex            = '9999';
     });
     s.el.addEventListener('mouseleave', function () {
+      clearCardDir(s.el);
       s.paused                      = false;
       s.el.style.animationPlayState = 'running';
       s.el.style.zIndex             = '';
       s.el.style.mixBlendMode       = '';
       scene.style.zIndex            = '15';
     });
+
+    /* Mobile tap: toggle tooltip */
+    s.el.addEventListener('touchstart', function (e) {
+      e.preventDefault();
+      var wasActive = s.el.classList.contains('solar-planet--active');
+      states.forEach(function (o) { clearCardDir(o.el); o.paused = false; });
+      if (!wasActive) {
+        applyCardDir(s.el);
+        s.el.classList.add('solar-planet--active');
+        s.el.style.zIndex  = '50';
+        s.paused           = true;
+        scene.style.zIndex = '9999';
+      } else {
+        scene.style.zIndex = '15';
+      }
+    }, { passive: false });
+  });
+
+  /* Tap outside any planet closes open tooltip */
+  document.addEventListener('touchstart', function (e) {
+    if (!e.target.closest || !e.target.closest('#homepagePlanets')) {
+      states.forEach(function (o) { clearCardDir(o.el); o.paused = false; });
+      scene.style.zIndex = '15';
+    }
   });
 
   /* Staggered fade-in */
@@ -1286,19 +1332,15 @@
     states.forEach(function (s) {
       if (s.paused) return;
 
-      /* Drift */
       s.x += s.vx * dt;
       s.y += s.vy * dt;
 
-      /* Edge bounce */
-      if (s.x < 0)         { s.x = 0;         s.vx =  Math.abs(s.vx); }
-      if (s.x + s.s > W)   { s.x = W - s.s;   s.vx = -Math.abs(s.vx); }
-      if (s.y < 0)         { s.y = 0;          s.vy =  Math.abs(s.vy); }
-      if (s.y + s.s > H)   { s.y = H - s.s;   s.vy = -Math.abs(s.vy); }
+      if (s.x < 0)       { s.x = 0;       s.vx =  Math.abs(s.vx); }
+      if (s.x+s.s > W)   { s.x = W-s.s;   s.vx = -Math.abs(s.vx); }
+      if (s.y < 0)       { s.y = 0;        s.vy =  Math.abs(s.vy); }
+      if (s.y+s.s > H)   { s.y = H-s.s;   s.vy = -Math.abs(s.vy); }
 
-      /* Gentle sine bob */
       var bob   = Math.sin(t * s.bobSpeed * Math.PI * 2 + s.bobPhase) * s.bobAmp;
-      /* Depth breathing (scale + opacity) */
       var depth = (Math.sin(t * s.depSpeed * Math.PI * 2 + s.depPhase) + 1) / 2;
 
       s.el.style.left      = s.x + 'px';
