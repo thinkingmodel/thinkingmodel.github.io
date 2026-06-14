@@ -2387,6 +2387,38 @@ tweet a {
   }
 }
 
+@media (max-width: 640px) {
+  /* Hero: reduce dead space, scale up readable text */
+  .hero {
+    min-height: 85vh;
+    padding-top: clamp(3.5rem, 14vh, 5.5rem);
+    padding-bottom: clamp(2.5rem, 6vh, 3.5rem);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3.4rem, 11vw, 5rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .hero-scroll-label {
+    font-size: 0.7rem;
+  }
+}
+
 @media (min-width: 769px) and (max-width: 1023px) {
   ol.post-card-box {
     grid-template-columns: 1fr 1fr;
