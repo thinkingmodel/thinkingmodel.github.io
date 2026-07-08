@@ -57,6 +57,27 @@ papers:
   image_path: /assets/research/images/thought-space.png
   curiosity_hook: What if a recommendation system could understand not what you clicked
     but why you wanted it in the first place?
+- id: plot-twist
+  title: 'PlotTwist: A Creative Plot Generation Framework with Small Language Models'
+  authors:
+  - name: Abhinav Thorat
+    self: true
+  - name: Ravi Kolla
+    self: false
+  - name: Jyotin Goel
+    self: false
+  - name: Niranjan Pedanekar
+    self: false
+  venue: arXiv 2026
+  year: 2026
+  domain: NLP & Creative AI
+  domain_color: '#f472b6'
+  link: https://arxiv.org/abs/2603.16410
+  arxiv: https://arxiv.org/abs/2603.16410
+  image_path: /assets/research/images/plot-twist.png
+  curiosity_hook: What if a compact model could write plots that move you — not by
+    knowing more, but by first learning the difference between a story that grips
+    and one that falls flat?
 - id: network-causal
   title: Estimation of Individual Causal Effects in Network Setup for Multiple Treatments
   authors:
