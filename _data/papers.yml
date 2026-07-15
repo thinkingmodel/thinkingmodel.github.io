@@ -1,4 +1,27 @@
 papers:
+- id: recrec
+  title: 'RecRec: Recursive Refinement for Sequential Recommendation'
+  authors:
+  - name: Pervez Shaik
+    self: false
+  - name: Prosenjit Biswas
+    self: false
+  - name: Abhinav Thorat
+    self: true
+  - name: Ravi Kolla
+    self: false
+  - name: Niranjan Pedanekar
+    self: false
+  venue: arXiv 2026
+  year: 2026
+  domain: NLP & Recommendation
+  domain_color: '#2dd4bf'
+  link: https://arxiv.org/abs/2607.10541
+  arxiv: https://arxiv.org/abs/2607.10541
+  image_path: /assets/research/images/recrec.png
+  curiosity_hook: What if a recommender never judged you in a single glance, but
+    kept revisiting its impression of you — refining it pass after pass, anchored
+    to what you actually did?
 - id: kanite
   title: 'KANITE: Kolmogorov-Arnold Networks for ITE Estimation'
   authors:
