@@ -1329,12 +1329,26 @@ img+br+small {
   border-radius: 50%;
   border: 2px solid var(--nebula);
   object-fit: cover;
+  /* The source is a 720x1280 portrait; a plain centre crop lands on the
+     chest, so bias upward to frame the face. */
+  object-position: center 35%;
   flex-shrink: 0;
+  background: var(--surface);
+  display: block;
 }
 
-.author-desc h2 {
+/* The include emits an h3; h2 kept for older markup. Scoped through
+   .author-box so it outranks .post-body h3, which styles article
+   sub-headings as uppercase mono and is defined later in this file. */
+.author-box .author-desc h2,
+.author-box .author-desc h3 {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--ink-full);
   margin: 0 0 .4rem;
   -webkit-text-fill-color: var(--ink-full);
   background: none;
@@ -1352,9 +1366,28 @@ img+br+small {
   width: 380px;
 }
 
+/* Inside the author box this column only holds the avatar and social
+   icons, so it must shrink to content instead of forcing 380px. */
+.author-box .narrow-column {
+  width: auto;
+  margin: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+}
+
 .contact-icons {
-  display: inline-block;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .35rem;
+  /* .contact-icons is itself the <ul>, so reset list padding here rather
+     than on a descendant ul (which never matched). */
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .contact-icons ul {
@@ -2317,9 +2350,7 @@ tweet a {
     height: 30px;
   }
 
-  .recent-item-img {
-    width: 49%;
-  }
+  /* .recent-item-img sizing now lives in the POST RESPONSIVE grid rules. */
 
   .about-container {
     margin: 30px 0;
@@ -2358,6 +2389,8 @@ tweet a {
   .author-box {
     flex-direction: column;
     text-align: center;
+    gap: 1.25rem;
+    padding: 1.5rem 1.25rem;
   }
 
   .author-box .author-img {
@@ -2378,13 +2411,7 @@ tweet a {
     font-size: 2rem;
   }
 
-  .page-image {
-    height: 320px;
-  }
-
-  .recent-item-img {
-    width: 99%;
-  }
+  /* .page-image and .recent-item-img sizing now live in POST RESPONSIVE. */
 }
 
 @media (max-width: 640px) {
@@ -3486,6 +3513,12 @@ tweet a {
   .post-header__meta {
     flex-wrap: wrap;
     gap: 0.5rem 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Header-to-body gap was 5.5rem of dead space on a phone. */
+  .post-header__divider {
+    margin-bottom: 1.75rem;
   }
 
   .post-body {
@@ -3502,6 +3535,43 @@ tweet a {
   .post-sidebar {
     display: none !important;
   }
+
+  /* Reading typography overrides live after the READING EXPERIENCE POLISH
+     section further down, since those base rules would otherwise win on
+     source order at equal specificity. */
+
+  /* Cover band was holding 500px until the 480px breakpoint. */
+  .page-image {
+    height: 340px;
+  }
+
+  /* Percentage widths on inline-block items resolved unevenly; a grid
+     gives predictable columns instead. */
+  .recent-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+  }
+
+  .recent-item,
+  .recent-item-img {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+
+  .newsletter .form-container {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .newsletter .newsletter-box {
+    flex-direction: column;
+    gap: .6rem;
+  }
+
+  .newsletter .subscribe-btn {
+    padding: 12px 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -3517,6 +3587,14 @@ tweet a {
 
   .post-header__meta-sep {
     display: none;
+  }
+
+  .page-image {
+    height: 260px;
+  }
+
+  .recent-list {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3620,6 +3698,56 @@ tweet a {
   content: '· · ·';
   font-family: 'DM Mono', monospace;
   font-size: 0.8rem;
+}
+
+/* ── Mobile reading typography ──
+   Must follow the base .post-body rules above to win on source order. */
+@media (max-width: 768px) {
+
+  /* 1.2rem serif in a ~335px column gives roughly 34 characters per line,
+     which reads choppy. Easing size and leading widens the measure. */
+  .post-body p {
+    font-size: 1.06rem;
+    line-height: 1.75;
+  }
+
+  .post-body>p:first-of-type::first-letter {
+    font-size: 3.4em;
+  }
+
+  .post-body h2 {
+    font-size: 1.5rem;
+    margin: 2.25rem 0 .85rem;
+  }
+
+  .post-body h3 {
+    margin: 1.85rem 0 .6rem;
+  }
+
+  .post-body blockquote {
+    margin: 2rem 0;
+    padding: 1.1rem 1.15rem;
+  }
+
+  .post-body blockquote p {
+    font-size: 1.08rem;
+  }
+
+  .post-body ul,
+  .post-body ol {
+    padding-left: 1.15rem;
+  }
+
+  .post-body li {
+    font-size: 1.06rem;
+    line-height: 1.7;
+  }
+
+  tweet {
+    padding: .9rem 1.1rem;
+    font-size: 1rem;
+    margin: 1.75rem 0;
+  }
 }
 
 /* =========================================================

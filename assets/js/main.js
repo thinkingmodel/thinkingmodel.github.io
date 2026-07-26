@@ -322,13 +322,21 @@
   ───────────────────────────────────────── */
   function initScrollReveal() {
     if (!window.IntersectionObserver) return;
-    var elements = document.querySelectorAll('ol.post-card-box li, .list-item, .author-box, .recent-box, .post-row, .featured-post');
+    var REVEAL_SEL = 'ol.post-card-box li, .list-item, .author-box, .recent-box, .post-row, .featured-post';
+    var elements = document.querySelectorAll(REVEAL_SEL);
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          var siblings = Array.from(entry.target.parentNode.children);
+          // Stagger against fellow reveal targets only. Counting every
+          // sibling put .author-box at index 73 inside .post-body, which
+          // delayed it by over 5s. Clamped so a long list cannot stall.
+          var siblings = Array.prototype.filter.call(
+            entry.target.parentNode.children,
+            function (el) { return el.matches(REVEAL_SEL); }
+          );
           var idx = siblings.indexOf(entry.target);
-          entry.target.style.transitionDelay = (idx * 0.07) + 's';
+          if (idx < 0) idx = 0;
+          entry.target.style.transitionDelay = (Math.min(idx, 8) * 0.07) + 's';
           entry.target.classList.add('reveal', 'visible');
           io.unobserve(entry.target);
         }
@@ -891,8 +899,14 @@
     });
 
     // 3. TOC Auto Generator
+    // The author box, recent posts and newsletter live inside .post-body too,
+    // so their headings are filtered out to keep the TOC to article content.
     var tocList = document.getElementById('post-toc-list');
-    var headings = document.querySelectorAll('.post-body h2, .post-body h3');
+    var CHROME = '.author-box, .recent-box, .newsletter, .comments, .github-button';
+    var headings = Array.prototype.filter.call(
+      document.querySelectorAll('.post-body h2, .post-body h3'),
+      function (h) { return !h.closest(CHROME); }
+    );
 
     if (tocList && headings.length > 0) {
       headings.forEach(function (h, index) {

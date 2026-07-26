@@ -2,7 +2,9 @@
 {% include escape-404.html %}
 <section class="author-box">
   <div class="narrow-column">
-    <a href='{{ site.website }}'><img src="{{ relativebase }}assets/img/{% if site.author-pic %}{{site.author-pic}}{% endif %}" alt="{{ site.author }}" class="author-img"></a>
+    <a href="{{ relativebase }}about.html" aria-label="About {{ site.author }}"><img
+        src="{{ relativebase }}assets/{% if site.author-pic %}{{ site.author-pic }}{% endif %}"
+        alt="{{ site.author }}" class="author-img" width="80" height="80" loading="lazy" decoding="async"></a>
     <ul class="contact-icons">
       {% if site.twitter %}
       <li class="twitter"><a class="twitter" href="https://twitter.com/{{site.twitter}}" target="_blank"><i class="fa fa-twitter"></i></a></li>

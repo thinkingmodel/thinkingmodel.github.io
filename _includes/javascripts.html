@@ -15,6 +15,11 @@
     var sw = document.getElementById('theme-switch');
     var html = document.getElementsByTagName('html')[0];
     var logo = document.getElementById('logo');
+
+    // theme-toggle.html is not included by any layout, so #theme-switch does
+    // not exist and this whole feature is inert. Bail out instead of throwing
+    // on sw.addEventListener, which was aborting the script on every page.
+    if (!sw) return;
     var nightModeOption = ('{{ night_mode }}' || 'auto').toLowerCase();
     var storage = nightModeOption === 'manual'
         ? localStorage
@@ -183,15 +188,21 @@
 {% if page.toc %}
   <script src="https://cdn.jsdelivr.net/gh/cferdinandi/gumshoe@5.1.1/dist/gumshoe.polyfills.min.js"></script>
   <script>
-    var spy = new Gumshoe("#toc-content a", {
-      navClass:"active",
-      contentClass:"underline",
-      nested:0,
-      nestedClass:"active",
-      offset:20,
-      reflow:1,
-      events:1
-    });
+    // The post layout builds its own TOC (#post-toc-list) and never renders
+    // #toc-content, so Gumshoe had nothing to spy on and threw inside
+    // detect() on every post. Only start it when its targets exist.
+    var spy = null;
+    if (document.querySelector("#toc-content a")) {
+      spy = new Gumshoe("#toc-content a", {
+        navClass:"active",
+        contentClass:"underline",
+        nested:0,
+        nestedClass:"active",
+        offset:20,
+        reflow:1,
+        events:1
+      });
+    }
 
     var coll = document.getElementsByClassName("toc-item-1");
     var i;
