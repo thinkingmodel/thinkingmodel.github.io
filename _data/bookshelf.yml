@@ -205,3 +205,43 @@ books:
   accent: '#f472b6'
   note: Two friends from Varanasi want the same woman and opposite futures, one through
     the system and one around it.
+
+- title: Five Point Someone
+  author: Chetan Bhagat
+  year: 2004
+  cover: /assets/img/books/five-point-someone.jpg
+  accent: '#f472b6'
+  note: Three friends work out that surviving IIT and actually learning something are
+    two entirely different projects.
+
+- title: The Alchemist
+  author: Paulo Coelho
+  year: 1988
+  cover: /assets/img/books/alchemist.jpg
+  accent: '#f472b6'
+  note: A shepherd walks to the pyramids chasing buried treasure, and discovers the
+    walking was the point.
+
+- title: Eleven Minutes
+  author: Paulo Coelho
+  year: 2003
+  cover: /assets/img/books/eleven-minutes.jpg
+  accent: '#f472b6'
+  note: A young woman leaves Brazil for Geneva and sets out to work out where sex ends
+    and love begins.
+
+- title: The Winner Stands Alone
+  author: Paulo Coelho
+  year: 2008
+  cover: /assets/img/books/winner-stands-alone.jpg
+  accent: '#f472b6'
+  note: Twenty four hours at Cannes, seen through a man who has mistaken obsession
+    for love and ambition for meaning.
+
+- title: The Subtle Art of Not Giving a F*ck
+  author: Mark Manson
+  year: 2016
+  cover: /assets/img/books/subtle-art.jpg
+  accent: '#fb923c'
+  note: You get a limited supply of things to care about, so the skill is picking which
+    problems are worth having.
