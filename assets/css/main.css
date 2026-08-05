@@ -69,6 +69,11 @@ summary {
   --glass: rgba(13, 13, 34, 0.75);
   --glass-bright: rgba(25, 25, 60, 0.6);
 
+  /* Borders. --border-subtle is referenced 24 times across this file but was
+     never defined, so every rule using it produced an invalid declaration and
+     the border silently collapsed to nothing. */
+  --border-subtle: rgba(167, 139, 250, 0.13);
+
   /* Text hierarchy */
   --ink-full: #f0eeff;
   --ink-high: #d4cef5;
@@ -5486,11 +5491,44 @@ tweet a {
   margin: 0 0 4rem;
 }
 
+/* Read is a different category from Written above, so it carries its own
+   accent on the eyebrow rather than the Books-page amber. */
+.shelf-section .section-eyebrow__label {
+  color: var(--pulsar);
+}
+
+.shelf-section .section-eyebrow__line {
+  background: linear-gradient(90deg, rgba(45, 212, 191, .35), transparent);
+}
+
+/* Read count, sits at the far end of the eyebrow rule. */
+.shelf-count {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-low);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.shelf-heading {
+  font-family: 'Cormorant Garamond', 'DM Serif Display', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink-full);
+  margin: -1.25rem 0 .5rem;
+  -webkit-text-fill-color: var(--ink-full);
+  background: none;
+}
+
 .shelf-intro {
   font-family: var(--font-body);
+  font-style: italic;
   font-size: 1.05rem;
   color: var(--ink-mid);
-  margin: -1rem 0 2.5rem;
+  margin: 0 0 2.5rem;
 }
 
 .shelf-grid {
@@ -5661,8 +5699,16 @@ tweet a {
     gap: 1.75rem 1.15rem;
   }
 
+  .shelf-heading {
+    font-size: 1.85rem;
+  }
+
   .shelf-intro {
     font-size: .98rem;
+  }
+
+  .shelf-count {
+    display: none;
   }
 }
 
