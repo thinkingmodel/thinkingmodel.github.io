@@ -109,3 +109,99 @@ books:
   accent: '#f472b6'
   note: Earth is demolished for a bypass on page one, and the story only gets funnier
     from there.
+
+- title: Mrityunjaya
+  author: Shivaji Sawant
+  year: 1967
+  cover: /assets/img/books/mrityunjaya.jpg
+  accent: '#fbbf24'
+  note: Karna tells his own story, and the Mahabharata's most loyal outsider finally
+    gets to explain himself.
+
+- title: Yugandhar
+  author: Shivaji Sawant
+  year: 1988
+  cover: /assets/img/books/yugandhar.jpg
+  accent: '#fbbf24'
+  note: Krishna seen as a man rather than a god, told by the people who could never
+    quite decide which he was.
+
+- title: Bhagavad Gita
+  author: Vyasa
+  year: 'c. 200 BCE'
+  cover: /assets/img/books/bhagavad-gita.jpg
+  accent: '#fbbf24'
+  note: A warrior refuses to fight, and gets a battlefield answer on duty that people
+    have been arguing over ever since.
+
+- title: Notes from Underground
+  author: Fyodor Dostoevsky
+  year: 1864
+  cover: /assets/img/books/notes-underground.jpg
+  accent: '#fb923c'
+  note: A bitter civil servant explains at length why he is the way he is, and manages
+    to indict you along the way.
+
+- title: Sophie's World
+  author: Jostein Gaarder
+  year: 1991
+  cover: /assets/img/books/sophies-world.jpg
+  accent: '#fbbf24'
+  note: A teenager starts receiving anonymous letters asking who she is, and accidentally
+    inherits the whole history of philosophy.
+
+- title: Thinking, Fast and Slow
+  author: Daniel Kahneman
+  year: 2011
+  cover: /assets/img/books/thinking-fast.jpg
+  accent: '#fb923c'
+  note: Two systems run your mind, and the fast one is confidently wrong far more often
+    than it feels.
+
+- title: 12 Rules for Life
+  author: Jordan B. Peterson
+  year: 2018
+  cover: /assets/img/books/12-rules.jpg
+  accent: '#fb923c'
+  note: Clean your room before you try to fix the world, plus eleven more rules argued
+    with unusual seriousness.
+
+- title: Sapiens
+  author: Yuval Noah Harari
+  year: 2011
+  cover: /assets/img/books/sapiens.jpg
+  accent: '#a78bfa'
+  note: How a middling ape took over the planet by inventing stories that enough strangers
+    agreed to believe.
+
+- title: The Almanack of Naval Ravikant
+  author: Eric Jorgenson
+  year: 2020
+  cover: /assets/img/books/almanack-naval.jpg
+  accent: '#a78bfa'
+  note: Collected thinking on wealth and happiness, built on the claim that both are
+    skills rather than luck.
+
+- title: The God Delusion
+  author: Richard Dawkins
+  year: 2006
+  cover: /assets/img/books/god-delusion.jpg
+  accent: '#a78bfa'
+  note: Dawkins argues religion is not merely untrue but actively harmful, and softens
+    exactly nothing.
+
+- title: Why I Am an Atheist
+  author: Bhagat Singh
+  year: 1930
+  cover: /assets/img/books/why-atheist.jpg
+  accent: '#a78bfa'
+  note: A twenty-three year old writes from a death cell explaining why he will not
+    take comfort in God.
+
+- title: Revolution 2020
+  author: Chetan Bhagat
+  year: 2011
+  cover: /assets/img/books/revolution-2020.jpg
+  accent: '#f472b6'
+  note: Two friends from Varanasi want the same woman and opposite futures, one through
+    the system and one around it.
