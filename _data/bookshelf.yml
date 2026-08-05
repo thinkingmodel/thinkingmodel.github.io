@@ -1,15 +1,23 @@
-# Books Abhinav has read, shown on /books.html under "The Shelf".
+# Books Abhinav has read, shown on /books.html under "Shelf".
 #
 # To add a book, append an entry. Only title, author, cover and note are
 # required. `accent` tints the cover toward one of the site palette colours
 # and defaults to the amber used across the Books page. `link` is optional
 # and makes the whole card clickable.
 #
-#   accent options: '#a78bfa' nebula · '#2dd4bf' pulsar · '#fbbf24' quasar
-#                   '#f472b6' aurora · '#fb923c' horizon
+# Accents follow the site tag colours, so the shelf stays in one system:
+#   '#fbbf24' quasar  philosophy, myth
+#   '#f472b6' aurora  literature, fiction
+#   '#fb923c' horizon psychology, behaviour
+#   '#2dd4bf' pulsar  astronomy, physics
+#   '#a78bfa' nebula  machines, minds
 #
 # `note` is the one-line hover summary. Keep it to a single sentence that
 # makes someone want to pick the book up.
+#
+# Covers come from Open Library. Grab one with:
+#   https://openlibrary.org/search.json?title=...&author=...
+# then take the edition's cover id and resize to 420x646.
 
 books:
 - title: Yayati
@@ -20,3 +28,84 @@ books:
   note: A king borrows his son's youth to keep chasing pleasure, and learns that desire
     only grows by being fed.
   link: /hedonism-to-stoicism-odysseus-and-yayati.html
+
+- title: Norwegian Wood
+  author: Haruki Murakami
+  year: 1987
+  cover: /assets/img/books/norwegian-wood.jpg
+  accent: '#f472b6'
+  note: A love story about grief, and the people you cannot save no matter how gently
+    you hold them.
+  link: /navigating-dissonance-unraveling-complex-relationships-in-norwegian-wood.html
+
+- title: Crime and Punishment
+  author: Fyodor Dostoevsky
+  year: 1866
+  cover: /assets/img/books/crime-punishment.jpg
+  accent: '#fb923c'
+  note: A student murders a pawnbroker to prove he is above morality, then spends the
+    rest of the book being wrong.
+
+- title: White Nights
+  author: Fyodor Dostoevsky
+  year: 1848
+  cover: /assets/img/books/white-nights.jpg
+  accent: '#f472b6'
+  note: A lonely dreamer meets a woman on a bridge for four nights, and finds out what
+    hope costs.
+
+- title: The Metamorphosis
+  author: Franz Kafka
+  year: 1915
+  cover: /assets/img/books/metamorphosis.jpg
+  accent: '#fbbf24'
+  note: A man wakes up as an insect, and the horror is not the change but how quickly
+    his family adjusts to it.
+
+- title: Meditations
+  author: Marcus Aurelius
+  year: 'c. 180'
+  cover: /assets/img/books/meditations.jpg
+  accent: '#fbbf24'
+  note: The private notebook of a Roman emperor talking himself, every morning, out
+    of being insufferable.
+
+- title: The Laws of Human Nature
+  author: Robert Greene
+  year: 2018
+  cover: /assets/img/books/laws-human-nature.jpg
+  accent: '#fb923c'
+  note: A field guide to why people behave as they do, including the parts of yourself
+    you would rather not look at.
+
+- title: A Brief History of Time
+  author: Stephen Hawking
+  year: 1988
+  cover: /assets/img/books/brief-history.jpg
+  accent: '#2dd4bf'
+  note: The Big Bang, black holes and the shape of time, famously explained using exactly
+    one equation.
+
+- title: Cosmos
+  author: Carl Sagan
+  year: 1980
+  cover: /assets/img/books/cosmos.jpg
+  accent: '#2dd4bf'
+  note: Sagan walks you from the first stars to the human brain, and makes being small
+    feel like a privilege.
+
+- title: Relativity
+  author: Albert Einstein
+  year: 1916
+  cover: /assets/img/books/relativity.jpg
+  accent: '#2dd4bf'
+  note: Einstein explaining his own theory, in his own words, to readers he assumed
+    were not physicists.
+
+- title: The Hitchhiker's Guide to the Galaxy
+  author: Douglas Adams
+  year: 1979
+  cover: /assets/img/books/hitchhikers.jpg
+  accent: '#f472b6'
+  note: Earth is demolished for a bypass on page one, and the story only gets funnier
+    from there.
