@@ -1,0 +1,22 @@
+# Books Abhinav has read, shown on /books.html under "The Shelf".
+#
+# To add a book, append an entry. Only title, author, cover and note are
+# required. `accent` tints the cover toward one of the site palette colours
+# and defaults to the amber used across the Books page. `link` is optional
+# and makes the whole card clickable.
+#
+#   accent options: '#a78bfa' nebula · '#2dd4bf' pulsar · '#fbbf24' quasar
+#                   '#f472b6' aurora · '#fb923c' horizon
+#
+# `note` is the one-line hover summary. Keep it to a single sentence that
+# makes someone want to pick the book up.
+
+books:
+- title: Yayati
+  author: V. S. Khandekar
+  year: 1959
+  cover: /assets/img/books/yayati.jpg
+  accent: '#fbbf24'
+  note: A king borrows his son's youth to keep chasing pleasure, and learns that desire
+    only grows by being fed.
+  link: /hedonism-to-stoicism-odysseus-and-yayati.html

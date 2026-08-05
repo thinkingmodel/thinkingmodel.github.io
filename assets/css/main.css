@@ -5479,6 +5479,202 @@ tweet a {
   }
 }
 
+/* =========================================================
+   THE SHELF (books read)
+   ========================================================= */
+.shelf-section {
+  margin: 0 0 4rem;
+}
+
+.shelf-intro {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--ink-mid);
+  margin: -1rem 0 2.5rem;
+}
+
+.shelf-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+  gap: 2.25rem 1.75rem;
+}
+
+.shelf-item {
+  list-style: none;
+}
+
+.shelf-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.shelf-cover {
+  position: relative;
+  aspect-ratio: 420 / 646;
+  border-radius: 4px 8px 8px 4px;
+  overflow: hidden;
+  background: var(--elevated);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
+  transition: transform .45s cubic-bezier(.2, .7, .3, 1),
+              box-shadow .45s ease,
+              border-color .45s ease;
+}
+
+.shelf-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Covers are printed for white shelves; settle them into the dark theme. */
+  filter: saturate(.72) brightness(.74) contrast(1.06);
+  transition: filter .45s ease, transform .45s ease;
+}
+
+/* Accent wash so every cover reads as part of the site palette. */
+.shelf-cover__tint {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(160deg, var(--accent) 0%, transparent 55%),
+    linear-gradient(0deg, var(--void) 0%, transparent 60%);
+  opacity: .42;
+  mix-blend-mode: soft-light;
+  transition: opacity .45s ease;
+  pointer-events: none;
+}
+
+/* Faint highlight down the binding edge. */
+.shelf-cover__spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 9px;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, .16) 0%,
+      rgba(255, 255, 255, .04) 45%,
+      transparent 100%);
+  pointer-events: none;
+}
+
+.shelf-note {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: .95rem .85rem 1rem;
+  background: linear-gradient(0deg,
+      rgba(4, 4, 12, .97) 0%,
+      rgba(4, 4, 12, .92) 55%,
+      rgba(4, 4, 12, 0) 100%);
+  transform: translateY(101%);
+  transition: transform .45s cubic-bezier(.2, .7, .3, 1);
+}
+
+.shelf-note p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: .78rem;
+  line-height: 1.45;
+  color: var(--ink-high);
+  border-left: 2px solid var(--accent);
+  padding-left: .55rem;
+}
+
+.shelf-card:hover .shelf-cover,
+.shelf-card:focus-visible .shelf-cover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, .65),
+              0 0 42px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.shelf-card:hover .shelf-cover img,
+.shelf-card:focus-visible .shelf-cover img {
+  filter: saturate(1) brightness(.95) contrast(1.02);
+  transform: scale(1.04);
+}
+
+.shelf-card:hover .shelf-cover__tint,
+.shelf-card:focus-visible .shelf-cover__tint {
+  opacity: .2;
+}
+
+.shelf-card:hover .shelf-note,
+.shelf-card:focus-visible .shelf-note {
+  transform: translateY(0);
+}
+
+.shelf-meta {
+  margin-top: .85rem;
+  display: flex;
+  flex-direction: column;
+  gap: .18rem;
+}
+
+.shelf-title {
+  font-family: var(--font-display);
+  font-size: 1.06rem;
+  font-weight: 600;
+  color: var(--ink-full);
+  line-height: 1.25;
+  transition: color .3s ease;
+}
+
+.shelf-card:hover .shelf-title {
+  color: var(--accent);
+}
+
+.shelf-author {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-low);
+}
+
+/* Touch devices cannot hover, so keep the note permanently visible. */
+@media (hover: none) and (pointer: coarse) {
+  .shelf-note {
+    transform: translateY(0);
+    position: static;
+    background: none;
+    padding: .7rem 0 0;
+  }
+
+  .shelf-cover {
+    aspect-ratio: auto;
+  }
+
+  .shelf-cover img {
+    aspect-ratio: 420 / 646;
+    filter: saturate(.85) brightness(.88);
+  }
+}
+
+@media (max-width: 640px) {
+  .shelf-grid {
+    grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+    gap: 1.75rem 1.15rem;
+  }
+
+  .shelf-intro {
+    font-size: .98rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .shelf-cover,
+  .shelf-cover img,
+  .shelf-note {
+    transition: none;
+  }
+}
+
 .signal-bar-section {
   margin: 3rem 0 2rem;
   padding-top: 2rem;

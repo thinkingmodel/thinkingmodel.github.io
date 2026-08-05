@@ -69,4 +69,37 @@ permalink: /books.html
         </div>
       </article>
     </section>
+
+    <!-- ═══ THE SHELF: books read ═══ -->
+    <section class="shelf-section" id="shelf">
+      <div class="section-eyebrow">
+        <span class="section-eyebrow__label">The Shelf</span>
+        <div class="section-eyebrow__line"></div>
+      </div>
+
+      <p class="shelf-intro">Books worth carrying forward, with a line on what each one is about.</p>
+
+      <ul class="shelf-grid">
+        {% for book in site.data.bookshelf.books %}
+        {% assign accent = book.accent | default: '#fbbf24' %}
+        <li class="shelf-item" style="--accent: {{ accent }}">
+          {% if book.link %}<a class="shelf-card" href="{{ book.link | relative_url }}">{% else %}<div
+            class="shelf-card">{% endif %}
+            <div class="shelf-cover">
+              <img src="{{ book.cover | relative_url }}"
+                   alt="Cover of {{ book.title }} by {{ book.author }}"
+                   loading="lazy" decoding="async" width="420" height="646">
+              <span class="shelf-cover__tint" aria-hidden="true"></span>
+              <span class="shelf-cover__spine" aria-hidden="true"></span>
+              <div class="shelf-note"><p>{{ book.note }}</p></div>
+            </div>
+            <div class="shelf-meta">
+              <span class="shelf-title">{{ book.title }}</span>
+              <span class="shelf-author">{{ book.author }}{% if book.year %} · {{ book.year }}{% endif %}</span>
+            </div>
+            {% if book.link %}</a>{% else %}</div>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
 </div>
