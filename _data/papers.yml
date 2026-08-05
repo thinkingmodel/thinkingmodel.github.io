@@ -1,4 +1,49 @@
 papers:
+- id: atlas
+  title: 'ATLAS: Learning to Recommend Across Unseen Domains'
+  authors:
+  - name: Pervez Shaik
+    self: false
+  - name: Prosenjit Biswas
+    self: false
+  - name: Abhinav Thorat
+    self: true
+  - name: Ravi Kolla
+    self: false
+  - name: Niranjan Pedanekar
+    self: false
+  venue: arXiv 2026
+  year: 2026
+  domain: NLP & Recommendation
+  domain_color: '#2dd4bf'
+  link: https://arxiv.org/abs/2608.03899
+  arxiv: https://arxiv.org/abs/2608.03899
+  image_path: ''
+  curiosity_hook: What if a recommender trained only on movies and music could walk
+    into a catalogue it has never seen, groceries or video games, and still know what
+    to suggest?
+- id: genesis
+  title: 'GENESIS: Towards Explainable Causal Discovery'
+  authors:
+  - name: Abhinav Thorat
+    self: true
+  - name: Ravi Kolla
+    self: false
+  - name: Vishak K Bhat
+    self: false
+  - name: Harsh Vardhan Singh Chauhan
+    self: false
+  - name: Niranjan Pedanekar
+    self: false
+  venue: arXiv 2026
+  year: 2026
+  domain: Causal Inference
+  domain_color: '#a78bfa'
+  link: https://arxiv.org/abs/2608.03868
+  arxiv: https://arxiv.org/abs/2608.03868
+  image_path: ''
+  curiosity_hook: If an algorithm hands you a map of cause and effect, should it not
+    also be able to justify every single arrow it drew?
 - id: recrec
   title: 'RecRec: Recursive Refinement for Sequential Recommendation'
   authors:
@@ -20,7 +65,7 @@ papers:
   arxiv: https://arxiv.org/abs/2607.10541
   image_path: /assets/research/images/recrec.png
   curiosity_hook: What if a recommender never judged you in a single glance, but
-    kept revisiting its impression of you — refining it pass after pass, anchored
+    kept revisiting its impression of you, refining it pass after pass, anchored
     to what you actually did?
 - id: kanite
   title: 'KANITE: Kolmogorov-Arnold Networks for ITE Estimation'
@@ -98,7 +143,7 @@ papers:
   link: https://arxiv.org/abs/2603.16410
   arxiv: https://arxiv.org/abs/2603.16410
   image_path: /assets/research/images/plot-twist.png
-  curiosity_hook: What if a compact model could write plots that move you — not by
+  curiosity_hook: What if a compact model could write plots that move you, not by
     knowing more, but by first learning the difference between a story that grips
     and one that falls flat?
 - id: network-causal
