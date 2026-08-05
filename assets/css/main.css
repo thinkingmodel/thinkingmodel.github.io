@@ -5491,21 +5491,10 @@ tweet a {
   margin: 0 0 4rem;
 }
 
-/* Read is a different category from Written above, so it carries its own
-   accent on the eyebrow rather than the Books-page amber. */
-.shelf-section .section-eyebrow__label {
-  color: var(--pulsar);
-}
 
-.shelf-section .section-eyebrow__line {
-  background: linear-gradient(90deg, rgba(45, 212, 191, .35), transparent);
-}
-
-/* A section opens on a line of italic prose with the accent rule running
-   off to its right, instead of a mono label and a heading. */
-.section-eyebrow--lede {
-  align-items: baseline;
-  margin-bottom: 2.25rem;
+/* Label and rule sit tight to the lede that follows them. */
+.section-eyebrow--tight {
+  margin-bottom: .9rem;
 }
 
 .shelf-lede {
@@ -5515,14 +5504,8 @@ tweet a {
   line-height: 1.45;
   letter-spacing: .01em;
   color: var(--ink-mid);
-  flex: 0 1 auto;
-}
-
-.section-eyebrow--lede .section-eyebrow__line {
-  flex: 1 0 3rem;
-  min-width: 3rem;
-  position: relative;
-  top: -.35rem;
+  margin: 0 0 2.25rem;
+  max-width: 62ch;
 }
 
 .shelf-grid {
@@ -5695,15 +5678,7 @@ tweet a {
 
   .shelf-lede {
     font-size: 1.02rem;
-  }
-
-  /* The trailing rule has no room left once the line wraps. */
-  .section-eyebrow--lede {
     margin-bottom: 1.75rem;
-  }
-
-  .section-eyebrow--lede .section-eyebrow__line {
-    display: none;
   }
 }
 

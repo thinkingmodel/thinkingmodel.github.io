@@ -15,10 +15,11 @@ permalink: /books.html
     </div>
 
     <section class="books-section" id="books">
-      <div class="section-eyebrow section-eyebrow--lede">
-        <span class="shelf-lede">Writing is how a thought finds out whether it is any good.</span>
+      <div class="section-eyebrow section-eyebrow--tight">
+        <span class="section-eyebrow__label">Books</span>
         <div class="section-eyebrow__line"></div>
       </div>
+      <p class="shelf-lede">Writing is how a thought finds out whether it is any good.</p>
 
       <article class="book-card">
         <div class="book-card__cover-wrap">
@@ -73,10 +74,11 @@ permalink: /books.html
     <!-- ═══ THE SHELF: books read ═══ -->
     <section class="shelf-section" id="shelf">
       {% comment %}Distinct from the section above, which is work he wrote.{% endcomment %}
-      <div class="section-eyebrow section-eyebrow--lede">
-        <span class="shelf-lede">Every book you finish quietly edits the person who started it.</span>
+      <div class="section-eyebrow section-eyebrow--tight">
+        <span class="section-eyebrow__label">Shelf</span>
         <div class="section-eyebrow__line"></div>
       </div>
+      <p class="shelf-lede">Every book you finish quietly edits the person who started it.</p>
 
       <ul class="shelf-grid">
         {% for book in site.data.bookshelf.books %}
