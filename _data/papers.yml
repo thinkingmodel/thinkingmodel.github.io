@@ -18,7 +18,7 @@ papers:
   domain_color: '#2dd4bf'
   link: https://arxiv.org/abs/2608.03899
   arxiv: https://arxiv.org/abs/2608.03899
-  image_path: ''
+  image_path: /assets/research/images/atlas.png
   curiosity_hook: What if a recommender trained only on movies and music could walk
     into a catalogue it has never seen, groceries or video games, and still know what
     to suggest?
@@ -41,7 +41,7 @@ papers:
   domain_color: '#a78bfa'
   link: https://arxiv.org/abs/2608.03868
   arxiv: https://arxiv.org/abs/2608.03868
-  image_path: ''
+  image_path: /assets/research/images/genesis.png
   curiosity_hook: If an algorithm hands you a map of cause and effect, should it not
     also be able to justify every single arrow it drew?
 - id: recrec
