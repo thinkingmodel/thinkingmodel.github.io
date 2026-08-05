@@ -15,8 +15,8 @@ permalink: /books.html
     </div>
 
     <section class="books-section" id="books">
-      <div class="section-eyebrow">
-        <span class="section-eyebrow__label">Written</span>
+      <div class="section-eyebrow section-eyebrow--lede">
+        <span class="shelf-lede">Writing is how a thought finds out whether it is any good.</span>
         <div class="section-eyebrow__line"></div>
       </div>
 
@@ -72,15 +72,11 @@ permalink: /books.html
 
     <!-- ═══ THE SHELF: books read ═══ -->
     <section class="shelf-section" id="shelf">
-      {% assign shelf_count = site.data.bookshelf.books | size %}
-      <div class="section-eyebrow">
-        <span class="section-eyebrow__label">The Shelf</span>
-        <div class="section-eyebrow__line"></div>
-        <span class="shelf-count">{{ shelf_count }} {% if shelf_count == 1 %}book{% else %}books{% endif %}</span>
-      </div>
-
       {% comment %}Distinct from the section above, which is work he wrote.{% endcomment %}
-      <h2 class="shelf-heading">Books Abhinav has read</h2>
+      <div class="section-eyebrow section-eyebrow--lede">
+        <span class="shelf-lede">Every book you finish quietly edits the person who started it.</span>
+        <div class="section-eyebrow__line"></div>
+      </div>
 
       <ul class="shelf-grid">
         {% for book in site.data.bookshelf.books %}

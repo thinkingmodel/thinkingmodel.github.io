@@ -5501,30 +5501,28 @@ tweet a {
   background: linear-gradient(90deg, rgba(45, 212, 191, .35), transparent);
 }
 
-/* Read count, sits at the far end of the eyebrow rule. */
-.shelf-count {
-  font-family: var(--font-mono);
-  font-size: .62rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--ink-low);
-  white-space: nowrap;
-  flex-shrink: 0;
+/* A section opens on a line of italic prose with the accent rule running
+   off to its right, instead of a mono label and a heading. */
+.section-eyebrow--lede {
+  align-items: baseline;
+  margin-bottom: 2.25rem;
 }
 
-/* Deliberately quiet: it names the section without competing with the
-   book titles beneath it. */
-.shelf-heading {
+.shelf-lede {
   font-family: var(--font-body);
   font-style: italic;
   font-size: 1.12rem;
-  font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.45;
   letter-spacing: .01em;
   color: var(--ink-mid);
-  margin: -1.35rem 0 2.25rem;
-  -webkit-text-fill-color: var(--ink-mid);
-  background: none;
+  flex: 0 1 auto;
+}
+
+.section-eyebrow--lede .section-eyebrow__line {
+  flex: 1 0 3rem;
+  min-width: 3rem;
+  position: relative;
+  top: -.35rem;
 }
 
 .shelf-grid {
@@ -5695,12 +5693,16 @@ tweet a {
     gap: 1.75rem 1.15rem;
   }
 
-  .shelf-heading {
+  .shelf-lede {
     font-size: 1.02rem;
+  }
+
+  /* The trailing rule has no room left once the line wraps. */
+  .section-eyebrow--lede {
     margin-bottom: 1.75rem;
   }
 
-  .shelf-count {
+  .section-eyebrow--lede .section-eyebrow__line {
     display: none;
   }
 }
