@@ -3804,6 +3804,14 @@ tweet a {
   }
 }
 
+/* Caption and location sit closer to each other than to the rule above. */
+.about-photo-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .about-photo-caption {
   font-family: 'DM Mono', monospace;
   font-size: 0.62rem;
@@ -3811,6 +3819,27 @@ tweet a {
   letter-spacing: 0.14em;
   color: var(--ink-ghost);
   text-align: center;
+}
+
+.about-photo-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-low);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.about-photo-pin {
+  flex-shrink: 0;
+  color: var(--pulsar);
+  opacity: 0.75;
+  /* nudge the pin so its body, not its point, aligns with the text */
+  transform: translateY(-0.5px);
 }
 
 .about-photo-rule {
