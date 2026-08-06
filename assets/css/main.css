@@ -3820,7 +3820,8 @@ tweet a {
   font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--ink-ghost);
+  /* --ink-ghost is a border-weight tone and was nearly unreadable here. */
+  color: var(--ink-mid);
   text-align: center;
 }
 
@@ -3837,6 +3838,10 @@ tweet a {
   color: var(--ink-low);
   text-align: center;
   white-space: nowrap;
+  /* Centring the whole line leaves the sentence sitting half a pin-width
+     right of the photo's axis. This padding lets the pin hang into the
+     left margin so the text itself centres on the photo. */
+  padding-right: calc(11px + 0.38rem);
 }
 
 .about-photo-pin {
