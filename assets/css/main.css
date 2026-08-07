@@ -5916,10 +5916,12 @@ tweet a {
 
 .cinema-page .header-page {
   max-width: 900px;
-  /* This page carries no eyebrow above its title. The padding stands in for
-     that missing line so the big title lands at the same height it does on
-     Books and Research when you move between the tabs. */
+  /* This page carries neither the eyebrow above its title nor the gradient
+     rule below its tagline. The padding stands in for the missing eyebrow so
+     the big title lands at the same height it does on Books and Research,
+     and the margin restores the separation the rule used to hold open. */
   padding-top: 2.8rem;
+  margin-bottom: 4.5rem;
 }
 
 .reel-grid {
