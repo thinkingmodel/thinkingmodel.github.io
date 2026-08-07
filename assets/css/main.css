@@ -6024,8 +6024,7 @@ tweet a {
   outline-offset: 2px;
 }
 
-.reel-empty,
-.reel-source {
+.reel-empty {
   font-family: var(--font-body);
   font-style: italic;
   color: var(--ink-mid);
@@ -6035,22 +6034,6 @@ tweet a {
 
 .reel-empty[hidden] {
   display: none;
-}
-
-.reel-source {
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.reel-source a {
-  color: var(--pulsar);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(45, 212, 191, .3);
-  transition: border-color .25s ease;
-}
-
-.reel-source a:hover {
-  border-bottom-color: var(--pulsar);
 }
 
 /* Posters read fine unfiltered on touch, where the note is always open. */
