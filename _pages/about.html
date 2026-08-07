@@ -135,13 +135,25 @@ permalink: about:output_ext
       <p class="about-subscribe__sub">New essays on AI, astrophysics, philosophy, and psychology — delivered when
         they're ready, not on a schedule.</p>
 
-      <!-- Keep existing form target, update classes -->
-      <form class="about-subscribe__form" action="https://tinyletter.com/{{site.tinyletter}}" method="post"
-        target="popupwindow"
-        onsubmit="window.open('https://tinyletter.com/{{site.tinyletter}}', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
-        <input type="text" name="email" id="tlemail" class="about-subscribe__input" placeholder="Your email address" />
-        <input type="hidden" value="1" name="embed" />
+      <!-- Posts to FormSubmit; JS swaps in the /ajax/ endpoint so the page never navigates away -->
+      <form class="about-subscribe__form" action="https://formsubmit.co/{{ site.formsubmit }}" method="post"
+        data-subscribe novalidate>
+        <input type="hidden" name="_subject" value="New subscriber: The Thinking Model" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="Signed up from" value="About page" />
+
+        <label class="screen-reader-text" for="about-sub-email">Email Address</label>
+        <input type="email" name="email" id="about-sub-email" class="about-subscribe__input"
+          placeholder="Your email address" required data-cursor="text" />
         <button type="submit" class="about-subscribe__btn"><span>Subscribe</span></button>
+
+        <!-- Anti-bot honeypot -->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+          <input type="text" name="_honey" tabindex="-1" value="" />
+        </div>
+
+        <div class="subscribe-msg about-subscribe__msg" data-subscribe-msg role="status" aria-live="polite"></div>
       </form>
       <span class="about-subscribe__note">No noise. No schedule. Just thinking.</span>
 

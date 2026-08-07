@@ -14,19 +14,26 @@
             <p class="sub-modal-desc">Subscribe for the latest on AI, astrophysics, philosophy, and psychology.</p>
         </div>
 
-        <!-- The form action is manipulated by JS for AJAX -->
-        <form id="subscribe-ajax-form" action="{{ site.mailchimp }}" method="post" novalidate>
+        <!-- Posts to FormSubmit; JS swaps in the /ajax/ endpoint so the page never navigates away -->
+        <form id="subscribe-ajax-form" action="https://formsubmit.co/{{ site.formsubmit }}" method="post"
+            data-subscribe novalidate>
+            <input type="hidden" name="_subject" value="New subscriber: The Thinking Model">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="Signed up from" value="Header modal">
+
             <div class="sub-input-group">
-                <input type="email" name="EMAIL" id="sub-ajax-email" class="sub-modal-input"
+                <input type="email" name="email" id="sub-ajax-email" class="sub-modal-input"
                     placeholder="Your email address" required data-cursor="text">
                 <button type="submit" class="sub-modal-submit">Subscribe</button>
             </div>
             <!-- Anti-bot honeypot -->
             <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                <input type="text" name="b_c46bb8ed6c348caf9e090ae4b_2fc7b963c8" tabindex="-1" value="">
+                <input type="text" name="_honey" tabindex="-1" value="">
             </div>
 
-            <div class="sub-modal-message" id="sub-ajax-msg"></div>
+            <div class="sub-modal-message subscribe-msg" id="sub-ajax-msg" data-subscribe-msg role="status"
+                aria-live="polite"></div>
         </form>
     </div>
 </div>

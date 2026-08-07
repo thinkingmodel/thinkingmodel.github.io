@@ -1,15 +1,28 @@
-<div class="newsletter" id="mc_embed_signup">
+<div class="newsletter">
   <h2 class="page-subtitle">Newsletter</h2>
   <div class="form-container">
     <p>Subscribe here to get our latest updates</p>
-    <form action="{{ site.mailchimp }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-      class="validate" target="_blank" novalidate>
-      <label class="screen-reader-text" for="mce-EMAIL">Email Address</label>
-      <div class="newsletter-box" id="mc_embed_signup_scroll">
-        <input type="email" name="EMAIL" placeholder="Email address" class="email-input" id="mce-EMAIL" required
+    <!-- Posts to FormSubmit; JS swaps in the /ajax/ endpoint so the page never navigates away -->
+    <form action="https://formsubmit.co/{{ site.formsubmit }}" method="post" id="newsletter-subscribe-form"
+      data-subscribe novalidate>
+      <input type="hidden" name="_subject" value="New subscriber: The Thinking Model">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="Signed up from" value="Post footer">
+
+      <label class="screen-reader-text" for="newsletter-email">Email Address</label>
+      <div class="newsletter-box">
+        <input type="email" name="email" placeholder="Email address" class="email-input" id="newsletter-email" required
           data-cursor="text">
-        <input type="submit" value="Subscribe" name="subscribe" class="subscribe-btn" id="mc-embedded-subscribe">
+        <input type="submit" value="Subscribe" class="subscribe-btn">
       </div>
+
+      <!-- Anti-bot honeypot -->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="_honey" tabindex="-1" value="">
+      </div>
+
+      <div class="subscribe-msg newsletter__msg" data-subscribe-msg role="status" aria-live="polite"></div>
     </form>
   </div>
 </div> <!-- End Newsletter -->

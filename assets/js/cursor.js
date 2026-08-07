@@ -106,7 +106,7 @@ animate();
 
 function isEmptySpace(target) {
     const blocked = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'IMG', 'SELECT'];
-    const blockedClasses = ['post-card', 'nav', 'cursor-dot', 'cursor-ring', 'tag', 'btn', 'main-header', 'site-nav', 'main-footer', 'subscribe-modal-content'];
+    const blockedClasses = ['post-card', 'nav', 'cursor-dot', 'cursor-ring', 'tag', 'btn', 'main-header', 'site-nav', 'main-footer', 'subscribe-modal-content', 'expedition-modal'];
 
     if (blocked.includes(target.tagName)) return false;
     if (blockedClasses.some(c => target.closest('.' + c))) return false;
@@ -122,6 +122,7 @@ const ELEMENT_ACCENT_MAP = {
     'tags-section': { color: '#fbbf24', name: 'Tags' },
     'main-footer': { color: '#4d4870', name: 'Footer' },
     'subscribe-modal-content': { color: '#fbbf24', name: 'Modal' },
+    'expedition-modal': { color: '#2dd4bf', name: 'Expedition' },
     // By tag proximity
     'H1': { color: '#a78bfa', name: 'Heading' },
     'H2': { color: '#9b72cf', name: 'Section' },

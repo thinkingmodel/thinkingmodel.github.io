@@ -512,7 +512,7 @@
   }
 
   /* ─────────────────────────────────────────
-     SUBSCRIBE MODAL (AJAX JSONP)
+     SUBSCRIBE MODAL (open / close)
   ───────────────────────────────────────── */
   function initSubscribeModal() {
     var triggers = document.querySelectorAll('.subscribe-trigger');
@@ -541,7 +541,7 @@
       if (form) form.reset();
       if (msgDiv) {
         msgDiv.textContent = '';
-        msgDiv.className = 'sub-modal-message';
+        msgDiv.className = 'sub-modal-message subscribe-msg';
       }
     }
 
@@ -562,53 +562,123 @@
       if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
     });
 
-    if (!form || !msgDiv || !emailInput) return;
+  }
 
-    window.mcCallback = function (res) {
-      if (res.result === 'success') {
-        msgDiv.textContent = 'Success! Welcome to The Thinking Model.';
-        msgDiv.className = 'sub-modal-message success';
-        form.reset();
-        setTimeout(closeModal, 3000);
-      } else {
-        var msg = res.msg.replace('0 - ', '');
-        var temp = document.createElement('div');
-        temp.innerHTML = msg;
-        msgDiv.textContent = temp.textContent || temp.innerText || 'An error occurred. Please try again.';
-        msgDiv.className = 'sub-modal-message error';
+
+  /* ─────────────────────────────────────────
+     SUBSCRIBE FORMS (FormSubmit AJAX)
+     Every [data-subscribe] form posts to FormSubmit, which forwards
+     the signup by email. Without JS the plain POST still works.
+  ───────────────────────────────────────── */
+  function initSubscribeForms() {
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var success = document.getElementById('subscribe-success');
+    var lastFocused = null;
+
+    function hideSuccess() {
+      if (!success) return;
+      success.classList.remove('active');
+      success.setAttribute('aria-hidden', 'true');
+      if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
+    }
+
+    function showSuccess() {
+      if (!success) return;
+      lastFocused = document.activeElement;
+      // Step clear of whichever subscribe surface was used before celebrating.
+      var openModal = document.querySelector('.subscribe-modal-overlay.active');
+      if (openModal) openModal.classList.remove('active');
+      success.classList.add('active');
+      success.setAttribute('aria-hidden', 'false');
+      var btn = success.querySelector('.expedition-modal__btn');
+      if (btn) setTimeout(function () { btn.focus(); }, 120);
+    }
+
+    if (success) {
+      success.querySelectorAll('[data-expedition-close]').forEach(function (btn) {
+        btn.addEventListener('click', hideSuccess);
+      });
+      success.addEventListener('click', function (e) {
+        if (e.target === success) hideSuccess();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && success.classList.contains('active')) hideSuccess();
+      });
+    }
+
+    document.querySelectorAll('form[data-subscribe]').forEach(function (form) {
+      var msgEl = form.querySelector('[data-subscribe-msg]');
+      var emailInput = form.querySelector('input[type="email"]');
+      var submitBtn = form.querySelector('[type="submit"]');
+      var msgBase = msgEl ? msgEl.className : '';
+      var busy = false;
+
+      function say(text, state) {
+        if (!msgEl) return;
+        msgEl.textContent = text;
+        msgEl.className = msgBase + (state ? ' is-' + state : '');
       }
-    };
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      msgDiv.textContent = 'Subscribing...';
-      msgDiv.className = 'sub-modal-message';
-
-      var email = encodeURIComponent(emailInput.value);
-      var actionUrl = form.getAttribute('action');
-      if (!actionUrl) {
-        msgDiv.textContent = 'Error: Mailchimp URL not configured.';
-        return;
+      function release() {
+        busy = false;
+        if (submitBtn) submitBtn.disabled = false;
       }
 
-      // Convert various Mailchimp URLs to the JSONP endpoint
-      var url = actionUrl;
-      url = url.replace(/\/subscribe\/post\?/i, '/subscribe/post-json?');
-      url = url.replace(/\/post\?/i, '/post-json?');
-      // If it just says /subscribe? (as in the config), change it to /subscribe/post-json?
-      if (url.indexOf('post-json') === -1 && url.indexOf('/subscribe?') !== -1) {
-        url = url.replace(/\/subscribe\?/i, '/subscribe/post-json?');
-      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (busy) return;
 
-      url += '&EMAIL=' + email + '&c=mcCallback';
+        var action = form.getAttribute('action') || '';
+        if (action.indexOf('formsubmit.co') === -1) {
+          say('Subscriptions are not configured yet.', 'error');
+          return;
+        }
 
-      var oldScript = document.getElementById('mc-jsonp');
-      if (oldScript) oldScript.remove();
+        var email = emailInput ? emailInput.value.trim() : '';
+        if (!EMAIL_RE.test(email)) {
+          say('Please enter a valid email address.', 'error');
+          if (emailInput) emailInput.focus();
+          return;
+        }
 
-      var script = document.createElement('script');
-      script.id = 'mc-jsonp';
-      script.src = url;
-      document.body.appendChild(script);
+        // A filled honeypot means a bot, so stop without saying why.
+        var honey = form.querySelector('input[name="_honey"]');
+        if (honey && honey.value) return;
+
+        var payload = {};
+        new FormData(form).forEach(function (value, key) {
+          if (key !== '_honey') payload[key] = value;
+        });
+
+        busy = true;
+        if (submitBtn) submitBtn.disabled = true;
+        say('Subscribing...');
+
+        var endpoint = action.replace(/formsubmit\.co\/(?!ajax\/)/, 'formsubmit.co/ajax/');
+
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (res) {
+            return res.json().catch(function () { return {}; });
+          })
+          .then(function (data) {
+            release();
+            if (data && String(data.success) === 'true') {
+              form.reset();
+              say(''); // the popup carries the message, so clear the inline line
+              showSuccess();
+            } else {
+              say((data && data.message) || 'Something went wrong. Please try again.', 'error');
+            }
+          })
+          .catch(function () {
+            release();
+            say('Could not reach the server. Please try again.', 'error');
+          });
+      });
     });
   }
 
@@ -981,6 +1051,7 @@
   function boot() {
     initMenu();
     initSubscribeModal();
+    initSubscribeForms();
     initNavHover();
     initSearch();
     initArchiveAndTags();

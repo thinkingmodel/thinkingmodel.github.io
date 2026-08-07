@@ -2183,6 +2183,17 @@ tweet a {
   display: none;
 }
 
+/* Label text for assistive tech only, kept out of the visual layout */
+.screen-reader-text {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .ml-auto,
 .mx-auto {
   margin-left: auto !important;
@@ -2811,12 +2822,169 @@ tweet a {
   margin-top: 0.5rem;
 }
 
-.sub-modal-message.success {
+/* =========================================================
+   EXPEDITION CONFIRMATION (post-subscribe popup)
+   ========================================================= */
+.expedition-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 12, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 9500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.expedition-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.expedition-modal {
+  background: var(--surface);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  border-radius: 12px;
+  padding: 3.25rem 3rem 2.75rem;
+  width: 90%;
+  max-width: 460px;
+  position: relative;
+  text-align: center;
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8), 0 0 48px rgba(45, 212, 191, 0.12);
+}
+
+.expedition-overlay.active .expedition-modal {
+  transform: translateY(0) scale(1);
+}
+
+.expedition-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--ink-mid);
+  padding: 0.5rem;
+  cursor: none !important;
+  transition: color 0.3s;
+}
+
+.expedition-modal__close:hover {
   color: var(--pulsar);
 }
 
-.sub-modal-message.error {
+.expedition-modal__glyph {
+  font-size: 1.4rem;
+  color: var(--pulsar);
+  margin-bottom: 1.25rem;
+  animation: expedition-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes expedition-pulse {
+
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+.expedition-modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  line-height: 1.25;
+  color: var(--ink-full);
+  margin: 0 0 0.85rem;
+}
+
+.expedition-modal__body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin: 0 auto 2rem;
+  max-width: 34ch;
+}
+
+.expedition-modal__btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--pulsar);
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  border-radius: 3px;
+  padding: 0.7rem 2.25rem;
+  cursor: none;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.expedition-modal__btn:hover {
+  background: rgba(45, 212, 191, 0.18);
+  border-color: var(--pulsar);
+  box-shadow: 0 0 18px rgba(45, 212, 191, 0.28);
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .expedition-modal {
+    padding: 2.5rem 1.75rem 2.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .expedition-overlay,
+  .expedition-modal {
+    transition: none;
+  }
+
+  .expedition-modal__glyph {
+    animation: none;
+  }
+}
+
+/* Shared status line for every subscribe form (modal, about page, post footer) */
+.subscribe-msg {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--ink-ghost);
+}
+
+.subscribe-msg:empty {
+  min-height: 0;
+}
+
+.subscribe-msg.is-success {
+  color: var(--pulsar);
+}
+
+.subscribe-msg.is-error {
   color: var(--nova);
+}
+
+.about-subscribe__msg {
+  flex: 0 0 100%;
+  text-align: center;
+  margin-top: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.newsletter__msg {
+  margin-top: 0.75rem;
 }
 
 /* =========================================================
