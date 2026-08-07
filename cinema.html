@@ -36,19 +36,14 @@ description: A curated shelf of films, one line of premise each, from a cinephil
 
       <div class="reel-filters" role="group" aria-label="Filter films by strand">
         <button type="button" class="reel-chip is-active" data-strand="all" aria-pressed="true"
-                style="--accent: var(--ink-mid)">
-          All <span class="reel-chip__n">{{ films | size }}</span>
-        </button>
+                style="--accent: var(--ink-mid)">All</button>
         {% for key in strand_keys %}
-        {% assign n = films | where: "strand", key | size %}
         <button type="button" class="reel-chip" data-strand="{{ key }}" aria-pressed="false"
-                style="--accent: {{ strand_hues[forloop.index0] }}">
-          {{ strand_labels[forloop.index0] }} <span class="reel-chip__n">{{ n }}</span>
-        </button>
+                style="--accent: {{ strand_hues[forloop.index0] }}">{{ strand_labels[forloop.index0] }}</button>
         {% endfor %}
       </div>
 
-      <ul class="shelf-grid reel-grid">
+      <ul class="shelf-grid reel-grid" id="film-grid">
         {% for film in films %}
         {% case film.strand %}
           {% when 'power'   %}{% assign accent = '#fbbf24' %}
@@ -80,9 +75,50 @@ description: A curated shelf of films, one line of premise each, from a cinephil
       </ul>
 
       <p class="reel-empty" hidden>Nothing on this strand yet.</p>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ TELEVISION: the long form ═══ -->
+    <section class="shelf-section reel-section" id="television">
+      <div class="section-eyebrow section-eyebrow--tight">
+        <span class="section-eyebrow__label">Television</span>
+        <div class="section-eyebrow__line"></div>
+      </div>
+      <p class="shelf-lede">The long form, where a character has room enough to become
+        someone else in front of you.</p>
+
+      <ul class="shelf-grid reel-grid">
+        {% for show in site.data.cinema.series %}
+        {% case show.strand %}
+          {% when 'power'   %}{% assign accent = '#fbbf24' %}
+          {% when 'mind'    %}{% assign accent = '#a78bfa' %}
+          {% when 'longing' %}{% assign accent = '#f472b6' %}
+          {% when 'witness' %}{% assign accent = '#2dd4bf' %}
+          {% when 'dread'   %}{% assign accent = '#fb923c' %}
+          {% else %}{% assign accent = '#a78bfa' %}
+        {% endcase %}
+        <li class="shelf-item reel-item" data-strand="{{ show.strand }}" style="--accent: {{ accent }}">
+          <div class="shelf-card">
+            <div class="shelf-cover">
+              <img src="{{ '/assets/img/series/' | append: show.slug | append: '.jpg' | relative_url }}"
+                   alt="Poster for {{ show.title }}, created by {{ show.creator }}"
+                   loading="lazy" decoding="async" width="300" height="450">
+              <span class="shelf-cover__tint" aria-hidden="true"></span>
+              <span class="reel-cover__sheen" aria-hidden="true"></span>
+              <div class="shelf-note"><p>{{ show.note }}</p></div>
+            </div>
+            <div class="shelf-meta">
+              <span class="shelf-title">{{ show.title }}</span>
+              <span class="shelf-author">{{ show.creator }} · {{ show.years }}</span>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
 
       <p class="reel-source">
-        The whole list lives on
+        The film list lives on
         <a href="https://letterboxd.com/abhinavwrites/list/abhinav-curated/"
            target="_blank" rel="noopener noreferrer">Letterboxd</a>.
       </p>
@@ -96,7 +132,9 @@ description: A curated shelf of films, one line of premise each, from a cinephil
     var filters = document.querySelector('.reel-filters');
     if (!filters) return;
 
-    var items = Array.prototype.slice.call(document.querySelectorAll('.reel-item'));
+    // Scoped to the film grid: the Television wall carries the same classes
+    // but is not filtered.
+    var items = Array.prototype.slice.call(document.querySelectorAll('#film-grid .reel-item'));
     var empty = document.querySelector('.reel-empty');
 
     filters.addEventListener('click', function (e) {

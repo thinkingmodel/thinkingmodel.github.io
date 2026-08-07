@@ -5976,21 +5976,23 @@ tweet a {
   margin: 0 0 2.5rem;
 }
 
+/* Mono, uppercase, wide tracking: the same voice as the section eyebrows and
+   the card meta lines, so the filters read as part of the page furniture. */
 .reel-chip {
   appearance: none;
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: .62rem;
-  letter-spacing: .16em;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--ink-mid);
   background: transparent;
   border: 1px solid var(--border-subtle);
   border-radius: 999px;
-  padding: 7px 15px;
+  padding: 7px 18px 7px 16px;
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
+  gap: .6rem;
   transition: color .25s ease, border-color .25s ease,
               background .25s ease, box-shadow .25s ease;
 }
@@ -6005,12 +6007,6 @@ tweet a {
   flex: none;
 }
 
-.reel-chip__n {
-  font-size: .58rem;
-  color: var(--ink-low);
-  transition: color .25s ease;
-}
-
 .reel-chip:hover {
   color: var(--ink-high);
   border-color: color-mix(in srgb, var(--accent) 45%, transparent);
@@ -6021,10 +6017,6 @@ tweet a {
   border-color: color-mix(in srgb, var(--accent) 60%, transparent);
   background: color-mix(in srgb, var(--accent) 9%, transparent);
   box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 16%, transparent);
-}
-
-.reel-chip.is-active .reel-chip__n {
-  color: var(--ink-mid);
 }
 
 .reel-chip:focus-visible {
@@ -6082,7 +6074,8 @@ tweet a {
 
   .reel-chip {
     font-size: .58rem;
-    padding: 6px 12px;
+    padding: 6px 14px 6px 12px;
+    gap: .5rem;
   }
 }
 

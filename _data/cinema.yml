@@ -993,3 +993,52 @@ films:
   strand: longing
   note: A poet nobody will publish is finally celebrated, once the world has decided
     he is dead.
+
+# Long form, shown on the same page under "Television". Same shape as `films`,
+# except the poster lives at /assets/img/series/{slug}.jpg, `creator` stands in
+# for the director and `years` is the run rather than a single year. Series have
+# no Letterboxd entry, so these cards do not link out.
+#
+# TV infoboxes on Wikipedia hold logos and title cards rather than posters, so
+# these covers come from each show's season-one article at 300x450.
+
+series:
+- slug: succession
+  title: Succession
+  years: '2018 to 2023'
+  creator: Jesse Armstrong
+  strand: power
+  note: An ageing media titan refuses to name an heir, and his four children spend
+    four seasons auditioning for a job he will never hand over.
+
+- slug: breaking-bad
+  title: Breaking Bad
+  years: '2008 to 2013'
+  creator: Vince Gilligan
+  strand: power
+  note: A dying chemistry teacher starts cooking meth to provide for his family, and
+    finds out he is extraordinarily good at something worse.
+
+- slug: better-call-saul
+  title: Better Call Saul
+  years: '2015 to 2022'
+  creator: Vince Gilligan and Peter Gould
+  strand: mind
+  note: How a man who desperately wanted to be taken seriously became a lawyer nobody
+    could take seriously.
+
+- slug: game-of-thrones
+  title: Game of Thrones
+  years: '2011 to 2019'
+  creator: David Benioff and D. B. Weiss
+  strand: power
+  note: Nine noble houses tear each other apart over one throne while the thing that
+    should actually worry them gathers in the north.
+
+- slug: narcos
+  title: Narcos
+  years: '2015 to 2017'
+  creator: Chris Brancato, Carlo Bernard and Doug Miro
+  strand: witness
+  note: The rise of Pablo Escobar, told alongside the two DEA agents who spend a decade
+    failing to catch him.
