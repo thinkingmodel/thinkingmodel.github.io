@@ -5898,6 +5898,200 @@ tweet a {
   }
 }
 
+/* =========================================================
+   THE REEL (films watched)
+   Inherits the shelf, retuned for 2:3 posters instead of book covers.
+   ========================================================= */
+/* A wall of 122 posters needs more room than the 960px reading column the rest
+   of the menu pages use. `wrapper_class: wrapper--wide` in the page front
+   matter opts in; the header stays at reading width so the hero still reads
+   like the Books and Research pages. */
+.wrapper--wide {
+  width: 1280px;
+}
+
+.cinema-page {
+  max-width: 1240px;
+}
+
+.cinema-page .header-page {
+  max-width: 900px;
+}
+
+.reel-grid {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2.5rem 1.6rem;
+}
+
+/* Posters are square-cornered and uniform, so drop the book spine and the
+   asymmetric binding radius the shelf uses. */
+.reel-item .shelf-cover {
+  aspect-ratio: 2 / 3;
+  border-radius: 5px;
+}
+
+/* Posters carry far more colour than book covers, so sit them further back and
+   let the hover bring them forward. */
+.reel-item .shelf-cover img {
+  filter: saturate(.62) brightness(.66) contrast(1.08);
+}
+
+.reel-item .shelf-cover__tint {
+  opacity: .5;
+}
+
+/* A single raking highlight, like light across a lobby card. */
+.reel-cover__sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg,
+      transparent 0%,
+      rgba(255, 255, 255, .10) 42%,
+      rgba(255, 255, 255, .03) 52%,
+      transparent 68%);
+  opacity: .55;
+  transition: opacity .45s ease;
+  pointer-events: none;
+}
+
+.shelf-card:hover .reel-cover__sheen,
+.shelf-card:focus-visible .reel-cover__sheen {
+  opacity: .9;
+}
+
+.reel-item .shelf-card:hover .shelf-cover img,
+.reel-item .shelf-card:focus-visible .shelf-cover img {
+  filter: saturate(1.02) brightness(1) contrast(1.02);
+}
+
+.reel-item .shelf-title {
+  font-size: 1rem;
+}
+
+/* ── Strand filter chips ── */
+.reel-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: 0 0 2.5rem;
+}
+
+.reel-chip {
+  appearance: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 7px 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  transition: color .25s ease, border-color .25s ease,
+              background .25s ease, box-shadow .25s ease;
+}
+
+.reel-chip::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 7px var(--accent);
+  flex: none;
+}
+
+.reel-chip__n {
+  font-size: .58rem;
+  color: var(--ink-low);
+  transition: color .25s ease;
+}
+
+.reel-chip:hover {
+  color: var(--ink-high);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.reel-chip.is-active {
+  color: var(--ink-full);
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.reel-chip.is-active .reel-chip__n {
+  color: var(--ink-mid);
+}
+
+.reel-chip:focus-visible {
+  outline: 2px solid var(--nebula);
+  outline-offset: 2px;
+}
+
+.reel-empty,
+.reel-source {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--ink-mid);
+  font-size: 1rem;
+  margin: 2.5rem 0 0;
+}
+
+.reel-empty[hidden] {
+  display: none;
+}
+
+.reel-source {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.reel-source a {
+  color: var(--pulsar);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(45, 212, 191, .3);
+  transition: border-color .25s ease;
+}
+
+.reel-source a:hover {
+  border-bottom-color: var(--pulsar);
+}
+
+/* Posters read fine unfiltered on touch, where the note is always open. */
+@media (hover: none) and (pointer: coarse) {
+  .reel-item .shelf-cover img {
+    aspect-ratio: 2 / 3;
+    filter: saturate(.9) brightness(.9) contrast(1.02);
+  }
+}
+
+@media (max-width: 640px) {
+  .reel-grid {
+    grid-template-columns: repeat(auto-fill, minmax(126px, 1fr));
+    gap: 1.9rem 1.1rem;
+  }
+
+  .reel-filters {
+    gap: .45rem;
+    margin-bottom: 1.9rem;
+  }
+
+  .reel-chip {
+    font-size: .58rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-cover__sheen {
+    transition: none;
+  }
+}
+
 .signal-bar-section {
   margin: 3rem 0 2rem;
   padding-top: 2rem;

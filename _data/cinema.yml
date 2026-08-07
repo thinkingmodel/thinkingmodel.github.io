@@ -1,0 +1,995 @@
+# Films on the curated shelf, shown on /cinema.html.
+#
+# Mirrors _data/bookshelf.yml. `slug` is the Letterboxd film slug and does two
+# jobs: the poster is /assets/img/films/{slug}.jpg and the card links to
+# https://letterboxd.com/film/{slug}/. Keep it exact or both break.
+#
+# `note` is the one-line premise revealed on hover. One sentence, present
+# tense, no spoilers past the first act.
+#
+# `strand` picks the accent colour and the filter chip. Five strands, mapped to
+# the site palette in cinema.html so the wall stays inside one system:
+#   power    quasar    #fbbf24  crime, money, empire, ambition
+#   mind     nebula    #a78bfa  memory, identity, puzzle, obsession
+#   longing  nova      #f472b6  love, desire, loneliness, grief
+#   witness  pulsar    #2dd4bf  history, war, injustice, true story
+#   dread    supernova #fb923c  horror, thriller, the slow turn of the screw
+#
+# Posters come from the Wikipedia infobox of each film, cropped to 2:3 at
+# 420x630. Source list: https://letterboxd.com/abhinavwrites/list/abhinav-curated/
+
+films:
+- slug: 12-years-a-slave
+  title: 12 Years a Slave
+  year: 2013
+  director: Steve McQueen
+  strand: witness
+  note: A free Black man in New York is kidnapped and sold south, and has to survive
+    twelve years without losing hold of who he was.
+
+- slug: '1917'
+  title: '1917'
+  year: 2019
+  director: Sam Mendes
+  strand: witness
+  note: Two soldiers cross no man's land to call off an attack, filmed to look like
+    one unbroken breath.
+
+- slug: all-quiet-on-the-western-front-2022
+  title: All Quiet on the Western Front
+  year: 2022
+  director: Edward Berger
+  strand: witness
+  note: German schoolboys enlist cheering, and the war spends them like small change.
+
+- slug: american-beauty
+  title: American Beauty
+  year: 1999
+  director: Sam Mendes
+  strand: longing
+  note: A suburban father detonates his own life at forty two, convinced the wreckage
+    is more honest than the lawn.
+
+- slug: american-history-x
+  title: American History X
+  year: 1998
+  director: Tony Kaye
+  strand: witness
+  note: A skinhead leaves prison determined to pull his younger brother out of the
+    movement that made him.
+
+- slug: andhadhun
+  title: Andhadhun
+  year: 2018
+  director: Sriram Raghavan
+  strand: dread
+  note: A pianist pretending to be blind witnesses a murder he was never meant to see,
+    and the lie starts charging interest.
+
+- slug: ani-dr-kashinath-ghanekar
+  title: Ani... Dr. Kashinath Ghanekar
+  year: 2018
+  director: Abhijeet Deshpande
+  strand: witness
+  note: Marathi theatre's first superstar draws a roaring crowd every night and cannot
+    find one person to go home to.
+
+- slug: asuran
+  title: Asuran
+  year: 2019
+  director: Vetrimaaran
+  strand: power
+  note: A farmer who buried his violent past has to dig it back up when caste politics
+    comes for his sons.
+
+- slug: babylon-2022
+  title: Babylon
+  year: 2022
+  director: Damien Chazelle
+  strand: power
+  note: Hollywood learns to talk, and the silent era's stars discover the party was
+    never being thrown for them.
+
+- slug: a-beautiful-mind
+  title: A Beautiful Mind
+  year: 2001
+  director: Ron Howard
+  strand: mind
+  note: A mathematician's genius and his delusions come from the same place, and he
+    has to learn which one to stop listening to.
+
+- slug: the-big-lebowski
+  title: The Big Lebowski
+  year: 1998
+  director: Joel and Ethan Coen
+  strand: power
+  note: A man is mistaken for a millionaire over a soiled rug, and the case unravels
+    into something nobody involved is qualified to solve.
+
+- slug: the-big-short
+  title: The Big Short
+  year: 2015
+  director: Adam McKay
+  strand: power
+  note: A few outsiders notice the housing market is built on nothing, and bet everything
+    that the rest of the world is wrong.
+
+- slug: black-friday-2004
+  title: Black Friday
+  year: 2004
+  director: Anurag Kashyap
+  strand: witness
+  note: The 1993 Bombay blasts rebuilt from the police files, with nobody allowed to
+    come out of it clean.
+
+- slug: blood-diamond
+  title: Blood Diamond
+  year: 2006
+  director: Edward Zwick
+  strand: witness
+  note: A smuggler, a fisherman and a journalist chase one stone through Sierra Leone's
+    war, each for a different reason.
+
+- slug: blue-is-the-warmest-color
+  title: Blue Is the Warmest Color
+  year: 2013
+  director: Abdellatif Kechiche
+  strand: longing
+  note: A teenager falls for a woman with blue hair and finds out that first love teaches
+    you who you are by leaving.
+
+- slug: the-body-2012
+  title: The Body
+  year: 2012
+  director: Oriol Paulo
+  strand: dread
+  note: A wealthy woman's corpse vanishes from the morgue, and her husband has an excellent
+    reason to be terrified.
+
+- slug: bohemian-rhapsody
+  title: Bohemian Rhapsody
+  year: 2018
+  director: Bryan Singer
+  strand: longing
+  note: Freddie Mercury builds the biggest band in the world and spends the whole time
+    looking for somewhere to belong.
+
+- slug: brokeback-mountain
+  title: Brokeback Mountain
+  year: 2005
+  director: Ang Lee
+  strand: longing
+  note: Two ranch hands fall in love over one summer and spend twenty years pretending
+    it was only that summer.
+
+- slug: call-me-by-your-name
+  title: Call Me by Your Name
+  year: 2017
+  director: Luca Guadagnino
+  strand: longing
+  note: Across one Italian summer a seventeen year old learns what wanting someone
+    costs, and decides it was worth the price.
+
+- slug: catch-me-if-you-can-2002
+  title: Catch Me If You Can
+  year: 2002
+  director: Steven Spielberg
+  strand: power
+  note: A teenage forger outruns the FBI as a pilot, a doctor and a lawyer, mostly
+    because nobody thinks to ask.
+
+- slug: city-of-god
+  title: City of God
+  year: 2002
+  director: Fernando Meirelles
+  strand: power
+  note: Two boys grow up in the same Rio favela, one picks up a camera and the other
+    picks up a gun.
+
+- slug: dallas-buyers-club
+  title: Dallas Buyers Club
+  year: 2013
+  director: Jean-Marc Vallée
+  strand: witness
+  note: A Texas electrician diagnosed with HIV starts smuggling in the drugs his own
+    government will not approve.
+
+- slug: the-dark-knight
+  title: The Dark Knight
+  year: 2008
+  director: Christopher Nolan
+  strand: power
+  note: A man in a mask meets a man who wants nothing, and learns that order is far
+    harder to defend than to break.
+
+- slug: the-dark-knight-rises
+  title: The Dark Knight Rises
+  year: 2012
+  director: Christopher Nolan
+  strand: power
+  note: Gotham's protector comes back broken to face a city that has decided it no
+    longer wants saving.
+
+- slug: decision-to-leave
+  title: Decision to Leave
+  year: 2022
+  director: Park Chan-wook
+  strand: longing
+  note: A detective falls for his prime suspect, and the insomnia turns out to be the
+    least of his problems.
+
+- slug: the-departed
+  title: The Departed
+  year: 2006
+  director: Martin Scorsese
+  strand: power
+  note: A cop inside the mob and a mobster inside the police, each racing to find the
+    other before being found.
+
+- slug: django-unchained
+  title: Django Unchained
+  year: 2012
+  director: Quentin Tarantino
+  strand: power
+  note: A freed slave and a bounty hunter ride into a Mississippi plantation to buy
+    back a wife, and settle a much larger bill.
+
+- slug: dont-look-up-2021
+  title: Don't Look Up
+  year: 2021
+  director: Adam McKay
+  strand: witness
+  note: Two astronomers find a comet headed for Earth and discover that being right
+    is nothing like being heard.
+
+- slug: dunkirk-2017
+  title: Dunkirk
+  year: 2017
+  director: Christopher Nolan
+  strand: witness
+  note: Land, sea and air run on three different clocks while four hundred thousand
+    men wait on a beach to go home.
+
+- slug: eternal-sunshine-of-the-spotless-mind
+  title: Eternal Sunshine of the Spotless Mind
+  year: 2004
+  director: Michel Gondry
+  strand: mind
+  note: A man pays to have an ex erased from his memory, then spends the procedure
+    trying to hide her somewhere they will not look.
+
+- slug: everything-everywhere-all-at-once
+  title: Everything Everywhere All at Once
+  year: 2022
+  director: Daniel Kwan and Daniel Scheinert
+  strand: mind
+  note: A laundromat owner mid audit learns she is the worst version of herself in
+    every universe, which is exactly why she can save them.
+
+- slug: eyes-wide-shut
+  title: Eyes Wide Shut
+  year: 1999
+  director: Stanley Kubrick
+  strand: longing
+  note: A confession from his wife sends a doctor wandering New York for one night,
+    into rooms he was never invited to.
+
+- slug: fight-club
+  title: Fight Club
+  year: 1999
+  director: David Fincher
+  strand: mind
+  note: An insomniac and a soap salesman start a club for men with nothing left to
+    lose, and it does not stay a club.
+
+- slug: forrest-gump
+  title: Forrest Gump
+  year: 1994
+  director: Robert Zemeckis
+  strand: longing
+  note: A man of plain decency keeps stumbling through American history while waiting
+    for the only person he ever wanted.
+
+- slug: gangs-of-wasseypur-part-1
+  title: Gangs of Wasseypur, Part 1
+  year: 2012
+  director: Anurag Kashyap
+  strand: power
+  note: Three generations feud over the coal fields of Dhanbad, where revenge is inherited
+    like property.
+
+- slug: gangs-of-wasseypur-part-2
+  title: Gangs of Wasseypur, Part 2
+  year: 2012
+  director: Anurag Kashyap
+  strand: power
+  note: The sons take over the war their fathers started, armed with borrowed film
+    dialogue and no memory of why it began.
+
+- slug: get-out-2017
+  title: Get Out
+  year: 2017
+  director: Jordan Peele
+  strand: dread
+  note: A Black man meets his white girlfriend's parents for the weekend, and every
+    polite smile is a warning he cannot prove.
+
+- slug: gladiator-2000
+  title: Gladiator
+  year: 2000
+  director: Ridley Scott
+  strand: power
+  note: A betrayed general is sold into the arena and fights his way back up toward
+    the emperor who took everything.
+
+- slug: the-godfather
+  title: The Godfather
+  year: 1972
+  director: Francis Ford Coppola
+  strand: power
+  note: The son who wanted no part of the family business turns out to be the best
+    there has ever been at it.
+
+- slug: the-godfather-part-ii
+  title: The Godfather Part II
+  year: 1974
+  director: Francis Ford Coppola
+  strand: power
+  note: A father builds the empire and a son hollows it out, told side by side across
+    fifty years.
+
+- slug: gone-girl
+  title: Gone Girl
+  year: 2014
+  director: David Fincher
+  strand: dread
+  note: A wife disappears on the fifth anniversary, and the husband's face on television
+    is doing him no favours.
+
+- slug: goodfellas
+  title: GoodFellas
+  year: 1990
+  director: Martin Scorsese
+  strand: power
+  note: Thirty years in the mob at the speed the mob actually moves, right up to the
+    morning it stops being fun.
+
+- slug: good-will-hunting
+  title: Good Will Hunting
+  year: 1997
+  director: Gus Van Sant
+  strand: mind
+  note: A janitor at MIT solves proofs nobody else can, and the hard part is getting
+    him to want anything at all.
+
+- slug: green-book
+  title: Green Book
+  year: 2018
+  director: Peter Farrelly
+  strand: witness
+  note: A Black pianist hires an Italian American bouncer to drive him through the
+    1962 South, and neither survives the trip unchanged.
+
+- slug: haider
+  title: Haider
+  year: 2014
+  director: Vishal Bhardwaj
+  strand: witness
+  note: Hamlet moved to Kashmir in 1995, where the missing outnumber the dead and revenge
+    keeps its own body count.
+
+- slug: the-handmaiden
+  title: The Handmaiden
+  year: 2016
+  director: Park Chan-wook
+  strand: longing
+  note: A pickpocket is planted as a maid to help con an heiress, and every person
+    in the house is running a different script.
+
+- slug: heat-1995
+  title: Heat
+  year: 1995
+  director: Michael Mann
+  strand: power
+  note: A thief and the detective hunting him recognise each other completely, which
+    is precisely the problem.
+
+- slug: the-imitation-game
+  title: The Imitation Game
+  year: 2014
+  director: Morten Tyldum
+  strand: witness
+  note: Alan Turing breaks the Enigma code, and the country he saved prosecutes him
+    for who he is.
+
+- slug: inception
+  title: Inception
+  year: 2010
+  director: Christopher Nolan
+  strand: mind
+  note: A thief who steals from dreams is hired to plant an idea instead, and loses
+    track of how far down he has gone.
+
+- slug: inglourious-basterds
+  title: Inglourious Basterds
+  year: 2009
+  director: Quentin Tarantino
+  strand: witness
+  note: A Jewish cinema owner and a squad of Nazi hunters converge on the same Paris
+    premiere with very different plans for the building.
+
+- slug: interstellar
+  title: Interstellar
+  year: 2014
+  director: Christopher Nolan
+  strand: mind
+  note: A father leaves a dying Earth to find humanity another home, and pays for it
+    in the one currency he cannot earn back.
+
+- slug: in-the-mood-for-love
+  title: In the Mood for Love
+  year: 2000
+  director: Wong Kar-wai
+  strand: longing
+  note: Two neighbours work out that their spouses are having an affair, and decide
+    they will not become the thing they are mourning.
+
+- slug: the-invisible-guest
+  title: The Invisible Guest
+  year: 2016
+  director: Oriol Paulo
+  strand: dread
+  note: A businessman has three hours with a lawyer to build an alibi, and each retelling
+    of the night is worse than the last.
+
+- slug: the-irishman-2019
+  title: The Irishman
+  year: 2019
+  director: Martin Scorsese
+  strand: power
+  note: A hitman looks back on fifty years of loyalty and finds nobody left alive to
+    tell the truth to.
+
+- slug: i-saw-the-devil
+  title: I Saw the Devil
+  year: 2010
+  director: Kim Jee-woon
+  strand: dread
+  note: An agent catches his fiancée's killer and lets him go, again and again, until
+    it is unclear which of them is the monster.
+
+- slug: jallikattu
+  title: Jallikattu
+  year: 2019
+  director: Lijo Jose Pellissery
+  strand: dread
+  note: A buffalo escapes the slaughterhouse and an entire village chases it into the
+    night, shedding civilisation as it runs.
+
+- slug: joker-2019
+  title: Joker
+  year: 2019
+  director: Todd Phillips
+  strand: mind
+  note: A failing clown in a city that has stopped pretending to care discovers that
+    being seen is worth almost any price.
+
+- slug: kaksparsh
+  title: Kaksparsh
+  year: 2012
+  director: Mahesh Manjrekar
+  strand: longing
+  note: A widowed sister in law and the brother who shields her spend a lifetime honouring
+    a vow nobody asked them to make.
+
+- slug: khufiya
+  title: Khufiya
+  year: 2023
+  director: Vishal Bhardwaj
+  strand: power
+  note: A RAW operative hunts a mole while grieving the agent she loved, and the job
+    keeps asking which loss counts.
+
+- slug: killers-of-the-flower-moon
+  title: Killers of the Flower Moon
+  year: 2023
+  director: Martin Scorsese
+  strand: witness
+  note: Osage families sit on oil money in 1920s Oklahoma and start dying in ways the
+    white men around them find very convenient.
+
+- slug: lootera
+  title: Lootera
+  year: 2013
+  director: Vikramaditya Motwane
+  strand: longing
+  note: A con man arrives at a Bengal estate to rob it and falls for the daughter of
+    the house, which ruins both plans.
+
+- slug: the-lunchbox
+  title: The Lunchbox
+  year: 2013
+  director: Ritesh Batra
+  strand: longing
+  note: Mumbai's lunch delivery makes one mistake in a million, and two lonely strangers
+    begin writing to each other.
+
+- slug: lust-caution
+  title: Lust, Caution
+  year: 2007
+  director: Ang Lee
+  strand: longing
+  note: A student in occupied Shanghai seduces a collaborator in order to kill him,
+    and loses track of which part is the act.
+
+- slug: madras-cafe
+  title: Madras Cafe
+  year: 2013
+  director: Shoojit Sircar
+  strand: witness
+  note: An intelligence officer sent into the Sri Lankan civil war watches an assassination
+    he can see coming and cannot stop.
+
+- slug: maqbool
+  title: Maqbool
+  year: 2003
+  director: Vishal Bhardwaj
+  strand: power
+  note: Macbeth in the Mumbai underworld, where two corrupt policemen do the work of
+    the witches.
+
+- slug: the-martian
+  title: The Martian
+  year: 2015
+  director: Ridley Scott
+  strand: mind
+  note: An astronaut left for dead on Mars decides to solve his way home, one problem
+    at a time.
+
+- slug: masaan
+  title: Masaan
+  year: 2015
+  director: Neeraj Ghaywan
+  strand: longing
+  note: Two lives on the burning ghats of Banaras, both trying to outrun shame in a
+    city built on endings.
+
+- slug: the-master-2012
+  title: The Master
+  year: 2012
+  director: Paul Thomas Anderson
+  strand: mind
+  note: A drifting veteran attaches himself to the leader of a new movement, and neither
+    man can quite let the other go.
+
+- slug: memento
+  title: Memento
+  year: 2000
+  director: Christopher Nolan
+  strand: mind
+  note: A man who can no longer make memories hunts his wife's killer using tattoos
+    and notes he has no choice but to trust.
+
+- slug: memories-of-murder
+  title: Memories of Murder
+  year: 2003
+  director: Bong Joon-ho
+  strand: dread
+  note: Two rural detectives chase Korea's first serial killer with no method, no science
+    and no luck.
+
+- slug: midsommar
+  title: Midsommar
+  year: 2019
+  director: Ari Aster
+  strand: dread
+  note: A grieving woman follows her boyfriend to a Swedish festival where the sun
+    never sets and nothing is hidden.
+
+- slug: million-dollar-baby
+  title: Million Dollar Baby
+  year: 2004
+  director: Clint Eastwood
+  strand: longing
+  note: An old trainer takes on the fighter he did not want, and they become the family
+    neither of them had.
+
+- slug: monica-o-my-darling
+  title: Monica, O My Darling
+  year: 2022
+  director: Vasan Bala
+  strand: dread
+  note: An ambitious engineer joins a plot to kill a blackmailer, and every conspirator
+    is worse at this than they believe.
+
+- slug: mulholland-drive
+  title: Mulholland Drive
+  year: 2001
+  director: David Lynch
+  strand: mind
+  note: An amnesiac and an aspiring actress search Los Angeles for a name, inside a
+    dream that eventually comes to collect.
+
+- slug: mystic-river
+  title: Mystic River
+  year: 2003
+  director: Clint Eastwood
+  strand: dread
+  note: Three childhood friends are pulled back together by a murder, thirty years
+    after one of them got into the wrong car.
+
+- slug: no-country-for-old-men
+  title: No Country for Old Men
+  year: 2007
+  director: Joel and Ethan Coen
+  strand: dread
+  note: A welder takes two million dollars from a drug deal gone wrong, and something
+    very patient starts walking after him.
+
+- slug: october-sky
+  title: October Sky
+  year: 1999
+  director: Joe Johnston
+  strand: mind
+  note: A coal miner's son watches Sputnik cross the sky and decides he is going to
+    build rockets instead.
+
+- slug: oldboy
+  title: Oldboy
+  year: 2003
+  director: Park Chan-wook
+  strand: dread
+  note: A man imprisoned for fifteen years without explanation is released and given
+    five days to find out why.
+
+- slug: omerta-2018
+  title: Omertà
+  year: 2018
+  director: Hansal Mehta
+  strand: witness
+  note: The life of a British born terrorist, told without a single moment that asks
+    you to understand him.
+
+- slug: oppenheimer-2023
+  title: Oppenheimer
+  year: 2023
+  director: Christopher Nolan
+  strand: witness
+  note: The man who built the bomb spends the rest of his life on trial for having
+    a conscience about it.
+
+- slug: parasite-2019
+  title: Parasite
+  year: 2019
+  director: Bong Joon-ho
+  strand: dread
+  note: A poor family talks its way into every job in a rich household, until the basement
+    answers back.
+
+- slug: portrait-of-a-lady-on-fire
+  title: Portrait of a Lady on Fire
+  year: 2019
+  director: Céline Sciamma
+  strand: longing
+  note: A painter is hired to study a reluctant bride in secret, and being looked at
+    that closely changes them both.
+
+- slug: the-prestige
+  title: The Prestige
+  year: 2006
+  director: Christopher Nolan
+  strand: mind
+  note: Two magicians destroy each other over a single trick, and the real cost is
+    hidden where the audience never looks.
+
+- slug: prisoners
+  title: Prisoners
+  year: 2013
+  director: Denis Villeneuve
+  strand: dread
+  note: Two girls vanish on Thanksgiving, and one father decides he will do whatever
+    the law will not.
+
+- slug: pulp-fiction
+  title: Pulp Fiction
+  year: 1994
+  director: Quentin Tarantino
+  strand: power
+  note: Hitmen, a boxer and a briefcase, shuffled out of order until the ending lands
+    somewhere in the middle.
+
+- slug: qala
+  title: Qala
+  year: 2022
+  director: Anvita Dutt
+  strand: mind
+  note: A singer finally wins her mother's approval and finds that it does nothing
+    about the voice in her head.
+
+- slug: the-reader
+  title: The Reader
+  year: 2008
+  director: Stephen Daldry
+  strand: longing
+  note: A teenager's affair with an older woman returns decades later as a war crimes
+    trial and a secret she will not admit.
+
+- slug: the-revenant-2015
+  title: The Revenant
+  year: 2015
+  director: Alejandro G. Iñárritu
+  strand: witness
+  note: A trapper mauled and left for dead crawls across a frozen wilderness on nothing
+    but the intention to settle it.
+
+- slug: rockstar
+  title: Rockstar
+  year: 2011
+  director: Imtiaz Ali
+  strand: longing
+  note: A boy is told great art needs great heartbreak, goes looking for some, and
+    is given far more than he ordered.
+
+- slug: sarpatta-parambarai
+  title: Sarpatta Parambarai
+  year: 2021
+  director: Pa. Ranjith
+  strand: power
+  note: Boxing clans fight over North Madras in the 1970s, where the ring is the one
+    place caste can be settled fairly.
+
+- slug: saving-private-ryan
+  title: Saving Private Ryan
+  year: 1998
+  director: Steven Spielberg
+  strand: witness
+  note: Eight men are sent across Normandy to pull one soldier out, and have to decide
+    what that arithmetic is worth.
+
+- slug: scarface-1983
+  title: Scarface
+  year: 1983
+  director: Brian De Palma
+  strand: power
+  note: A Cuban refugee takes the Miami cocaine trade on appetite alone, and appetite
+    is the only thing that ever beats him.
+
+- slug: schindlers-list
+  title: Schindler's List
+  year: 1993
+  director: Steven Spielberg
+  strand: witness
+  note: A profiteering industrialist hires Jewish workers for cheap labour and ends
+    up spending everything he has to keep them alive.
+
+- slug: se7en
+  title: Se7en
+  year: 1995
+  director: David Fincher
+  strand: dread
+  note: Two detectives track a killer working his way through the deadly sins, and
+    he is always several moves ahead.
+
+- slug: the-secret-in-their-eyes
+  title: The Secret in Their Eyes
+  year: 2009
+  director: Juan José Campanella
+  strand: longing
+  note: A retired investigator writes a novel about the case he never closed, and the
+    woman he never asked.
+
+- slug: section-375
+  title: Section 375
+  year: 2019
+  director: Ajay Bahl
+  strand: witness
+  note: A rape conviction goes to appeal, and the film refuses to let either lawyer
+    be entirely wrong.
+
+- slug: shahid
+  title: Shahid
+  year: 2013
+  director: Hansal Mehta
+  strand: witness
+  note: A former militant becomes a lawyer defending the terror accused, and is shot
+    for it at thirty two.
+
+- slug: the-shawshank-redemption
+  title: The Shawshank Redemption
+  year: 1994
+  director: Frank Darabont
+  strand: witness
+  note: A banker serving life for a murder he did not commit spends twenty years being
+    remarkably patient about it.
+
+- slug: shutter-island
+  title: Shutter Island
+  year: 2010
+  director: Martin Scorsese
+  strand: mind
+  note: A marshal investigates a disappearance at an asylum for the criminally insane,
+    and the island keeps rearranging the question.
+
+- slug: the-silence-of-the-lambs
+  title: The Silence of the Lambs
+  year: 1991
+  director: Jonathan Demme
+  strand: dread
+  note: A trainee agent bargains with one killer to catch another, and pays in pieces
+    of herself.
+
+- slug: soul-2020
+  title: Soul
+  year: 2020
+  director: Pete Docter
+  strand: longing
+  note: A jazz teacher dies on the day he finally gets his break, and has to argue
+    his way back into a life he never noticed.
+
+- slug: swades
+  title: Swades
+  year: 2004
+  director: Ashutosh Gowariker
+  strand: witness
+  note: A NASA engineer comes home to collect his old nanny and finds a village that
+    will not let him leave unchanged.
+
+- slug: the-talented-mr-ripley
+  title: The Talented Mr. Ripley
+  year: 1999
+  director: Anthony Minghella
+  strand: dread
+  note: A nobody sent to Italy to retrieve a rich man's son decides he would rather
+    be him.
+
+- slug: tenet
+  title: Tenet
+  year: 2020
+  director: Christopher Nolan
+  strand: mind
+  note: An agent is handed a war fought backwards through time and told not to understand
+    it, only to feel it.
+
+- slug: theeran-adhigaaram-ondru
+  title: Theeran Adhigaaram Ondru
+  year: 2017
+  director: H. Vinoth
+  strand: witness
+  note: A Tamil Nadu officer spends years chasing a highway gang across state lines,
+    built straight from the real case files.
+
+- slug: there-will-be-blood
+  title: There Will Be Blood
+  year: 2007
+  director: Paul Thomas Anderson
+  strand: power
+  note: An oil man and a preacher fight over the same California town, and only one
+    of them believes in anything.
+
+- slug: three-billboards-outside-ebbing-missouri
+  title: Three Billboards Outside Ebbing, Missouri
+  year: 2017
+  director: Martin McDonagh
+  strand: longing
+  note: A mother rents three billboards to shame the police over her daughter's unsolved
+    murder, and the town shames her back.
+
+- slug: trainspotting
+  title: Trainspotting
+  year: 1996
+  director: Danny Boyle
+  strand: dread
+  note: Edinburgh heroin addicts choose life over and over, keep choosing wrong, and
+    do it all at speed.
+
+- slug: tumbbad
+  title: Tumbbad
+  year: 2018
+  director: Rahi Anil Barve
+  strand: dread
+  note: A family guards a cursed god in the rain soaked Konkan, and greed keeps sending
+    the sons back down the hole.
+
+- slug: udaan
+  title: Udaan
+  year: 2010
+  director: Vikramaditya Motwane
+  strand: longing
+  note: A boy expelled from boarding school is sent home to a father who has plans
+    for him and no interest in him.
+
+- slug: uncut-gems
+  title: Uncut Gems
+  year: 2019
+  director: Josh and Benny Safdie
+  strand: dread
+  note: A New York jeweller rolls every bet into a bigger one and cannot stay still
+    long enough to be saved.
+
+- slug: us-2019
+  title: Us
+  year: 2019
+  director: Jordan Peele
+  strand: dread
+  note: A family on holiday meets a family exactly like them standing in the driveway,
+    and the resemblance is the threat.
+
+- slug: the-usual-suspects
+  title: The Usual Suspects
+  year: 1995
+  director: Bryan Singer
+  strand: mind
+  note: Five criminals meet in a police lineup, and the only witness left alive is
+    the one telling the story.
+
+- slug: vertigo
+  title: Vertigo
+  year: 1958
+  director: Alfred Hitchcock
+  strand: longing
+  note: A detective with a fear of heights follows the woman he was hired to watch,
+    then sets about rebuilding her.
+
+- slug: vikram-vedha
+  title: Vikram Vedha
+  year: 2017
+  director: Pushkar and Gayathri
+  strand: power
+  note: A gangster tells an encounter cop three stories, and each one moves the line
+    between them.
+
+- slug: whiplash-2013
+  title: Whiplash
+  year: 2014
+  director: Damien Chazelle
+  strand: mind
+  note: A drummer and a conductor push each other well past cruelty, both certain that
+    greatness is on the other side.
+
+- slug: the-wolf-of-wall-street
+  title: The Wolf of Wall Street
+  year: 2013
+  director: Martin Scorsese
+  strand: power
+  note: A stockbroker builds a fortune out of nothing but sales patter, and spends
+    it faster than the law can count it.
+
+- slug: y-tu-mama-tambien
+  title: Y Tu Mamá También
+  year: 2001
+  director: Alfonso Cuarón
+  strand: longing
+  note: Two teenagers and an older woman drive to a beach that may not exist, through
+    a country the camera keeps noticing.
+
+- slug: 500-days-of-summer
+  title: (500) Days of Summer
+  year: 2009
+  director: Marc Webb
+  strand: longing
+  note: Four hundred and eighty eight days of a relationship, told out of order by
+    the one who misread it.
+
+- slug: black-swan
+  title: Black Swan
+  year: 2010
+  director: Darren Aronofsky
+  strand: dread
+  note: A ballerina chasing perfection in Swan Lake starts losing the boundary between
+    the role and herself.
+
+- slug: homebound-2025
+  title: Homebound
+  year: 2025
+  director: Neeraj Ghaywan
+  strand: witness
+  note: Two friends from a small town chase police jobs for the dignity the uniform
+    promises, and the road home turns out to be long.
+
+- slug: pyaasa
+  title: Pyaasa
+  year: 1957
+  director: Guru Dutt
+  strand: longing
+  note: A poet nobody will publish is finally celebrated, once the world has decided
+    he is dead.

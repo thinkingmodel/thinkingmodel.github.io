@@ -1,0 +1,124 @@
+---
+layout: menu-page
+title: Cinema
+permalink: /cinema.html
+wrapper_class: wrapper--wide
+description: A curated shelf of films, one line of premise each, from a cinephile's Letterboxd.
+---
+{% assign films = site.data.cinema.films %}
+<div class="research-page cinema-page">
+    <div class="header-page">
+        <div class="hero-eyebrow">CINEPHILE</div>
+        <h1 class="hero-title">Cinema</h1>
+        <p class="hero-tagline"
+            style="font-family: 'Crimson Pro', serif; font-style: italic; color: var(--ink-mid); font-size: 1.4rem; margin-top: 1rem;">
+            Stories worth sitting in the dark for, and the ones that followed me home.
+        </p>
+        <div class="hero-line" style="margin-top: 2rem;"></div>
+    </div>
+
+    <!-- ═══ THE REEL: films watched ═══ -->
+    <section class="shelf-section reel-section" id="reel">
+      {% comment %}Same treatment as the book shelf, tuned for 2:3 posters.{% endcomment %}
+      <div class="section-eyebrow section-eyebrow--tight">
+        <span class="section-eyebrow__label">The Reel</span>
+        <div class="section-eyebrow__line"></div>
+      </div>
+      <p class="shelf-lede">Every film you finish keeps playing somewhere behind your eyes.</p>
+
+      {% comment %}
+        Five strands, mapped to the site palette. Order here sets the chip order;
+        the accent for each card is resolved from the same table further down.
+      {% endcomment %}
+      {% assign strand_keys   = "power,mind,longing,witness,dread" | split: "," %}
+      {% assign strand_labels = "Power,Mind,Longing,Witness,Dread" | split: "," %}
+      {% assign strand_hues   = "#fbbf24,#a78bfa,#f472b6,#2dd4bf,#fb923c" | split: "," %}
+
+      <div class="reel-filters" role="group" aria-label="Filter films by strand">
+        <button type="button" class="reel-chip is-active" data-strand="all" aria-pressed="true"
+                style="--accent: var(--ink-mid)">
+          All <span class="reel-chip__n">{{ films | size }}</span>
+        </button>
+        {% for key in strand_keys %}
+        {% assign n = films | where: "strand", key | size %}
+        <button type="button" class="reel-chip" data-strand="{{ key }}" aria-pressed="false"
+                style="--accent: {{ strand_hues[forloop.index0] }}">
+          {{ strand_labels[forloop.index0] }} <span class="reel-chip__n">{{ n }}</span>
+        </button>
+        {% endfor %}
+      </div>
+
+      <ul class="shelf-grid reel-grid">
+        {% for film in films %}
+        {% case film.strand %}
+          {% when 'power'   %}{% assign accent = '#fbbf24' %}
+          {% when 'mind'    %}{% assign accent = '#a78bfa' %}
+          {% when 'longing' %}{% assign accent = '#f472b6' %}
+          {% when 'witness' %}{% assign accent = '#2dd4bf' %}
+          {% when 'dread'   %}{% assign accent = '#fb923c' %}
+          {% else %}{% assign accent = '#a78bfa' %}
+        {% endcase %}
+        <li class="shelf-item reel-item" data-strand="{{ film.strand }}" style="--accent: {{ accent }}">
+          <a class="shelf-card" href="https://letterboxd.com/film/{{ film.slug }}/"
+             target="_blank" rel="noopener noreferrer">
+            <div class="shelf-cover">
+              <img src="{{ '/assets/img/films/' | append: film.slug | append: '.jpg' | relative_url }}"
+                   alt="Poster for {{ film.title }}, directed by {{ film.director }}"
+                   loading="{% if forloop.index <= 12 %}eager{% else %}lazy{% endif %}"
+                   decoding="async" width="420" height="630">
+              <span class="shelf-cover__tint" aria-hidden="true"></span>
+              <span class="reel-cover__sheen" aria-hidden="true"></span>
+              <div class="shelf-note"><p>{{ film.note }}</p></div>
+            </div>
+            <div class="shelf-meta">
+              <span class="shelf-title">{{ film.title }}</span>
+              <span class="shelf-author">{{ film.director }} · {{ film.year }}</span>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <p class="reel-empty" hidden>Nothing on this strand yet.</p>
+
+      <p class="reel-source">
+        The whole list lives on
+        <a href="https://letterboxd.com/abhinavwrites/list/abhinav-curated/"
+           target="_blank" rel="noopener noreferrer">Letterboxd</a>.
+      </p>
+    </section>
+</div>
+
+<script>
+  // Strand chips filter the wall in place. No layout thrash: items are only
+  // hidden, so the grid reflows without touching the DOM order.
+  (function () {
+    var filters = document.querySelector('.reel-filters');
+    if (!filters) return;
+
+    var items = Array.prototype.slice.call(document.querySelectorAll('.reel-item'));
+    var empty = document.querySelector('.reel-empty');
+
+    filters.addEventListener('click', function (e) {
+      var chip = e.target.closest('.reel-chip');
+      if (!chip) return;
+
+      var strand = chip.dataset.strand;
+      var shown = 0;
+
+      filters.querySelectorAll('.reel-chip').forEach(function (c) {
+        var on = c === chip;
+        c.classList.toggle('is-active', on);
+        c.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+
+      items.forEach(function (item) {
+        var match = strand === 'all' || item.dataset.strand === strand;
+        item.hidden = !match;
+        if (match) shown++;
+      });
+
+      if (empty) empty.hidden = shown > 0;
+    });
+  })();
+</script>

@@ -19,6 +19,8 @@
         class="nav-link {% if page.url contains 'research' %}active{% endif %}" data-text="Research">Research</a>
       <a href="{{ '/books.html' | relative_url }}"
         class="nav-link {% if page.url contains 'books' %}active{% endif %}" data-text="Books">Books</a>
+      <a href="{{ '/cinema.html' | relative_url }}"
+        class="nav-link {% if page.url contains 'cinema' %}active{% endif %}" data-text="Cinema">Cinema</a>
       <a href="{{ '/about.html' | relative_url }}" class="nav-link {% if page.url contains 'about' %}active{% endif %}"
         data-text="About">About</a>
 
@@ -41,6 +43,7 @@
     <a href="{{ '/' | relative_url }}">Articles</a>
     <a href="{{ '/research.html' | relative_url }}">Research</a>
     <a href="{{ '/books.html' | relative_url }}">Books</a>
+    <a href="{{ '/cinema.html' | relative_url }}">Cinema</a>
     <a href="{{ '/about.html' | relative_url }}">About</a>
     <button class="mobile-nav-subscribe subscribe-trigger">Subscribe</button>
   </nav>

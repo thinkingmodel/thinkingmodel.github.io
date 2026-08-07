@@ -3,7 +3,8 @@ layout: default
 ---
 <div class="flex-container transparent">
   {% include header.html %}
-  <div class="content wrapper">
+  {% comment %}`wrapper_class` lets a page opt into a wider column, e.g. wrapper--wide.{% endcomment %}
+  <div class="content wrapper {{ page.wrapper_class }}">
     {{ content }}
   {% include search.html %}
   {% include pagination.html %}
