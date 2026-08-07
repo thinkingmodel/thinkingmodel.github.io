@@ -634,6 +634,14 @@ films:
   note: A coal miner's son watches Sputnik cross the sky and decides he is going to
     build rockets instead.
 
+- slug: the-odyssey-2026
+  title: The Odyssey
+  year: 2026
+  director: Christopher Nolan
+  strand: longing
+  note: Ten years after Troy falls, a king is still trying to sail home, and neither
+    the sea nor the gods are in any hurry.
+
 - slug: oldboy
   title: Oldboy
   year: 2003
